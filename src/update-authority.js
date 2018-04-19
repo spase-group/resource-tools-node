@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+"use strict";
 /** 
     Change the control authority in the ResourceID, add a PriorID and update ReleaseDate.
     Author: Todd King

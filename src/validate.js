@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+"use strict";
 /**
  * Validate the contents of a SPASE resource description.
  * 

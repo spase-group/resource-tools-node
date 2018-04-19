@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+"use strict";
 /** 
     Extract reference information for a DOI request from a SPASE resource description.
     Author: Todd King

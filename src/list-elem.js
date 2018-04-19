@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+"use strict";
 /**
  * List an element value in an XML document.
  * 

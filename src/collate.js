@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+"use strict";
 /**
  * Read a resource description and place it in an appriately named file and path
  * based on the ResourceID

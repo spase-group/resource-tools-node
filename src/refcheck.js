@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+"use strict";
 /**
  * Perform a check of URL or SPASE ID references in a SPASE resource description.
  * 
