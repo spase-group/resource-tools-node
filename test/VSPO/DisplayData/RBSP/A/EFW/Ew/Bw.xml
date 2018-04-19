@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Spase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.spase-group.org/data/schema" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <DisplayData>
+    <ResourceID>spase://VSPO/DisplayData/RBSP/A/EFW/Ew/Bw</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A Electric Fields and Waves Instrument (EFW) spec64 Bw, Ew comparison ylog</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>Van Allen Probe A Electric Fields and Waves Instrument (EFW) spec64 Bw, Ew comparison ylog</Description>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>RBSP/EFW Home - University of Minnesota</Name>
+        <URL>http://www.space.umn.edu/missions/rbspefw-home-university-of-minnesota/</URL>
+        <Description>RBSP/EFW</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://rbspgway.jhuapl.edu/</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/DisplayData/RBSP/A/EFW/Ew/Bw</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/UMN</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>RBSP/EFW Daily Survey</Name>
+        <URL>http://rbsp.space.umn.edu/survey/rbsp/rbspa/</URL>
+      </AccessURL>
+      <Format>PNG</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/EFW</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-05T14:36:16.000Z</StartDate>
+        <RelativeStopDate>-P2D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+  </DisplayData>
+</Spase>

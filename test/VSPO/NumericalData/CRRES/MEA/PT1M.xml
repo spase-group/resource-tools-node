@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema   http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/CRRES/MEA/PT1M</ResourceID>
+    <ResourceHeader>
+      <ResourceName>CRRES MEA 1-min electron distribution functions</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set holds 1-min resolution electron distributions from the Medium Electron Sensor/Analyzer (MEA) on the CRRES spacecraft.  The data consists of counting rates from 17 energy channels in the range of 0.1-2 MeV and 19 pitch angle bins at 1 minute time intervals. The average flux, 90 degree flux and N value are included.  Also included are the spacecraft geographic coordinates and altitude, L shell, and the local and equatorial magnetic field magnitudes from the 1977 Olson-Pfitzer model of the earth's geomagnetic field. The raw high resolution (0.512 sec) data and documentation of raw data can be obtained via ftp from NSSDC.</Description>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Alfred.L.Vampola</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>AFRL Descriptive Document</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/crres/particle_mea/500ms_pcbinary/document/</URL>
+        <Description>This is an information file provided by the PI for the raw high resolution data.</Description>
+      </InformationURL>
+      <PriorID>spase://VIRBO/NumericalData/CRRES/MEA/PT1M</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/crres/particle_mea</URL>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/crres/particle_mea</URL>
+        <Description>In CDF via HTTP from CDAWeb</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge A. Vampola at AFRL and the Space
+Phyics Data Facility at NASA/Goddard.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/sp_phys/</URL>
+        <ProductKey>CRRES_H0_MEA</ProductKey>
+        <Description>CRRES_H0_MEA</Description>
+      </AccessURL>
+      <Format>Text</Format>
+      <Acknowledgement>Please acknowledge A. Vampola at AFRL and the Space
+Phyics Data Facility at NASA/Goddard.</Acknowledgement>
+    </AccessInformation>
+    <ProcessingLevel>Calibrated</ProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/CRRES/MEA</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>1990-07-28T00:00:00</StartDate>
+        <StopDate>1991-10-09T00:00:00</StopDate>
+      </TimeSpan>
+      <Cadence>PT1M</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Earth.Magnetosphere.Main</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.RadiationBelt</ObservedRegion>
+  </NumericalData>
+</Spase>

@@ -1,0 +1,399 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/RBSPICE/L2/ESRLEHT</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A RBSPICE Low Energy Resolution Electron Rates converted Level-2 data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains Van Allen Probe A RBSPICE (Radiation Belt Storm Probes Ion Composition Experiment) low-energy resolution electron rates that are measured at high-time resolution. Unidirectional Differential Electron Flux (FEDU) measured by 6 telescopes in 14 channels from ~0.02-1.0 MeV are available in physical units (counts/(s*sr*cm^2*MeV) by telescope in sector order (T0= ~110 PA, T3= ~all PAs, T5= FEDU background).  Also available are percentage error of measurement, quality flag, current sector number where each spin is dividied into 36 sectors, duration of the accumulation, current spin number of the spacecraft, orbit number, dipole L using the SM reference frame, and position of the spacecraft in SM coordinates.</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Louis.J.Lanzerotti</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>Current QuickLook &amp; Summary Plots, Instrument Information and All Data</Name>
+        <URL>http://rbspice.ftecs.com/Data.html</URL>
+        <Description>at the RBSPICE Instrument Site</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>Interactive Analysis for RBSPICE Data</Name>
+        <URL>http://sd-www.jhuapl.edu/rbspice/MIDL/</URL>
+        <Description>using RBSPICE MIDL</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/RBSPICE/LEV-2/ESRLEHT/sub spin resolution</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/rbspice/esrleht/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/rbspice/esrleht/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSP-A-RBSPICE_LEV-2_ESRLEHT</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/RBSPICE</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-11-13T22:06:46.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>Epoch</ParameterKey>
+      <Description>Ephemeris Time of the start  of the accumulation for this measurement. </Description>
+      <Caveats>This is the Ephemeris Time saved as a TT2000 CDF Variable.  The difference between the ET value and the TT value is less than a millisecond.  The ET time values have an accuracy of no greater than 3 milliseconds hence it was determined that there was no reason to convert the ET values into TT. </Caveats>
+      <Units>ns </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>UTC </Name>
+      <ParameterKey>UTC</ParameterKey>
+      <Description>UTC </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>SCLOCK_Full </Name>
+      <ParameterKey>SCLOCK_Full</ParameterKey>
+      <Description>SCLOCK_Full </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>ET </Name>
+      <ParameterKey>ET</ParameterKey>
+      <Description>The ephemeris time at the start of the measurement. </Description>
+      <Units>seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>MidET </Name>
+      <ParameterKey>MidET</ParameterKey>
+      <Description>The ephemeris time at the mid-point of the measurement. For multi-spin measurements the midET is centered so that it properly represents the time to be used to calculate the look direction of the instrument. </Description>
+      <Units>seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>StopET </Name>
+      <ParameterKey>StopET</ParameterKey>
+      <Description>The ephemeris time at the end of the accumulation of the measurement </Description>
+      <Units>seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Telescope No. </Name>
+      <ParameterKey>Telescope</ParameterKey>
+      <Description>Identifies the telescope used to collect the measurement </Description>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Channel </Name>
+      <ParameterKey>Channel</ParameterKey>
+      <Description>Identifies the channel used to collect the measurement </Description>
+      <Structure>
+        <Size>14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Energy </Name>
+      <ParameterKey>FEDU_Energy_Fixed</ParameterKey>
+      <Description>Midpoint energy of the measurement channel. A value of -1 indicates that an energy definition for this channel is not applicable </Description>
+      <Caveats>Added by SPDF </Caveats>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU </Name>
+      <ParameterKey>FEDU</ParameterKey>
+      <Description>FEDU: Electron flux spectrograms in energy, by telescope in sector order (T0= ~110 PA, T3= ~all PAs, T5= FEDU background) </Description>
+      <Units>1/(MeV-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Telescope1 </Name>
+      <ParameterKey>FEDU_stack1</ParameterKey>
+      <Description>Telescope 1: stacked plots by energy </Description>
+      <Units>1/(Mev-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Telescope2 </Name>
+      <ParameterKey>FEDU_stack2</ParameterKey>
+      <Description>-----&gt; Telescope 2 </Description>
+      <Units>1/(Mev-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Telescope3 </Name>
+      <ParameterKey>FEDU_stack3</ParameterKey>
+      <Description>-----&gt; Telescope 3 </Description>
+      <Units>1/(Mev-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Telescope2 </Name>
+      <ParameterKey>FEDU_stack4</ParameterKey>
+      <Description>-----&gt; Telescope 4 </Description>
+      <Units>1/(Mev-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Telescope2 </Name>
+      <ParameterKey>FEDU_stack5</ParameterKey>
+      <Description>-----&gt; Telescope 5 </Description>
+      <Units>1/(Mev-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Telescope6 </Name>
+      <ParameterKey>FEDU_stack6</ParameterKey>
+      <Description>-----&gt; Telescope 6 </Description>
+      <Units>1/(Mev-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU </Name>
+      <ParameterKey>FEDU_I</ParameterKey>
+      <Description>Telescope-energy images </Description>
+      <Units>1/(MeV-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Error </Name>
+      <ParameterKey>FEDU_Error</ParameterKey>
+      <Description>The percentage error of the measurement. </Description>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FIDU_Crosscalib_RMSE </Name>
+      <ParameterKey>FEDU_Crosscalib_RMSE</ParameterKey>
+      <Description>RMS Error of the natural log of the flux for each channel. </Description>
+      <Caveats>This error value includes all errors associated with the measurement including cross calibration errors </Caveats>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FEDU_Quality </Name>
+      <ParameterKey>FEDU_Quality</ParameterKey>
+      <Description>Quality flag for the measurement for each telescope/channel/timestep. .see PREBM standards for definition </Description>
+      <Units>(10=OK) </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Sector </Name>
+      <ParameterKey>Sector</ParameterKey>
+      <Description>The current sector number where each spin is divided into 36 sectors. </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Duration </Name>
+      <ParameterKey>Duration</ParameterKey>
+      <Description>Duration of the accumulation. </Description>
+      <Units>Seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Spin </Name>
+      <ParameterKey>Spin</ParameterKey>
+      <Description>The current spin number of the spacecraft </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>OrbitNumber </Name>
+      <ParameterKey>OrbitNumber</ParameterKey>
+      <Description>Orbit Number at the time of the measurement </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L </Name>
+      <ParameterKey>L</ParameterKey>
+      <Description>Dipole L value calculated using the SM Reference Frame and taken from the definitive SPICE SPK kernels that are available at the time.  </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_SM </Name>
+      <ParameterKey>Position_SM</ParameterKey>
+      <Description>Position of the spacecraft in SM coordinates </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>OrbitNumber </Name>
+      <ParameterKey>OrbitNumber_TT</ParameterKey>
+      <Description>[Labels on plots] Orbit Number at the time of the measurement </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L </Name>
+      <ParameterKey>L_TT</ParameterKey>
+      <Description>[Labels on plots] Dipole L value calculated using the SM Reference Frame and taken from the definitive SPICE SPK kernels that are available at the time.  </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_SM </Name>
+      <ParameterKey>Position_SM_TT</ParameterKey>
+      <Description>[Labels on plots] Position of the spacecraft in SM coordinates </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_Energy </Name>
+      <ParameterKey>FEDU_Energy</ParameterKey>
+      <Description>Midpoint energy of the measurement channel. A value of -1 indicates that an energy definition for this channel is not applicable </Description>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>6 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FDPU_EnergyRange </Name>
+      <ParameterKey>FEDU_EnergyRange</ParameterKey>
+      <Description>Minimum and Maximum energy of the measurement channel. A value of -1 indicates that either an energy definition for this channel is not applicable or that the upper end of the channel is undefined - i.e. the channel becomes integral. </Description>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>6 2 14</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

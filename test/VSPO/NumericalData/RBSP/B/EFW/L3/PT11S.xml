@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EFW/L3/PT11S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Electric Fields and Waves (EFW) Spin-fit Electric field in modified-GSE (MGSE) coord, density, and other products</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains Level 3 wave electric field and search coil wave magnetic fields data from the Electric Field and Waves Suite (EFW) onboard Van Allen Probe A. The spin-fit electric field (spin period resolution) tends to be the most accurate electric field measurement. However, as always, due diligence by the user/scientists must be exercised in using these data. The spin-fit electric field is provided in both an inertial and co-rotating frame. The electric field is presented in a MGSE (modified GSE) coordinate system. We provide two components (Y MGSE and Z MGSE) of the electric field. Both components are in the spin plane of the spacecraft and are measured with the long 50 m booms. The X MGSE component is along the spin-axis. The spin-axis of the spacecraft is oriented within 37 degrees of the Earth sun line. So the Y GSE direction is most nearly aligned with the Y MGSE axis and the Z MGSE direction is most nearly aligned with Z GSE.</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb. The work by the EFW team was conducted under JHU/APL contract 922613 (RBSP-EFW)</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://www.space.umn.edu/rbspefw-data-policy-the-rules-of-the-road/</URL>
+        <Description>EFW Data Required Reading</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VWO/NumericalData/RBSP/B/EFW/L3/PT11S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l3/efw/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l3/efw/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the PI and the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPB_EFW-L3</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <MeasurementType>Waves</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-18T00:00:06.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT11S</Cadence>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Time, UTC</Name>
+      <ParameterKey>epoch</ParameterKey>
+      <Description>Time tags for the data quantities</Description>
+      <Units>UTC</Units>
+      <Support>
+        <SupportQuantity>Temporal</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Density estimation from sc potential</Name>
+      <ParameterKey>density</ParameterKey>
+      <Description>Density estimation from sc potential, determined from the form density = A1*exp(b*x)+A2*exp(c*x), where x=(V1 + V2)/2, where the constants are found by comparison to upper hybrid line from EMFISIS. The fit is updated approximately monthly. For a more accurate density (or verification) for a specific time period contact the EFW team. Values below 10cm-3 and above 3000 cm-3 are untrustworthy and are removed</Description>
+      <Units>cm-3</Units>
+      <Particle>
+        <ParticleType>Electron</ParticleType>
+        <ParticleQuantity>NumberDensity</ParticleQuantity>
+      </Particle>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Global Data Quality</Name>
+      <ParameterKey>flag_global</ParameterKey>
+      <Description>0=OK</Description>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Data Quality Flags</Name>
+      <ParameterKey>flags_all</ParameterKey>
+      <Description>The quality of EFW data products can be affected by a variety of observatory and instrument-level conditions. efw_qual is a collection of flags that show the estimate of each of these contributors over time. ..See the EFW-FAQ (http://www.space.umn.edu/rbspefw-data-policy-the-rules-of-the-road/) for a detailed description of the determination and meaning of each of the elements of efw_qual...If the value of a particular element of efw_qual is not relevant to the quality of a particular data product, it shall receive the value -2...If the value of a particular element of efw_qual is relevant to the quality of a particular data product but is not known at the time lf L2 data production, it shall receive the value -1...A quality value of 0 indicates that there are no known issues with the data product due to that particular element of efw_qual...The quality values are meant to be conservative, and values other than 0 should lead the user back to a member of the EFW instrument team for discussion and advice on the nature of the data quality as needed.</Description>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Charging, Bias and Eclipse flags</Name>
+      <ParameterKey>flags_charging_bias_eclipse</ParameterKey>
+      <Description>For Spacecraft Charging Issues see http://www.space.umn.edu/rbspefw-data-policy-the-rules-of-the-road/</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Ein - Inertial frame spinfit electric field in MGSE coord system</Name>
+      <ParameterKey>efield_inertial_frame_mgse</ParameterKey>
+      <Description>Inertial frame spinfit electric field in MGSE coord system. Derived from the V1 and V2 spinplane booms. The Vsc x B field is subtracted off, where Vsc is the spacecraft velocity and B is the measured ambient magnetic field</Description>
+      <Units>mV/m</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Field>
+        <FieldQuantity>Electric</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>Eco - Corotation frame spinfit electric field in MGSE coord system</Name>
+      <ParameterKey>efield_corotation_frame_mgse</ParameterKey>
+      <Description>Corotation frame spinfit electric field in MGSE coord system. Derived from the V1 and V2 spinplane booms. The Vsc x B field is subtracted off, where Vsc is the spacecraft velocity and B is the measured ambient magnetic field</Description>
+      <Units>mV/m</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Field>
+        <FieldQuantity>Electric</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>Vco x B - Corotation vxB Efield in MGSE coord.</Name>
+      <ParameterKey>VcoroxB_mgse</ParameterKey>
+      <Description>Corotation Efield calculated from Omega x R x B in MGSE coord. Omega is the Earth's spin axis vector and R is the vector from the Earth's center to the satellite</Description>
+      <Units>mV/m</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Field>
+        <FieldQuantity>Electric</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>Vsc x B - Spacecraft vxB Efield calculated in MGSE coord.</Name>
+      <ParameterKey>VscxB_mgse</ParameterKey>
+      <Description>Vsc x B in MGSE coord, where Vsc is the spacecraft velocity and B is the DC magnetic field</Description>
+      <Units>mV/m</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Field>
+        <FieldQuantity>Electric</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>GSE position (km) from SPICE</Name>
+      <ParameterKey>pos_gse</ParameterKey>
+      <Description>GSE position (km) from SPICE</Description>
+      <Units>km</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>GSE velocity in km/s from SPICE</Name>
+      <ParameterKey>vel_gse</ParameterKey>
+      <Description>GSE position (km) from SPICE</Description>
+      <Units>km/s</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Velocity</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Spinaxis unit vector in GSE coord</Name>
+      <ParameterKey>spinaxis_gse</ParameterKey>
+      <Description>Spinaxis unit vector in GSE coord</Description>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Vavg - SCpot (neg) as average of opposing boom potentials (V1+V2)/2 and a proxy for plasma density.</Name>
+      <ParameterKey>Vavg</ParameterKey>
+      <Description>Average of opposing boom potentials (V1+V2)/2. This is a proxy for plasma density. Positive excursions can indicate negative spacecraft charging.</Description>
+      <Units>volts</Units>
+      <Field>
+        <FieldQuantity>Potential</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>MLT, Lshell and Mlat</Name>
+      <ParameterKey>mlt_lshell_mlat</ParameterKey>
+      <Description>MLT, Lshell and Mlat</Description>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Nominal Sensor Saturation Voltage (V)</Name>
+      <ParameterKey>vsvy_maxval</ParameterKey>
+      <Description>The maximum magnitude of the sensor potential relative to SC potential at which the sensor preamp likely to be saturated during nominal biasing conditions..If the magnitude of a given sensor potential exceeds vsvy_maxval then the corresponding element of efw_qua.l (v1_saturation .. v6-saturation) shall be set to indicate that state. vsvy_maxval is set in the L1&gt;L2 processing scripts, and shall be copied into this variable during L2 CDF creation.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW_QUAL_NR</Name>
+      <ParameterKey>EFW_QUAL_NR</ParameterKey>
+      <Description>EFW_QUAL_NR is the value (typ. -2) an element of efw_qual takes when the criterion represented by that element is not relevant for the given data product.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW_QUAL_GOOD</Name>
+      <ParameterKey>EFW_QUAL_GOOD</ParameterKey>
+      <Description>EFW_QUAL_GOOD is the value (0) of an element of efw_qual that indicates good data.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW_QUAL_UNK</Name>
+      <ParameterKey>EFW_QUAL_UNK</ParameterKey>
+      <Description>EFW_QUAL_UNK is the value (typ. -1) an element of efw_qual that indicates the quality is unknown.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+  </NumericalData>
+</Spase>

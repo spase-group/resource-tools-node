@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<Spase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.spase-group.org/data/schema" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_0_1.xsd">
+   <Version>2.0.1</Version>
+   <NumericalData>
+      <ResourceID>spase://VMO/NumericalData/CRRES/LPI/PT30S</ResourceID>
+      <ResourceHeader>
+         <ResourceName>CRRES electric field and convection drift data</ResourceName>
+         <AlternateName>CRRES Langmuir Probe data</AlternateName>
+         <ReleaseDate>2010-04-05T21:46:47Z</ReleaseDate>
+         <Description>This data set includes the electric field and convection drift information from the CRRES spacecraft. The langmuir probe instrument data is at 30 s resolution. The files include the electric field vectors, elcetric field magnitude, and the convection drift vectors from both the spherical sensors and the cylindrical antennas.</Description>
+         <Acknowledgement>NASA; Department of Defense-Department of the Air Force (United States); AFRL; Prof. Forrest S. Mozer; Dr. E. Gary Mullen</Acknowledgement>
+         <Contact>
+            <PersonID>spase://SMWG/Person/Forrest.S.Mozer</PersonID>
+            <Role>PrincipalInvestigator</Role>
+         </Contact>
+         <Contact>
+            <PersonID>spase://SMWG/Person/E.Gary.Mullen</PersonID>
+            <Role>PrincipalInvestigator</Role>
+         </Contact>
+         <Contact>
+            <PersonID>spase://SMWG/Person/James.M.Weygand</PersonID>
+            <Role>MetadataContact</Role>
+         </Contact>
+         <InformationURL>
+            <Name>CRRES Langmuir Probe Instrument Introduction</Name>
+            <URL>http://nssdc.gsfc.nasa.gov/nmc/experimentDisplay.do?id=1990-065A-21</URL>
+            <Description>NASA NSSDC CRRES Langmuir Probe Instrument</Description>
+         </InformationURL>
+         <Association>
+            <AssociationID>spase://SMWG/Observatory/CRRES</AssociationID>
+         </Association>
+      </ResourceHeader>
+      <AccessInformation>
+         <RepositoryID>spase://SMWG/Repository/UCLA/VMO</RepositoryID>
+         <Availability>Online</Availability>
+         <AccessRights>Open</AccessRights>
+         <AccessURL>
+            <Name>Virtual Magnetospheric Observatory</Name>
+            <URL>http://vmo.igpp.ucla.edu/data1/CRRES/LPI/PT30S</URL>
+         </AccessURL>
+         <Format>Text</Format>
+         <Encoding>ASCII</Encoding>
+         <Acknowledgement>NASA; Department of Defense-Department of the Air Force (United States); AFRL; Prof. Forrest S. Mozer; Dr. E. Gary Mullen</Acknowledgement>
+      </AccessInformation>
+      <ProcessingLevel>Calibrated</ProcessingLevel>
+      <ProviderResourceName>CRRES Langmuir Probe Instrument Information</ProviderResourceName>
+      <ProviderProcessingLevel>Level-2</ProviderProcessingLevel>
+      <InstrumentID>spase://SMWG/Instrument/CRRES/LPI</InstrumentID>
+      <MeasurementType>ElectricField</MeasurementType>
+      <TemporalDescription>
+         <TimeSpan>
+            <StartDate>1990-10-11T00:00:00.000</StartDate>
+            <StopDate>1991-10-13T00:00:00.000</StopDate>
+            <Note>Time format in data files is: Year-Month-Day Hour Minute Second (YYYY-MM-DDTHH:MM:SS.SSS)</Note>
+         </TimeSpan>
+         <Cadence>PT30S</Cadence>
+      </TemporalDescription>
+      <Keyword>30 s</Keyword>
+      <Keyword>Radiation Belt</Keyword>
+      <Keyword>Inner Magnetosphere</Keyword>
+      <Keyword>Magnetosphere</Keyword>
+      <Keyword>Radiation Belt</Keyword>
+      <Keyword>Plasmasphere</Keyword>
+      <Keyword>electric fields</Keyword>
+      <Keyword>Langmuir Probe Instrument</Keyword>
+      <Parameter>
+         <Name>Universal Time</Name>
+         <ParameterKey>Time</ParameterKey>
+         <Description>Universal Time columns from left to right are:  year month day hour minute sec in the format of yyyy mm dd hh mm ss.</Description>
+         <Caveats>Flag=9999-12-31T23:59:59Z</Caveats>
+         <Cadence>PT30S</Cadence>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>GSE</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>6</Size>
+            <Description>Universal Time expressed using a 6-column day, month, year, hour, minute, second representation</Description>
+            <Element>
+               <Name>Year</Name>
+               <Index>1</Index>
+               <ParameterKey>Year</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Month</Name>
+               <Index>2</Index>
+               <ParameterKey>Month</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Day</Name>
+               <Index>3</Index>
+               <ParameterKey>Day</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Hour</Name>
+               <Index>4</Index>
+               <ParameterKey>Hour</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Minute</Name>
+               <Index>5</Index>
+               <ParameterKey>Minute</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Second</Name>
+               <Index>6</Index>
+               <ParameterKey>Second</ParameterKey>
+            </Element>
+         </Structure>
+         <Support>
+            <SupportQuantity>Temporal</SupportQuantity>
+         </Support>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Langmuir Probe Instrument Electric Field Vector Data from the Spherical Antenna at 30 s Resolution</Name>
+         <ParameterKey>CRRES langmuir probe instrument spherical antenna electric field vector</ParameterKey>
+         <Description>Langmuir probe instrument spherical antenna electric field vectors from CRRES. The coordinate system is a modified coordinate system with the x-axis pointing toward the sun, the y-axis pointing toward the dusk, and the z-axis pointing along the north ecliptic pole.</Description>
+         <Caveats>Flags=99999; The coordinate system is a modified coordinate system with the x-axis pointing toward the sun, the y-axis pointing toward the dusk, and the z-axis pointing along the north ecliptic pole.</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>mV/M</Units>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>SC</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>3</Size>
+            <Element>
+               <Name>EX-MGSE</Name>
+               <Qualifier>Component.I</Qualifier>
+               <Index>1</Index>
+               <ParameterKey>Ex</ParameterKey>
+            </Element>
+            <Element>
+               <Name>EY-MGSE</Name>
+               <Qualifier>Component.J</Qualifier>
+               <Index>2</Index>
+               <ParameterKey>Ey</ParameterKey>
+            </Element>
+            <Element>
+               <Name>EZ-MGSE</Name>
+               <Qualifier>Component.K</Qualifier>
+               <Index>3</Index>
+               <ParameterKey>Ez</ParameterKey>
+            </Element>
+         </Structure>
+         <Field>
+            <Qualifier>Vector</Qualifier>
+            <FieldQuantity>Electric</FieldQuantity>
+         </Field>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Langmuir Probe Instrument Electric Field Magnitude Data from the Spherical Antenna at 30 s Resolution</Name>
+         <ParameterKey>CRRES langmuir probe instrument spherical antenna electric field magnitude</ParameterKey>
+         <Description>Langmuir probe instrument spherical antenna electric field magnitudes from CRRES.</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>nT</Units>
+         <Field>
+            <Qualifier>Magnitude</Qualifier>
+            <FieldQuantity>Electric</FieldQuantity>
+         </Field>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Langmuir Probe Instrument Electric Field Data from the Cylindrical Antenna at 30 s Resolution</Name>
+         <ParameterKey>CRRES langmuir probe instrument cylindrical antenna electric field vector</ParameterKey>
+         <Description>Langmuir probe instrument cylindrical antenna electric field vectors from CRRES. The coordinate system is a modified coordinate system with the x-axis pointing toward the sun, the y-axis pointing toward the dusk, and the z-axis pointing along the north ecliptic pole.</Description>
+         <Caveats>Flags=99999; The coordinate system is a modified coordinate system with the x-axis pointing toward the sun, the y-axis pointing toward the dusk, and the z-axis pointing along the north ecliptic pole.</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>mV/M</Units>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>SC</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>3</Size>
+            <Element>
+               <Name>EX-MGSE</Name>
+               <Qualifier>Component.I</Qualifier>
+               <Index>1</Index>
+               <ParameterKey>Ex</ParameterKey>
+            </Element>
+            <Element>
+               <Name>EY-MGSE</Name>
+               <Qualifier>Component.J</Qualifier>
+               <Index>2</Index>
+               <ParameterKey>Ey</ParameterKey>
+            </Element>
+            <Element>
+               <Name>EZ-MGSE</Name>
+               <Qualifier>Component.K</Qualifier>
+               <Index>3</Index>
+               <ParameterKey>Ez</ParameterKey>
+            </Element>
+         </Structure>
+         <Field>
+            <Qualifier>Vector</Qualifier>
+            <FieldQuantity>Electric</FieldQuantity>
+         </Field>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Langmuir Probe Instrument Electric Field Magnitude Data from the Cylindrical Antenna at 30 s Resolution</Name>
+         <ParameterKey>CRRES langmuir probe instrument cylindrical antenna electric field magnitude</ParameterKey>
+         <Description>Langmuir probe instrument cylindrical antenna electric field magnitudes from CRRES.</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>nT</Units>
+         <Field>
+            <Qualifier>Magnitude</Qualifier>
+            <FieldQuantity>Electric</FieldQuantity>
+         </Field>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Langmuir Probe Instrument Convection Drift Velocity Vector Data from the Spherical Antenna at 30 s Resolution</Name>
+         <ParameterKey>CRRES langmuir probe instrument spherical antenna convection drift velocity vector</ParameterKey>
+         <Description>Langmuir probe instrument spherical antenna convection drift velocity vectors from CRRES. The coordinate system is a modified coordinate system with the x-axis pointing toward the sun, the y-axis pointing toward the dusk, and the z-axis pointing along the north ecliptic pole.</Description>
+         <Caveats>Flags=99999; The coordinate system is a modified coordinate system with the x-axis pointing toward the sun, the y-axis pointing toward the dusk, and the z-axis pointing along the north ecliptic pole.</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>km/s</Units>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>SC</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>3</Size>
+            <Element>
+               <Name>VX-MGSE</Name>
+               <Qualifier>Component.I</Qualifier>
+               <Index>1</Index>
+               <ParameterKey>Vx</ParameterKey>
+            </Element>
+            <Element>
+               <Name>VY-MGSE</Name>
+               <Qualifier>Component.J</Qualifier>
+               <Index>2</Index>
+               <ParameterKey>Vy</ParameterKey>
+            </Element>
+            <Element>
+               <Name>VZ-MGSE</Name>
+               <Qualifier>Component.K</Qualifier>
+               <Index>3</Index>
+               <ParameterKey>Vz</ParameterKey>
+            </Element>
+         </Structure>
+         <Mixed>
+            <Qualifier>Vector</Qualifier>
+            <MixedQuantity>Other</MixedQuantity>
+         </Mixed>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Langmuir Probe Instrument Convection Drift Velocity Vector Data from the Cylindrical Antenna at 30 s Resolution</Name>
+         <ParameterKey>CRRES langmuir probe instrument cylindrical antenna convection drift velocity vector</ParameterKey>
+         <Description>Langmuir probe instrument cylindrical antenna convection drift velocity vectors from CRRES.</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>km/s</Units>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>SC</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>3</Size>
+            <Element>
+               <Name>VX-MGSE</Name>
+               <Qualifier>Component.I</Qualifier>
+               <Index>1</Index>
+               <ParameterKey>Vx</ParameterKey>
+            </Element>
+            <Element>
+               <Name>VY-MGSE</Name>
+               <Qualifier>Component.J</Qualifier>
+               <Index>2</Index>
+               <ParameterKey>Vy</ParameterKey>
+            </Element>
+            <Element>
+               <Name>VZ-MGSE</Name>
+               <Qualifier>Component.K</Qualifier>
+               <Index>3</Index>
+               <ParameterKey>Vz</ParameterKey>
+            </Element>
+         </Structure>
+         <Mixed>
+            <Qualifier>Vector</Qualifier>
+            <MixedQuantity>Other</MixedQuantity>
+         </Mixed>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Angle Between Fluxgate Magnetometer and the Spin Plane at 30 s resolution</Name>
+         <ParameterKey>CRRES angle between the magnetic field and the spin plane</ParameterKey>
+         <Description>CRRES angle between the magnetic field and the spin plane at 30 s resolution in untis of degrees.</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Support>
+            <SupportQuantity>Other</SupportQuantity>
+         </Support>
+      </Parameter>
+   </NumericalData>
+</Spase>

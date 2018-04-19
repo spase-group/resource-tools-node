@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<Spase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.spase-group.org/data/schema" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_0_1.xsd">
+   <Version>2.0.1</Version>
+   <NumericalData>
+      <ResourceID>spase://VMO/NumericalData/CRRES/MAG/PT2S</ResourceID>
+      <ResourceHeader>
+         <ResourceName>CRRES 2s magnetic field data</ResourceName>
+         <AlternateName>CRRES MAG data</AlternateName>
+         <ReleaseDate>2010-04-05T21:48:54Z</ReleaseDate>
+         <Description>This data set contains magnetic field vectors and tilt angles from the CRRES tri-axial fluxgate magnetometer data. The magnetic field vectors are at 2 s resolution and in the Vehicle Dipole Horizon (VDH) coordinate system. Also included are the magnetic field magnitude and the tilt of the magnetic field in Theta and Phi in the VDH coordinate system.</Description>
+         <Acknowledgement>NASA; Department of Defense-Department of the Air Force (United States); AFRL; Dr. Howard J. Singer; Dr. E. Gary Mullen</Acknowledgement>
+         <Contact>
+            <PersonID>spase://SMWG/Person/Howard.J.Singer</PersonID>
+            <Role>PrincipalInvestigator</Role>
+         </Contact>
+         <Contact>
+            <PersonID>spase://SMWG/Person/E.Gary.Mullen</PersonID>
+            <Role>PrincipalInvestigator</Role>
+         </Contact>
+         <Contact>
+            <PersonID>spase://SMWG/Person/James.M.Weygand</PersonID>
+            <Role>MetadataContact</Role>
+         </Contact>
+         <InformationURL>
+            <Name>CRRES Fluxgate Magnetometer Instrument</Name>
+            <URL>http://nssdc.gsfc.nasa.gov/nmc/experimentDisplay.do?id=1990-065A-19</URL>
+            <Description>NASA NSSDC CRRES fluxgate magnetometer experiment details</Description>
+         </InformationURL>
+         <Association>
+            <AssociationID>spase://SMWG/Observatory/CRRES</AssociationID>
+         </Association>
+      </ResourceHeader>
+      <AccessInformation>
+         <RepositoryID>spase://SMWG/Repository/UCLA/VMO</RepositoryID>
+         <Availability>Online</Availability>
+         <AccessRights>Open</AccessRights>
+         <AccessURL>
+            <Name>Virtual Magnetospheric Observatory</Name>
+            <URL>http://vmo.igpp.ucla.edu/data1/CRRES/MAG/PT2S</URL>
+         </AccessURL>
+         <Format>Text</Format>
+         <Encoding>ASCII</Encoding>
+         <Acknowledgement>NASA; Department of Defense-Department of the Air Force (United States); AFRL; Dr. Howard J. Singer; Dr. E. Gary Mullen</Acknowledgement>
+      </AccessInformation>
+      <ProcessingLevel>Calibrated</ProcessingLevel>
+      <ProviderResourceName>CRRES MAG Tri-axial fluxgate magnetometer</ProviderResourceName>
+      <ProviderProcessingLevel>Level-2</ProviderProcessingLevel>
+      <InstrumentID>spase://SMWG/Instrument/CRRES/MAG</InstrumentID>
+      <MeasurementType>MagneticField</MeasurementType>
+      <TemporalDescription>
+         <TimeSpan>
+            <StartDate>1990-10-11T00:00:00.000</StartDate>
+            <StopDate>1991-10-13T00:00:00.000</StopDate>
+            <Note>Time format in data files is: Year-Month-Day Hour Minute Second (YYYY-MM-DDTHH:MM:SS.SSS)</Note>
+         </TimeSpan>
+         <Cadence>PT2S</Cadence>
+      </TemporalDescription>
+      <Keyword>2 s</Keyword>
+      <Keyword>Radiation Belt</Keyword>
+      <Keyword>Inner Magnetosphere</Keyword>
+      <Keyword>Magnetosphere</Keyword>
+      <Keyword>Radiation Belt</Keyword>
+      <Keyword>Plasmasphere</Keyword>
+      <Keyword>magnetic fields</Keyword>
+      <Keyword>magnetometer</Keyword>
+      <Parameter>
+         <Name>Universal Time</Name>
+         <ParameterKey>Time</ParameterKey>
+         <Description>Universal Time columns from left to right are:  year month day hour minute sec in the format of yyyy mm dd hh mm ss.</Description>
+         <Caveats>Flag=9999-12-31T23:59:59Z</Caveats>
+         <Cadence>PT2S</Cadence>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>GSE</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>6</Size>
+            <Description>Universal Time expressed using a 6-column day, month, year, hour, minute, second representation</Description>
+            <Element>
+               <Name>Year</Name>
+               <Index>1</Index>
+               <ParameterKey>Year</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Month</Name>
+               <Index>2</Index>
+               <ParameterKey>Month</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Day</Name>
+               <Index>3</Index>
+               <ParameterKey>Day</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Hour</Name>
+               <Index>4</Index>
+               <ParameterKey>Hour</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Minute</Name>
+               <Index>5</Index>
+               <ParameterKey>Minute</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Second</Name>
+               <Index>6</Index>
+               <ParameterKey>Second</ParameterKey>
+            </Element>
+         </Structure>
+         <Support>
+            <SupportQuantity>Temporal</SupportQuantity>
+         </Support>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES  magnetic field vector at 2 s resolution</Name>
+         <ParameterKey>CRRES  Magnetic Field Vector</ParameterKey>
+         <Description>Magnetic field vector for CRRES in  Vehicle Dipole Horizon (VDH) coordinates in units of nT</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT2S</Cadence>
+         <Units>nT</Units>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>SC</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>3</Size>
+            <Element>
+               <Name>BX-VDH</Name>
+               <Qualifier>Component.I</Qualifier>
+               <Index>1</Index>
+               <ParameterKey>Bx</ParameterKey>
+            </Element>
+            <Element>
+               <Name>BY-VDH</Name>
+               <Qualifier>Component.J</Qualifier>
+               <Index>2</Index>
+               <ParameterKey>By</ParameterKey>
+            </Element>
+            <Element>
+               <Name>BZ-VDH</Name>
+               <Qualifier>Component.K</Qualifier>
+               <Index>3</Index>
+               <ParameterKey>Bz</ParameterKey>
+            </Element>
+         </Structure>
+         <Field>
+            <Qualifier>Vector</Qualifier>
+            <FieldQuantity>Magnetic</FieldQuantity>
+         </Field>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Fluxgate Magnetometer Magnitude at 2 s resolution</Name>
+         <ParameterKey>B total</ParameterKey>
+         <Description>CRRES fluxgate magnetometer magnitude at 2 s resolution in units of nT.</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT2S</Cadence>
+         <Units>nT</Units>
+         <Field>
+            <Qualifier>Magnitude</Qualifier>
+            <FieldQuantity>Magnetic</FieldQuantity>
+         </Field>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Magnetic Field Angle Vector at 2 s Resolution</Name>
+         <ParameterKey>CRRES Magnetic Field vector</ParameterKey>
+         <Description>Magnetic field angle vector for CRRES in Vehicle Dipole Horizon (VDH) coordinates in units of degrees</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT2S</Cadence>
+         <Units>deg</Units>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Spherical</CoordinateRepresentation>
+            <CoordinateSystemName>SC</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>2</Size>
+            <Element>
+               <Name>BTHETA</Name>
+               <Qualifier>DirectionAngle.ElevationAngle</Qualifier>
+               <Index>1</Index>
+               <ParameterKey>BTHETA</ParameterKey>
+            </Element>
+            <Element>
+               <Name>BPHI</Name>
+               <Qualifier>DirectionAngle.AzimuthAngle</Qualifier>
+               <Index>2</Index>
+               <ParameterKey>BPHI</ParameterKey>
+            </Element>
+         </Structure>
+         <Field>
+            <Qualifier>DirectionAngle</Qualifier>
+            <FieldQuantity>Magnetic</FieldQuantity>
+         </Field>
+      </Parameter>
+   </NumericalData>
+</Spase>

@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/EFW/L2/UVW/Hires</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A High Resolution DC Electric Field in UVW Coordinates</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains high-resolution DC Electric Field data in UVW coordinates as measured by the Electric Field and Waves Suite (EFW) onboard Van Allen Probe A. As a reference for spin axis vector in GSE, there was no spinning-frame offset removal.</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://rbsp.space.umn.edu</URL>
+        <Description>Daily Summary Plots and additional L2 data</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/EFW/UVW</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/EFW/L2/E-HIRES-UVW/UTC</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/efw/e-highres-uvw/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/efw/e-highres-uvw/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPA_EFW-L2_E-HIRES-UVW</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-25T00:00:07.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch</ParameterKey>
+      <Description>Time, UTC </Description>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Hires E-field </Name>
+      <ParameterKey>e_hires_uvw</ParameterKey>
+      <Description>High Resolution DC Electric Field in UVW Coordinates. </Description>
+      <Caveats>High Resolution DC Electric Field in UVW Coordinates. </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Hires E-field </Name>
+      <ParameterKey>e_hires_uvw_raw</ParameterKey>
+      <Description>  High Resolution DC Electric Field in UVW Coordinates (No spinning-frame offset removal). </Description>
+      <Caveats>High Resolution DC Electric Field in UVW Coordinates (No spinning-frame offset removal). </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>E_vector_compno </Name>
+      <ParameterKey>E_vector_compno</ParameterKey>
+      <Description>Electric field vector component number </Description>
+      <Caveats>Electric field vector component number </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Configuration (HSK) timetags, UTC </Name>
+      <ParameterKey>epoch_hsk</ParameterKey>
+      <Description>Configuration (HSK) timetags, UTC </Description>
+      <Caveats>Configuration timetags. Used for BEB and DFB config values. </Caveats>
+      <Units>msec </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW BEB Configuration </Name>
+      <ParameterKey>e_hires_uvw_BEB_config</ParameterKey>
+      <Description>EFW Boom Electronics Board (BEB) configuration code (on-board sensor biases </Description>
+      <Caveats>Indicates the configuration of the EFW Boom Electronics Board (BEB).  Encodes the following information:  for each sensor, sensor current bias, usher and guard voltage bias.  See EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a detailed description of the mapping between code value and instrument configuration (not crucial for L2 data interpretation).. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW DFB Configuration </Name>
+      <ParameterKey>e_hires_uvw_DFB_config</ParameterKey>
+      <Description>  EFW Digital Fields Board (DFB) Configuration code (on-board spectral and waveform processing configuration) </Description>
+      <Caveats>Indicates the configuration of the EFW Digital Filter Board (DFB).  Encodes the following information:  assignment of analog input channels to the various on-board spectral processors (FBK, SPEC, XSPEC); parameters of the on-board B-field-aligned data processing; nominal or contingency multiplexer programming.  See EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a detailed description of the mapping from code value to instrument configuration (not crucial for L2 data interpretation).. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch_qual</ParameterKey>
+      <Description>Timetags for elements of efw_qual. </Description>
+      <Caveats>The elements of efw_qual are determined on a fixed cadence regardless of the nominal cadence of the individual L2 data products, and epoch_qual provides storage for those fixed-cadence time tags.. </Caveats>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Data Quality Flags </Name>
+      <ParameterKey>e_hires_uvw_efw_qual</ParameterKey>
+      <Description>  EFW quality array (global estimate of EFW data quality, plus 13 underlying observatory and instrument-level data quality factors) </Description>
+      <Caveats>The quality of EFW data products can be affected by a variety of observatory and instrument-level conditions.  efw_qual is a collection of flags that show the estimate of each of these contributors over time.  ..See the EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a detailed description of the determination and meaning of each of the elements of efw_qual...If the value of a particular element of efw_qual is not relevant to the quality of a particular data product, it shall receive the value EFW_QUAL_NR (typ. -2)...If the value of a particular element of efw_qual is relevant to the quality of a particular data product but is not known at the time lf L2 data production, it shall receive the value EFW_QUAL_DUNNO (typ. -1)...A quality value of EFW_QUAL_GOOD (typ. 0) indicates that there are no known issues with the data product due to that particular element of efw_qual...The quality values are meant to be conservative, and values other than EFW_QUAL_GOOD should lead the user back to a member of the EFW instrument team for discussion and advice on the nature of the data quality as needed.. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Quality Flags Components </Name>
+      <ParameterKey>efw_qual_compno</ParameterKey>
+      <Description>Component numbers for EFW data quality flags, efw_qual.. </Description>
+      <Caveats>none.. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L_vector </Name>
+      <ParameterKey>L_vector</ParameterKey>
+      <Description>Spin Axis Vector in GSE </Description>
+      <Caveats>Angular momentum/spin axis direction of spacecraft spin, namely, the sunward pointing direction of spacecraft spin axis. </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

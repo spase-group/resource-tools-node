@@ -1,0 +1,729 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/ECT/HOPE/L2/SpinAverage/Release03/PT24S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A ECT HOPE Science Release #3 Spin Averaged Level 2 Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>RBSP-A Energetic Particle, Composition, and Thermal Plasma Suite (ECT) Helium Oxygen Proton Electron Electrostatic Analyzer (HOPE) Spin-Averaged Science Data. Electron ~15 to 50,000 eV, Ion ~1 to 50,000 eV Fluxes, Electrons and Ions measured in Alternate Spin Cadence</Description>
+      <Acknowledgement>Herb Funsten, Ruth Skoug, Reiner Friedel</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Herbert.O.Funsten</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Ruth.Skoug</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Reiner.Friedel</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Lee.Frost.Bargatze</PersonID>
+        <Role>MetadataContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>The MMS FIELDS Team home page at UNH</Name>
+        <URL>http://rbsp-ect.sr.unh.edu/</URL>
+        <Description>ECT home page</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>at LANL</Name>
+        <URL>https://rbsp-ect.lanl.gov/rbsp_ect.php</URL>
+        <Description>ECT SOC and data services</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>Science Gateway (including Mission Rules of the Road for Data Usage)</Name>
+        <URL>http://rbsp-ect.sr.unh.edu/instrument_hope.shtml</URL>
+        <Description>Van Allen Probes</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/ECT/HOPE/Science/Release03/SpinAverage/Level2</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/ECT/HOPE-SCI-L2SA/PT24S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/ect/hope/spinaverage/rel03/</URL>
+        <Description>In CDF via ftp from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/ect/hope/spinaverage/rel03/</URL>
+        <Description>In CDF via http from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.sci.gsfc.nasa.gov/index.html/</URL>
+        <ProductKey>RBSPA_REL03_ECT-HOPE-SCI-L2SA</ProductKey>
+        <Description>Access to ASCII, CDF, and plots via NASA/GSFC CDAWeb</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Encoding>None</Encoding>
+      <Acknowledgement>Herb Funsten, Ruth Skoug, Reiner Friedel. Please acknowledge the data providers and CDAWeb when using these data.</Acknowledgement>
+    </AccessInformation>
+    <ProcessingLevel>Calibrated</ProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/ECT</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-10-25T00:00:00.000</StartDate>
+        <RelativeStopDate>-P1M</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT24S</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Earth.Magnetosphere</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.Main</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.RadiationBelt</ObservedRegion>
+    <ObservedRegion>Earth.NearSurface.EquatorialRegion</ObservedRegion>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>Epoch</ParameterKey>
+      <Description>Default time </Description>
+      <Caveats>Epoch, UT </Caveats>
+      <Units>ms </Units>
+      <UnitsConversion>1.0e3&gt;s </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Satellite position (GEO) </Name>
+      <ParameterKey>Position_Ion</ParameterKey>
+      <Description>Position of the satellite in geographic coordinates (ion timebase) </Description>
+      <Caveats>Origin = Earths center of mass. X = Intersection of Greenwich meridian and geographic equator. Z = Geographic North Pole. Y = completes a right-handed Cartesian triad. Interpolated to ion measurement timebase from 1 min. resolution MagEphem file. </Caveats>
+      <Units>km </Units>
+      <UnitsConversion>1.0e3&gt;m </UnitsConversion>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Satellite position (GEO) </Name>
+      <ParameterKey>Position_Ele</ParameterKey>
+      <Description> Position of the satellite in geographic coordinates (electron timebase) </Description>
+      <Caveats>Origin = Earths center of mass. X = Intersection of Greenwich meridian and geographic equator. Z = Geographic North Pole. Y = completes a right-handed Cartesian triad. Interpolated to electron measurement timebase from 1 min. resolution MagEphem file. </Caveats>
+      <Units>km </Units>
+      <UnitsConversion>1.0e3&gt;m </UnitsConversion>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic field strength </Name>
+      <ParameterKey>B_Calc_Ion</ParameterKey>
+      <Description>Model magnetic field strength (ion timebase) </Description>
+      <Caveats>Interpolated to ion measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>nT </Units>
+      <UnitsConversion>1.0e-9&gt;T </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic field strength </Name>
+      <ParameterKey>B_Calc_Ele</ParameterKey>
+      <Description> Model magnetic field strength (electron timebase) </Description>
+      <Caveats>Interpolated to electron measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>nT </Units>
+      <UnitsConversion>1.0e-9&gt;T </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Equatorial magnetic field strength </Name>
+      <ParameterKey>B_Eq_Ion</ParameterKey>
+      <Description>Model magnetic field strength at magnetic equator (ion timebase) </Description>
+      <Caveats>Interpolated to ion measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>nT </Units>
+      <UnitsConversion>1.0e-9&gt;T </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Equatorial magnetic field strength </Name>
+      <ParameterKey>B_Eq_Ele</ParameterKey>
+      <Description> Model magnetic field strength at magnetic equator (electron timebase) </Description>
+      <Caveats>Interpolated to electron measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>nT </Units>
+      <UnitsConversion>1.0e-9&gt;T </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>McIlwains L parameter </Name>
+      <ParameterKey>L_Ion</ParameterKey>
+      <Description>Calculated McIlwains L parameter (ion timebase) </Description>
+      <Caveats>Interpolated to ion measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units> </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>McIlwains L parameter </Name>
+      <ParameterKey>L_Ele</ParameterKey>
+      <Description> Calculated McIlwains L parameter (electron timebase) </Description>
+      <Caveats>Interpolated to electron measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units> </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Roederers L* parameter </Name>
+      <ParameterKey>L_star_Ion</ParameterKey>
+      <Description>Calculated Roederers L* parameter (ion timebase) </Description>
+      <Caveats>Interpolated to ion measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units> </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Roederers L* parameter </Name>
+      <ParameterKey>L_star_Ele</ParameterKey>
+      <Description> Calculated Roederers L* parameter (electron timebase) </Description>
+      <Caveats>Interpolated to electron measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units> </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Adiabatic invariant (bounce) </Name>
+      <ParameterKey>I_Ion</ParameterKey>
+      <Description>Adiabatic invariant (bounce) (ion timebase) </Description>
+      <Caveats>Interpolated to ion measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>none </Units>
+      <UnitsConversion>none </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Adiabatic invariant (bounce) </Name>
+      <ParameterKey>I_Ele</ParameterKey>
+      <Description> Adiabatic invariant (bounce) (electron timebase) </Description>
+      <Caveats>Interpolated to electron measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>none </Units>
+      <UnitsConversion>none </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic Local Time </Name>
+      <ParameterKey>MLT_Ion</ParameterKey>
+      <Description>Calculated Magnetic Local Time (ion timebase) </Description>
+      <Caveats>Interpolated to ion measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>h </Units>
+      <UnitsConversion>0.2618&gt;rad </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic Local Time </Name>
+      <ParameterKey>MLT_Ele</ParameterKey>
+      <Description> Calculated Magnetic Local Time (electron timebase) </Description>
+      <Caveats>Interpolated to electron measurement timebase from 1 min. resolution MagEphem file. Calculated with LANLGeomag library. Internal field: IGRF. External field: OP77Q. </Caveats>
+      <Units>h </Units>
+      <UnitsConversion>0.2618&gt;rad </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Satellite position (GEO) </Name>
+      <ParameterKey>Position_Ion_TT</ParameterKey>
+      <Description>[Labels on plots] Position of the satellite in geographic coordinates(ion) </Description>
+      <Caveats>Origin = Earths center of mass. X = Intersection of Greenwich meridian and geographic equator. Z = Geographic North Pole. Y = completes a right-handed Cartesian triad </Caveats>
+      <Units>km </Units>
+      <UnitsConversion>1.0e-3&gt;m </UnitsConversion>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic field strength </Name>
+      <ParameterKey>B_Calc_Ion_TT</ParameterKey>
+      <Description> Calculated magnetic field strength (ion) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>nT </Units>
+      <UnitsConversion>1.0e9&gt;T </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Equatorial magnetic field strength </Name>
+      <ParameterKey>B_Eq_Ion_TT</ParameterKey>
+      <Description> Calculated magnetic field strength at magnetic equator(ion) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>nT </Units>
+      <UnitsConversion>1.0e9&gt;T </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>McIlwains L parameter </Name>
+      <ParameterKey>L_Ion_TT</ParameterKey>
+      <Description> Calculated McIlwains L parameter (Earths radii, ion) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>R_E </Units>
+      <UnitsConversion>1.5696e-7&gt;m </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Roederers L* parameter </Name>
+      <ParameterKey>L_star_Ion_TT</ParameterKey>
+      <Description> Calculated Roederers L* parameter (Earths radii, ion) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>R_E </Units>
+      <UnitsConversion>1.5696e-7&gt;m </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Adiabatic invariant (bounce) </Name>
+      <ParameterKey>I_Ion_TT</ParameterKey>
+      <Description> Adiabatic invariant (bounce, ion) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>none </Units>
+      <UnitsConversion>none </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic Local Time </Name>
+      <ParameterKey>MLT_Ion_TT</ParameterKey>
+      <Description> Calculated Magnetic Local Time (hours, ion) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>h </Units>
+      <UnitsConversion>2.778e-4&gt;s </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Satellite positele (GEO) </Name>
+      <ParameterKey>Positele_Ele_TT</ParameterKey>
+      <Description>[Labels on plots] Positele of the satellite in geographic coordinates(ele) </Description>
+      <Caveats>Origin = Earths center of mass. X = Intersectele of Greenwich meridian and geographic equator. Z = Geographic North Pole. Y = completes a right-handed Cartesian triad </Caveats>
+      <Units>km </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic field strength </Name>
+      <ParameterKey>B_Calc_Ele_TT</ParameterKey>
+      <Description> Calculated magnetic field strength (ele) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>nT </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Equatorial magnetic field strength </Name>
+      <ParameterKey>B_Eq_Ele_TT</ParameterKey>
+      <Description> Calculated magnetic field strength at magnetic equator(ele) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>nT </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>McIlwains L parameter </Name>
+      <ParameterKey>L_Ele_TT</ParameterKey>
+      <Description> Calculated McIlwains L parameter (Earths radii, ele) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>R_E </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Roederers L* parameter </Name>
+      <ParameterKey>L_star_Ele_TT</ParameterKey>
+      <Description> Calculated Roederers L* parameter (Earths radii, ele) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>R_E </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Adiabatic invariant (bounce) </Name>
+      <ParameterKey>I_Ele_TT</ParameterKey>
+      <Description> Adiabatic invariant (bounce, ele) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>none </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic Local Time </Name>
+      <ParameterKey>MLT_Ele_TT</ParameterKey>
+      <Description> Calculated Magnetic Local Time (hours, ele) </Description>
+      <Caveats>Calculated using ONERA-DESP library Internal field: DGRF/IGRF External field: Olson &amp; Pfitzer quiet </Caveats>
+      <Units>h </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Detector No. </Name>
+      <ParameterKey>HOPE_DETECTOR</ParameterKey>
+      <Description>Detector No. </Description>
+      <Structure>
+        <Size>5</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Sector No. </Name>
+      <ParameterKey>HOPE_SECTOR</ParameterKey>
+      <Description>Sector No. </Description>
+      <Structure>
+        <Size>16</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Sector_Collapse for Counters data </Name>
+      <ParameterKey>Sector_Collapse_Cntr</ParameterKey>
+      <Description>Collapse method used for a given pixel. </Description>
+      <Caveats>For a given pixel, the number of spin angle sectors which are collapsed on board to fit the telemetry allocation. The collapse method sums all values together, then compresses according to the following algorithm: if (sum &lt; 16384) {return sum} else {return ((sum-16384)/64) + 16384} </Caveats>
+      <Structure>
+        <Size>5</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Acquisition_Period </Name>
+      <ParameterKey>Acquisition_Period</ParameterKey>
+      <Description>Acquisition_Period </Description>
+      <Caveats>The length of a single ESA step acquisition </Caveats>
+      <Units>ms </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Plan </Name>
+      <ParameterKey>Plan</ParameterKey>
+      <Description>Science data acquisition Plan </Description>
+      <Caveats>Which science plan was used for the acquisition.  The seclected science plan determines the ESA Sweep, TOF DAC, data product selection, and data collapse method used for an acquisition.  As a general rule, plans 0-7 &amp; 15 are reserved for HOPE nominal operations, and 8-14 are reserved for burst support operations.   </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Plan_Step </Name>
+      <ParameterKey>Plan_Step</ParameterKey>
+      <Description>Plan_Step </Description>
+      <Caveats>Which step within a science plan was used.  Each science plan consists of up to 16 steps, each of which can specify different HVPS and telemetry configuration settings. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>ESA_Volt </Name>
+      <ParameterKey>ESA_Volt</ParameterKey>
+      <Description>ESA_Volt </Description>
+      <Caveats>Absolute values of the ESA voltage that was used for each energy step. </Caveats>
+      <Units>V </Units>
+      <UnitsConversion>1.0&gt;V </UnitsConversion>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Epoch_Ion </Name>
+      <ParameterKey>Epoch_Ion</ParameterKey>
+      <Description>Default time </Description>
+      <Caveats>Epoch at times of ion mode measurements </Caveats>
+      <Units>ms </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Epoch_Ion_DELTA </Name>
+      <ParameterKey>Epoch_Ion_DELTA</ParameterKey>
+      <Description>Half sample time </Description>
+      <Caveats>Half the HOPE frame time </Caveats>
+      <Units>ms </Units>
+      <UnitsConversion>1.0e-3&gt;s </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Epoch_Ele </Name>
+      <ParameterKey>Epoch_Ele</ParameterKey>
+      <Description>Default time </Description>
+      <Caveats>Epoch at times of electron mode measurements </Caveats>
+      <Units>ms </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Epoch_Ele_DELTA </Name>
+      <ParameterKey>Epoch_Ele_DELTA</ParameterKey>
+      <Description>Half sample time </Description>
+      <Caveats>Half the HOPE frame time </Caveats>
+      <Units>ms </Units>
+      <UnitsConversion>1.0e-3&gt;s </UnitsConversion>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>ESA_Polarity </Name>
+      <ParameterKey>ESA_Polarity</ParameterKey>
+      <Description>Polarity of the ESA voltage. </Description>
+      <Caveats>Polarity of the ESA voltage.  0 = positive (electron mode), 1 = negative (ion mode) </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>ESA_Sweep </Name>
+      <ParameterKey>ESA_Sweep</ParameterKey>
+      <Description>ESA_Sweep </Description>
+      <Caveats>Which of the 16 ESA Sweep ptables was used for the acquisition. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Energy_Collapsed </Name>
+      <ParameterKey>Energy_Collapsed</ParameterKey>
+      <Description>Counter Energy Collapse </Description>
+      <Caveats>Whether or not energy collapsing was enabled for Counters (starts, stops, H+, He+, O+, e-, etc.) data. 0 = collapsed, 1 = not collapsed. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HOPE_ENERGY_Ion </Name>
+      <ParameterKey>HOPE_ENERGY_Ion</ParameterKey>
+      <Description>HOPE_ENERGY_Ion </Description>
+      <Units>eV </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HOPE_ENERGY_Ele </Name>
+      <ParameterKey>HOPE_ENERGY_Ele</ParameterKey>
+      <Description>HOPE_ENERGY_Ele </Description>
+      <Units>eV </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>ENERGY_Ele_DELTA </Name>
+      <ParameterKey>ENERGY_Ele_DELTA</ParameterKey>
+      <Description>ENERGY_Ele_DELTA </Description>
+      <Units>eV </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>ENERGY_Ion_DELTA </Name>
+      <ParameterKey>ENERGY_Ion_DELTA</ParameterKey>
+      <Description>ENERGY_Ion_DELTA </Description>
+      <Units>eV </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Flags_Ion </Name>
+      <ParameterKey>Flags_Ion</ParameterKey>
+      <Description>Flags on ion data </Description>
+      <Caveats>Flags to indicate potential issues with the ion data. Each element of this array contains the flag status for a particular concern. A flag value of zero indicates no unusual concerns of that type for that time sample. Increasing flag values indicate increasing concern. See FLAGS variable for a description of each element. </Caveats>
+      <Structure>
+        <Size>8</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Flags_Ele </Name>
+      <ParameterKey>Flags_Ele</ParameterKey>
+      <Description>Flags on electron data </Description>
+      <Caveats>Flags to indicate potential issues with electron data. Each element of this array contains the flag status for a particular concern. A flag value of zero indicates no unusual concerns of that type for that time sample. Increasing flag values indicate increasing concern. See FLAGS variable for a description of each element. </Caveats>
+      <Structure>
+        <Size>8</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FOSA </Name>
+      <ParameterKey>FOSA</ParameterKey>
+      <Description>HOPE Spin averaged differential oxygen flux (as spectrogram) </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FOSA </Name>
+      <ParameterKey>FOSA_ts</ParameterKey>
+      <Description> as stacked time-series </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPSA </Name>
+      <ParameterKey>FPSA</ParameterKey>
+      <Description>HOPE Spin averaged differential proton flux </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPSA </Name>
+      <ParameterKey>FPSA_ts</ParameterKey>
+      <Description> as stacked time-series </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FHESA </Name>
+      <ParameterKey>FHESA</ParameterKey>
+      <Description>HOPE Spin averaged differential helium flux </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FHESA </Name>
+      <ParameterKey>FHESA_ts</ParameterKey>
+      <Description> as stacked time-series </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FESA </Name>
+      <ParameterKey>FESA</ParameterKey>
+      <Description>HOPE Spin averaged differential electron flux </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FESA </Name>
+      <ParameterKey>FESA_ts</ParameterKey>
+      <Description> as stacked time_series </Description>
+      <Caveats>HOPE flux as a function of energy (72), averaged across spin and all detectors. Flux from each detector is weighted by the fraction of the unit sphere it samples in one spin (9.5% 25% 31% 25% 9.5%). Note that a HOPE spin oversamples the spacecraft spin so expect a slight bias depending on the flux in the oversampled spin phase for each spin </Caveats>
+      <Units>s!E-1!Ncm!E-2!Nster!E-1!NkeV!E-1!N </Units>
+      <Structure>
+        <Size>72</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/ECT/MagEIS/L2/Sectors/Release03/PT24S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B MagEIS Level 2 data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains electron and proton fluxes from the Magnetic Electron Ion Spectrometer (MagEIS), which is one of three instruments on the Energetic Particle, Composition and Thermal Plasma Suite (ECT). MagEIS uses magnetic focusing and pulse height analysis from a set of four magnetic spectrometers covering three distinct energy ranges: Low (20 keV-1 MeV), Medium (Med35 and Med75 units), and High (700 keV to 4 MeV). Two identical Medium energy units on each Van Allen Probe spacecraft point in different directions to increase pitch angle coverage. Electrons enter the MagEIS aperture and are bent by the magnetic field through 180&#xB0; with energy-dependent diameters. Electrons are additionally energy-analyzed by an array of solid state detectors to ensure extremely clean differentiation between primary electron measurements and contaminating background radiation. In addition, the MagEIS High spectrometer contains a solid state telescope that measures protons from roughly 50 keV to 20 MeV, Helium ions from roughly 300 keV - 1.5 MeV and Oxygen ions from roughly 1-5 MeV. Electrons and protons are measured in alternate spacecraft spin resolution of 5 per minute.</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/J.Bernard.Blake</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>ECT home page</Name>
+        <URL>http://rbsp-ect.sr.unh.edu</URL>
+        <Description>at UNH</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>ECT SOC and data services</Name>
+        <URL>https://rbsp-ect.lanl.gov/</URL>
+        <Description>at LANL</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/ECT/MAGEIS/L2/PT24S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/ECT/MAGEIS-L2/</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/ECT/PRE/MAGEIS-L2/</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/ect/mageis/sectors/rel03/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/ect/mageis/sectors/rel03/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPB_REL03_ECT-MAGEIS-L2</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/ECT</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-15T00:00:01.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT24S</Cadence>
+    </TemporalDescription>
+  </NumericalData>
+</Spase>

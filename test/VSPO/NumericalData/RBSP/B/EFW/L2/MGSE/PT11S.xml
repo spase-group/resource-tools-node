@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EFW/L2/MGSE/PT11S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Spinfit DC Electric Field estimates level-2 in M-GSE coordinates</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains spinfit DC Electric Field estimates in M-GSE coordinates that are measured by the Electric Field and Waves Suite (EFW) onboard Van Allen Probe A.  One 2D vector estimate of the E-field is computed at a cadence of once per spin period (typically 10.7 to 11.1 s) using the survey E-field data product - the potential difference between EFW sensors V1 and V2 (E12) sampled at a nominal rate of 32 samp/s with a resolution of 16 bits.
+
+The X-component of the E-field estimate, corresponding to the axial component in the spacecraft coordinate system, is set to zero in this data product.  See the EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a discussion of this convention for this data product.
+
+The VxB electric field in the spacecraft frame due to orbital motion of the spacecraft around the Earth as computed from the spacecraft orbital velocity and measured B-field in the spacraft frame has been subtracted from the measured electric field, and so the data product is in the quasi-inertial frame equivalent to GSE (i.e. it is NOT in the corotation frame of the Earth!). Each spin fit is time-tagged with the time corresponding to the middle of the spin of data that went into the spin fit algorithm; in other words, if a given spin covers the interval (t1, t2), then the spin fit E-field estimate associated with that spin is given the time tag 0.5*(t1 + t2).
+
+The root mean square residual between the data included in the fit and the resulting best-fit model, sigma, and the final number of points included in the spin fit, npts, are also provided at spin-period cadence.  The nominal dynamic range of the E-field estimate is +/- 1 V/m in any component. </Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://rbsp.space.umn.edu</URL>
+        <Description>Daily Summary Plots and additional L2 data</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/EFW/MGSE/PT11S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EFW/L2/E-SPINFIT-MGSE/UTC</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSPB_EFW-L2/UTC</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/efw/e-spinfit-mgse/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/efw/e-spinfit-mgse/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPB_EFW-L2_E-SPINFIT-MGSE</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-05T23:21:46.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT11S</Cadence>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch</ParameterKey>
+      <Description>Time, UTC </Description>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Spinfit E-field in MGSE (near GSE) </Name>
+      <ParameterKey>e12_spinfit_mgse</ParameterKey>
+      <Description>Spinfit E-field in MGSE (autoscale, VxB subtracted, i.e. near GSE) </Description>
+      <Caveats>Spin-fit electric field esimate in the MGSE coordinate system and GSE frame (VxB subtracted) derived from the EFW e12 (V1-V2) data product. </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Spinfit E-field in MGSE (near GSE) </Name>
+      <ParameterKey>e12_spinfit_mgse_fixedscale</ParameterKey>
+      <Description>Spinfit E-field in MGSE (fixedscale, VxB subtracted, i.e. near GSE) </Description>
+      <Caveats>Spin-fit electric field esimate in the MGSE coordinate system and GSE frame (VxB subtracted) derived from the EFW e12 (V1-V2) data product. </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>sigma12_spinfit_mgse </Name>
+      <ParameterKey>sigma12_spinfit_mgse</ParameterKey>
+      <Description>The sigma of the spin fit of each spin period from boom V12. </Description>
+      <Caveats>The sigma of the spin fit of each spin period from boom V12. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>npoints12_spinfit_mgse </Name>
+      <ParameterKey>npoints12_spinfit_mgse</ParameterKey>
+      <Description>Number of points used in a spin fit of one spin period from boom V12. </Description>
+      <Caveats>Number of points used in a spin fit of one spin period from boom V12. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>sfit_compno </Name>
+      <ParameterKey>sfit_compno</ParameterKey>
+      <Description>Spin-fit E-field component number </Description>
+      <Caveats>Spin-fit E-field component number </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>VxB E-field in M-GSE coordinates. </Name>
+      <ParameterKey>vxb_spinfit_mgse</ParameterKey>
+      <Description>VxB E-field in MGSE coordinates. </Description>
+      <Caveats>Electric field due to VxB, where V is spacecraft velocity and B is the measured ambient magnetic field. </Caveats>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Configuration (HSK) timetags, UTC </Name>
+      <ParameterKey>epoch_hsk</ParameterKey>
+      <Description>Configuration (HSK) timetags, UTC </Description>
+      <Caveats>Configuration timetags. Used for BEB and DFB config values. </Caveats>
+      <Units>msec </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW BEB Configuration </Name>
+      <ParameterKey>e_spinfit_mgse_BEB_config</ParameterKey>
+      <Description>EFW Boom Electronics Board (BEB) configuration code (on-board sensor biases </Description>
+      <Caveats>Indicates the configuration of the EFW Boom Electronics Board (BEB).  Encodes the following information:  for each sensor, sensor current bias, usher and guard voltage bias.  See EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a detailed description of the mapping between code value and instrument configuration (not crucial for L2 data interpretation).. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW DFB Configuration </Name>
+      <ParameterKey>e_spinfit_mgse_DFB_config</ParameterKey>
+      <Description>EFW Digital Fields Board (DFB) Configuration code (on-board spectral and waveform processing configuration) </Description>
+      <Caveats>Indicates the configuration of the EFW Digital Filter Board (DFB).  Encodes the following information:  assignment of analog input channels to the various on-board spectral processors (FBK, SPEC, XSPEC); parameters of the on-board B-field-aligned data processing; nominal or contingency multiplexer programming.  See EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a detailed description of the mapping from code value to instrument configuration (not crucial for L2 data interpretation).. </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch_qual</ParameterKey>
+      <Description>Timetags for elements of efw_qual. </Description>
+      <Caveats>The elements of efw_qual are determined on a fixed cadence regardless of the nominal cadence of the individual L2 data products, and epoch_qual provides storage for those fixed-cadence time tags.. </Caveats>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Data Quality Flags </Name>
+      <ParameterKey>e_spinfit_mgse_efw_qual</ParameterKey>
+      <Description>EFW quality array (global estimate of EFW data quality, plus 13 underlying observatory and instrument-level data quality factors) </Description>
+      <Caveats> </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Quality Flags Components </Name>
+      <ParameterKey>efw_qual_compno</ParameterKey>
+      <Description>Component numbers for EFW data quality flags, efw_qual.. </Description>
+      <Caveats>none.. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

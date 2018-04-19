@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema  http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/CRRES/HEEF/PT1M</ResourceID>
+    <ResourceHeader>
+      <ResourceName>CRRES HEEF 1-min electron distribution functions</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set holds 1-min resolution electron distributions
+(19 5-deg pitch angles vs. 19 energies) from the High Energy Electron
+Fluxmeter (HEEF) on the CRRES spacecraft.  The energy range covered is 
+0.3-7.5 MeV.  The data are in SGI(UNIX) binary format.  Read software
+is contained within the companion documentation.</Description>
+      <Acknowledgement>Please acknowledge Donald Brautigam at AFRL.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Donald.H.Brautigam</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>AFRL Descriptive Document</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/crres/particle_heef/document/crres_readme3.pdf</URL>
+        <Description>AFRL document authored by Donald Brautigam on HEEP and PROTEL, 
+now a readme at nssdcftp.</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/NumericalData/CRRES/HEEF/PT1M</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/crres/particle_heef/</URL>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/crres/particle_heef/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>Binary</Format>
+      <Acknowledgement>Please acknowledge Donald Brautigam at AFRL and the Space
+Phyics Data Facility at NASA/Goddard.</Acknowledgement>
+    </AccessInformation>
+    <ProcessingLevel>Calibrated</ProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/CRRES/HEEF</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>1990-08-01T00:00:00</StartDate>
+        <StopDate>1991-10-12T00:00:00</StopDate>
+      </TimeSpan>
+      <Cadence>PT1M</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Earth.Magnetosphere.Main</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.RadiationBelt</ObservedRegion>
+  </NumericalData>
+</Spase>

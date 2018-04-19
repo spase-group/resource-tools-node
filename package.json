@@ -1,0 +1,47 @@
+{
+  "name": "spase-resource-tools",
+  "version": "0.0.1",
+  "description": "Tools to validate and scan SPASE metadata.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spase-group/resource-tools-node.git"
+  },
+  "bin": {
+    "spase-validate": "./src/validate.js",
+    "spase-refcheck": "./src/refcheck.js",
+    "spase-collate": "./src/collate.js",
+    "spase-tree": "./src/tree.js",
+    "spase-list-elem": "./src/list-elem.js",
+    "spase-update-authority": "./src/update-authority.js",
+    "spase-doi-ref": "./src/doi-ref.js"
+  },
+  "keywords": [
+    "SPASE",
+    "resource",
+    "tools",
+    "collate",
+    "validate",
+    "refcheck"
+  ],
+  "author": "Todd King <tking@igpp.ucla.edu>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/spase-group/resource-tools-node/issues"
+  },
+  "homepage": "https://github.com/spase-group/resource-tools-node#readme",
+  "dependencies": {
+    "fast-xml-parser": "^3.3.6",
+    "ftp-get": "^0.3.1",
+    "libxmljs": "^0.18.7",
+    "path": "^0.12.7",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5",
+    "util": "^0.10.3",
+    "walk-folder-tree": "^1.0.1",
+    "yargs": "^11.0.0"
+  }
+}

@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EMFISIS/MAGNETOMETER/L3/GSE/PT0.015625S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Fluxgate Magnetometer high resolution data in GSE coordinates</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>Fluxgate magnetometer data - Craig Kletzing (University of Iowa)</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Craig.A.Kletzing</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EMFISIS/MAG Release Notes</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/mag_release_notes</URL>
+        <Description>Current EMFISIS/MAG Issues, Caveats and Production Release Notes</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Instrument Description</Name>
+        <URL>http://emfisis.physics.uiowa.edu/about/instrument</URL>
+        <Description>at Iowa</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EMFISIS/MAGNETOMETER/HIRES-GSE/L3/PT1S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EMFISIS/MAGNETOMETER_HIRES-GSE_EMFISIS-L3/PT1S</PriorID>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/EMFISIS/GSE/PT0.015625S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l3/emfisis/magnetometer/hires/gse/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l3/emfisis/magnetometer/hires/gse/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSP-B_MAGNETOMETER_HIRES-GSE_EMFISIS-L3</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EMFISIS</InstrumentID>
+    <MeasurementType>MagneticField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-10-07T23:59:59.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT0.015625S</Cadence>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>Epoch</ParameterKey>
+      <Description>Default time </Description>
+      <Units>ns </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Mag </Name>
+      <ParameterKey>Mag</ParameterKey>
+      <Description>Magnetometer vector in GSE </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Magnitude </Name>
+      <ParameterKey>Magnitude</ParameterKey>
+      <Description>Average magnitude (average of |B| values in the interval) </Description>
+      <Units>nT </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>delta </Name>
+      <ParameterKey>delta</ParameterKey>
+      <Description>Latitude (angle delta) of the field vector (where (0,0) is the positive Bx direction) </Description>
+      <Units>degrees </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>delta </Name>
+      <ParameterKey>lambda</ParameterKey>
+      <Description>Longitude (angle lambda) of the field vector (where (0,0) is the positive Bx direction) </Description>
+      <Units>degrees </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Mag </Name>
+      <ParameterKey>coordinates</ParameterKey>
+      <Description>S/C position vector in GSE </Description>
+      <Units>km </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>range_flag </Name>
+      <ParameterKey>range_flag</ParameterKey>
+      <Description>range_flag </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>MET partition </Name>
+      <ParameterKey>partition</ParameterKey>
+      <Description>partition </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>MET </Name>
+      <ParameterKey>MET</ParameterKey>
+      <Description>MET </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>calState_flag </Name>
+      <ParameterKey>calState</ParameterKey>
+      <Description>calState_flag </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>magInvalid_flag </Name>
+      <ParameterKey>magInvalid</ParameterKey>
+      <Description>magInvalid_flag </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>magFill_flag </Name>
+      <ParameterKey>magFill</ParameterKey>
+      <Description>magFill_flag </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

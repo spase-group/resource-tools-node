@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <DisplayData>
+    <ResourceID>spase://VSPO/DisplayData/RBSP/B/RBSPICE/TOFXEHSPECTROGRAMS</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Radiation Belt Storm Probes Ion Composition Experiment (RBSPICE) Time-of-Flight by Energy (TOFxE) Hydrogen Rates Spectrograms</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>Van Allen Probe B Radiation Belt Storm Probes Ion Composition Experiment (RBSPICE) Time-of-Flight by Energy (TOFxE) Hydrogen Rates Spectrograms</Description>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Louis.J.Lanzerotti</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://rbspgway.jhuapl.edu/</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <Association>
+        <AssociationID>spase://VSPO/NumericalData/RBSP/A/RBSPICE/L2/TOFXEH</AssociationID>
+        <AssociationType>DerivedFrom</AssociationType>
+      </Association>
+      <PriorID>spase://ViRBO/DisplayData/RBSP/B/RBSPICE/TOFXEHSPECTROGRAMS</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/JHU_APL</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>Index of RBSP B - TOFXEH Spectrograms</Name>
+        <URL>http://sd-www.jhuapl.edu/rbspice/data/plots/browse/RBSPB/TOFXEHSPECTROGRAMS/</URL>
+      </AccessURL>
+      <Format>PNG</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/RBSPICE</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2013-01-26T10:04:16.000Z</StartDate>
+        <RelativeStopDate>-P1D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+  </DisplayData>
+</Spase>

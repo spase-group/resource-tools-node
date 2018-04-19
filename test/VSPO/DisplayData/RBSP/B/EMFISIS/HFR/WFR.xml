@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <DisplayData>
+    <ResourceID>spase://VSPO/DisplayData/RBSP/B/EMFISIS/HFR/WFR</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Electric and Magnetic Field Instrument Suite and Integrated Science (EMFISIS) high frequency receiver waveform data plots</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>Van Allen Probe B Electric and Magnetic Field Instrument Suite and Integrated Science (EMFISIS) high frequency receiver waveform data plots</Description>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Craig.A.Kletzing</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EMFISIS Data Index</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/index</URL>
+        <Description>data access (including advanced Autoplot graphics for data files)</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://rbspgway.jhuapl.edu/</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/DisplayData/RBSP/B/EMFISIS/HFR/WFR</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/UIowa/RadioPlasmaWaveGroup</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>Index of pngwalk for PBSP-B/HFR-WFR</Name>
+        <URL>http://emfisis.physics.uiowa.edu/pngwalk/RBSP-B/HFR-WFR/</URL>
+      </AccessURL>
+      <Format>PNG</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EMFISIS</InstrumentID>
+    <MeasurementType>Waves</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-10-01T00:00:00.000Z</StartDate>
+        <StopDate>2016-03-26T00:00:00.000Z</StopDate>
+      </TimeSpan>
+    </TemporalDescription>
+  </DisplayData>
+</Spase>

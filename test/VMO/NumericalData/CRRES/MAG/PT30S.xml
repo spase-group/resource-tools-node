@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<Spase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.spase-group.org/data/schema" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_0_1.xsd">
+   <Version>2.0.1</Version>
+   <NumericalData>
+      <ResourceID>spase://VMO/NumericalData/CRRES/MAG/PT30S</ResourceID>
+      <ResourceHeader>
+         <ResourceName>CRRES 30s magnetic field data</ResourceName>
+         <AlternateName>CRRES MAG data</AlternateName>
+         <ReleaseDate>2010-04-05T21:49:01Z</ReleaseDate>
+         <Description>This data set contains spin fitted magnetic field vectors and magnitudes from the CRRES tri-axial fluxgate magnetometer data. The magnetic field vectors are at 30 s resolution and in the GSE coordinate system.</Description>
+         <Acknowledgement>NASA; Department of Defense-Department of the Air Force (United States); AFRL; Dr. Howard J. Singer; Dr. E. Gary Mullen</Acknowledgement>
+         <Contact>
+            <PersonID>spase://SMWG/Person/Howard.J.Singer</PersonID>
+            <Role>PrincipalInvestigator</Role>
+         </Contact>
+         <Contact>
+            <PersonID>spase://SMWG/Person/E.Gary.Mullen</PersonID>
+            <Role>PrincipalInvestigator</Role>
+         </Contact>
+         <Contact>
+            <PersonID>spase://SMWG/Person/James.M.Weygand</PersonID>
+            <Role>MetadataContact</Role>
+         </Contact>
+         <InformationURL>
+            <Name>CRRES Fluxgate Magnetometer Instrument</Name>
+            <URL>http://nssdc.gsfc.nasa.gov/nmc/experimentDisplay.do?id=1990-065A-19</URL>
+            <Description>NASA NSSDC CRRES fluxgate magnetometer experiment details</Description>
+         </InformationURL>
+         <Association>
+            <AssociationID>spase://SMWG/Observatory/CRRES</AssociationID>
+         </Association>
+      </ResourceHeader>
+      <AccessInformation>
+         <RepositoryID>spase://SMWG/Repository/UCLA/VMO</RepositoryID>
+         <Availability>Online</Availability>
+         <AccessRights>Open</AccessRights>
+         <AccessURL>
+            <Name>Virtual Magnetospheric Observatory</Name>
+            <URL>http://vmo.igpp.ucla.edu/data1/CRRES/MAG/PT30S</URL>
+         </AccessURL>
+         <Format>Text</Format>
+         <Encoding>ASCII</Encoding>
+         <Acknowledgement>NASA; Department of Defense-Department of the Air Force (United States); AFRL; Dr. Howard J. Singer; Dr. E. Gary Mullen</Acknowledgement>
+      </AccessInformation>
+      <ProcessingLevel>Calibrated</ProcessingLevel>
+      <ProviderResourceName>CRRES MAG Tri-axial fluxgate magnetometer</ProviderResourceName>
+      <ProviderProcessingLevel>Level-2</ProviderProcessingLevel>
+      <InstrumentID>spase://SMWG/Instrument/CRRES/MAG</InstrumentID>
+      <MeasurementType>MagneticField</MeasurementType>
+      <TemporalDescription>
+         <TimeSpan>
+            <StartDate>1990-10-11T00:00:00.000</StartDate>
+            <StopDate>1991-10-13T00:00:00.000</StopDate>
+            <Note>Time format in data files is: Year-Month-Day Hour Minute Second (YYYY-MM-DDTHH:MM:SS.SSS)</Note>
+         </TimeSpan>
+         <Cadence>PT30S</Cadence>
+      </TemporalDescription>
+      <Keyword>30 s</Keyword>
+      <Keyword>Radiation Belt</Keyword>
+      <Keyword>Inner Magnetosphere</Keyword>
+      <Keyword>Magnetosphere</Keyword>
+      <Keyword>Radiation Belt</Keyword>
+      <Keyword>Plasmasphere</Keyword>
+      <Keyword>magnetic fields</Keyword>
+      <Keyword>magnetometer</Keyword>
+      <Parameter>
+         <Name>Universal Time</Name>
+         <ParameterKey>Time</ParameterKey>
+         <Description>Universal Time columns from left to right are:  year month day hour minute sec in the format of yyyy mm dd hh mm ss.</Description>
+         <Caveats>Flag=9999-12-31T23:59:59Z</Caveats>
+         <Cadence>PT30S</Cadence>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>GSE</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>6</Size>
+            <Description>Universal Time expressed using a 6-column day, month, year, hour, minute, second representation</Description>
+            <Element>
+               <Name>Year</Name>
+               <Index>1</Index>
+               <ParameterKey>Year</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Month</Name>
+               <Index>2</Index>
+               <ParameterKey>Month</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Day</Name>
+               <Index>3</Index>
+               <ParameterKey>Day</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Hour</Name>
+               <Index>4</Index>
+               <ParameterKey>Hour</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Minute</Name>
+               <Index>5</Index>
+               <ParameterKey>Minute</ParameterKey>
+            </Element>
+            <Element>
+               <Name>Second</Name>
+               <Index>6</Index>
+               <ParameterKey>Second</ParameterKey>
+            </Element>
+         </Structure>
+         <Support>
+            <SupportQuantity>Temporal</SupportQuantity>
+         </Support>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Spin Fitted Magnetic Field Vector at 30 s Resolution</Name>
+         <ParameterKey>CRRES Spin Fitted Magnetic Field Vector</ParameterKey>
+         <Description>Spin fitted magnetic field vector for CRRES in  GSE coordinates in units of nT</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>nT</Units>
+         <CoordinateSystem>
+            <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+            <CoordinateSystemName>GSE</CoordinateSystemName>
+         </CoordinateSystem>
+         <Structure>
+            <Size>3</Size>
+            <Element>
+               <Name>BX-GSE</Name>
+               <Qualifier>Component.I</Qualifier>
+               <Index>1</Index>
+               <ParameterKey>Bx</ParameterKey>
+            </Element>
+            <Element>
+               <Name>BY-GSE</Name>
+               <Qualifier>Component.J</Qualifier>
+               <Index>2</Index>
+               <ParameterKey>By</ParameterKey>
+            </Element>
+            <Element>
+               <Name>BZ-GSE</Name>
+               <Qualifier>Component.K</Qualifier>
+               <Index>3</Index>
+               <ParameterKey>Bz</ParameterKey>
+            </Element>
+         </Structure>
+         <Field>
+            <Qualifier>Vector</Qualifier>
+            <FieldQuantity>Magnetic</FieldQuantity>
+         </Field>
+      </Parameter>
+      <Parameter>
+         <Name>CRRES Spin Fitted Fluxgate Magnetometer Magnitude at 30 s resolution</Name>
+         <ParameterKey>Spin Fitted Magnetic field magnitude</ParameterKey>
+         <Description>CRRES spin fitted fluxgate magnetometer magnitude at 30 s resolution in units of nT.</Description>
+         <Caveats>Flags=99999</Caveats>
+         <Cadence>PT30S</Cadence>
+         <Units>nT</Units>
+         <Field>
+            <Qualifier>Magnitude</Qualifier>
+            <FieldQuantity>Magnetic</FieldQuantity>
+         </Field>
+      </Parameter>
+   </NumericalData>
+</Spase>

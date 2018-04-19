@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/EFW/L2/ESVY_DESPUN/PT0.031S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A Electric Fields and Waves (EFW) 32 sample/sec despun electric field in modified-GSE (MGSE) coordinates</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>These high time resolution de-spun data are EFW measurements of the spin plane electric field at 32 samples/s. These data are presented in the MGSE system. Special care should be taken in its use. The EFW instrument can be sensitive to the low energy plasma environment and spacecraft effects in ways that other instruments are not. Users should read the "RBSP/EFW Data Required Reading" document for more details. In addition, mismatches between the responses of the different probes can introduce error signals. A preliminary check of the quality of this data may be carried out by comparing the rotated 32 sample/s electric field in the high time resolution CDF to the spin fit data found in the spin fit CDFs. In order to carry out this comparison the high time resolution data should be averaged down to the spin period to eliminate the higher frequency turbulence.</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb. The work by the EFW team was conducted under JHU/APL contract 922613 (RBSP-EFW)</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://www.space.umn.edu/rbspefw-data-policy-the-rules-of-the-road/</URL>
+        <Description>EFW Data Required Reading</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VWO/NumericalData/RBSP/A/EFW/L2_ESVY_DESPUN/PT0.031S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/efw/esvy_despun/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/efw/esvy_despun/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the PI and the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPA_EFW-L2_ESVY_DESPUN</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <MeasurementType>Waves</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-05T00:00:00.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT0.031S</Cadence>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Time, UTC</Name>
+      <ParameterKey>epoch</ParameterKey>
+      <Description>Time tags for the survey quantities</Description>
+      <Units>UTC</Units>
+      <Support>
+        <SupportQuantity>Temporal</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Efield - Vsc x B in MGSE</Name>
+      <ParameterKey>efield_mgse</ParameterKey>
+      <Description>espun E-field in MGSE (32 S/s, VxB subtracted, near GSE)</Description>
+      <Units>mV/m</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Field>
+        <FieldQuantity>Electric</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC</Name>
+      <ParameterKey>epoch_esvy</ParameterKey>
+      <Description>Time tags for the 32 S/s esvy quantities</Description>
+      <Units>UTC</Units>
+      <Support>
+        <SupportQuantity>Temporal</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Timetags for elements of efw_qual</Name>
+      <ParameterKey>epoch_qual</ParameterKey>
+      <Description>The elements of efw_qual are determined on a fixed cadence regardless of the nominal cadence of the individual L2 data products, and epoch_qual provides storage for those fixed-cadence time tags.</Description>
+      <Units>UTC</Units>
+      <Support>
+        <SupportQuantity>Temporal</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Data Quality Flags</Name>
+      <ParameterKey>efw_qual</ParameterKey>
+      <Description>EFW quality array (global estimate of EFW data quality, plus 13 underlying observatory and instrument-level data quality factors) ..See the EFW Data Required Reading (http://www.space.umn.edu/rbspefw-data-policy-the-rules-of-the-road/) for a detailed description of the determination and meaning of each of the elements of efw_qual.</Description>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Configuration (HSK) timetags, UTC</Name>
+      <ParameterKey>epoch_hsk</ParameterKey>
+      <Description>Configuration timetags. Used for BEB and DFB config values.</Description>
+      <Units>UTC</Units>
+      <Support>
+        <SupportQuantity>Temporal</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW DFB Configuration, showing on-board spectral and waveform processing configuration</Name>
+      <ParameterKey>vsvy_DFB_config</ParameterKey>
+      <Description>Indicates the configuration of the EFW Digital Filter Board (DFB). Encodes the following information: assignment of analog input channels to the various on-board spectral processors (FBK, SPEC, XSPEC); parameters of the on-board B-field-aligned data processing; nominal or contingency multiplexer programming (not crucial for L2 data interpretation).</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW BEB Configuration, showing sensor bias state</Name>
+      <ParameterKey>vsvy_BEB_config</ParameterKey>
+      <Description>Indicates the configuration of the EFW Boom Electronics Board (BEB). Encodes the following information: for each sensor, sensor current bias, usher and guard voltage bias (not crucial for L2 data interpretation).</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Nominal Sensor Saturation Voltage (Volts)</Name>
+      <ParameterKey>vsvy_maxval</ParameterKey>
+      <Description>The maximum magnitude of the sensor potential relative to SC potential at which the sensor preamp likely to be saturated during nominal biasing conditions..If the magnitude of a given sensor potential exceeds vsvy_maxval then the corresponding element of efw_qual (v1_saturation .. v6-saturation) shall be set to indicate that state. vsvy_maxval is set in the L1&gt;L2 processing scripts, and shall be copied into this variable during L2 CDF creation.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW_QUAL_NR</Name>
+      <ParameterKey>EFW_QUAL_NR</ParameterKey>
+      <Description>EFW_QUAL_NR is the value (typ. -2) an element of efw_qual takes when the criterion represented by that element is not relevant for the given data product.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW_QUAL_GOOD</Name>
+      <ParameterKey>EFW_QUAL_GOOD</ParameterKey>
+      <Description>EFW_QUAL_GOOD is the value (0) of an element of efw_qual that indicates good data.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>EFW_QUAL_UNK</Name>
+      <ParameterKey>EFW_QUAL_UNK</ParameterKey>
+      <Description>EFW_QUAL_UNK is the value (typ. -1) an element of efw_qual that indicates the quality is unknown.</Description>
+      <Support>
+        <SupportQuantity>Other</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>MLT</Name>
+      <ParameterKey>mlt</ParameterKey>
+      <Description>Magnetic Local Time from ECT's predicted Ephemeris</Description>
+      <Units>hours</Units>
+      <Support>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Mlat</Name>
+      <ParameterKey>mlat</ParameterKey>
+      <Description>Magnetic latitude from ECT's predicted Ephemeris</Description>
+      <Units>degrees</Units>
+      <Support>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Lshell</Name>
+      <ParameterKey>lshell</ParameterKey>
+      <Description>Simple dipole Lshell from ECT's predicted Ephemeris</Description>
+      <Support>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>GSE position</Name>
+      <ParameterKey>pos_gse</ParameterKey>
+      <Description>GSE position in km from SPICE</Description>
+      <Units>km</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>GSE velocity</Name>
+      <ParameterKey>vel_gse</ParameterKey>
+      <Description>GSE velocity in km/s from SPICE</Description>
+      <Units>km/s</Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Support>
+        <SupportQuantity>Velocity</SupportQuantity>
+      </Support>
+    </Parameter>
+  </NumericalData>
+</Spase>

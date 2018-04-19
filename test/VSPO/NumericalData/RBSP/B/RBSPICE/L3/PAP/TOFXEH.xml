@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/RBSPICE/L3/PAP/TOFXEH</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B RBSPICE TOF x Energy Hydrogen Pitch Angle Distribution Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains Van Allen Probe B RBSPICE (Radiation Belt Storm Probes Ion Composition Experiment) Level 3 data of  
+TOF x (Time of Flight) pulse height proton intensities and pressures that are sorted by pitch angles.  Unidirectional differential proton fluxes are measured at high-energy and low-time resolution by 6 telescopes in 28 channels from 50 KeV-660 KeV and are binned by pitch angles in 17 bins.  Data are available in physical units (counts/(s*cm^2*MeV)). Also available are percentage error of measurement, quality flag for the measurement for each pitch angle bin/timestep, calculated proton perpendicular and parallel partial pressure,number density calculated by integrating the distribution function and pictch angle for protons, pitch angle and energy integrated total intensity of protons observed during the spin, and omni directional total proton flux per spin. In addition, the data set contains orbit number, positions of the spacecraft in GEO, SM, and GSM coordinates, and dipole L values in different reference frames.   
+
+Level 3 data include all level 2 data plus spacecraft positions, pitch angles of the six telecopses, and derived magnetic field values. The processing is done in a series of algorithmic steps in which the EMFISIS (Electric and Magnetic Field Instrument Suite and Integrated Science) magnetic field data is loaded, the ECT (Energetic Particle, Composition and Thermal Plasma Suite) magnetic ephemeris data is loaded, the Level 2 intensity data file is copied, and the pitch angles are calculated and placed into the copied Level 2 file, creating a Level 3 file. </Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Louis.J.Lanzerotti</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>Current QuickLook &amp; Summary Plots, Instrument Information and All Data</Name>
+        <URL>http://rbspice.ftecs.com/Data.html</URL>
+        <Description>at the RBSPICE Instrument Site</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>Interactive Analysis for RBSPICE Data</Name>
+        <URL>http://sd-www.jhuapl.edu/rbspice/MIDL/</URL>
+        <Description>using RBSPICE MIDL</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>Van Allen Probes</Name>
+        <URL>http://vanallenprobes.jhuapl.edu/</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/RBSPICE/L3/PAP_TOFXEH</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l3/rbspice/pap_tofxeh/</URL>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l3/rbspice/pap_tofxeh/</URL>
+      </AccessURL>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSP-B-RBSPICE_LEV-3-PAP_TOFXEH</ProductKey>
+      </AccessURL>
+      <Format>CDF</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/RBSPICE</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2013-01-26T10:04:21.000Z</StartDate>
+        <RelativeStopDate>-P210D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+  </NumericalData>
+</Spase>

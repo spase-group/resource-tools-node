@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/ECT/REPT/L2/Sectors/Release03/PT24S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A Relativistic Electron Proton Telescope, Level 2 Science Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains electron fluxes and proton fluxes measured by the Relativistic Electron Proton Telescope (REPT), which is one of three instruments on the Energetic Particle, Composition and Thermal Plasma Suite (ECT). REPT points perpendicular to the spin axis of the spacecraft and measures high-energy electrons (2-20 MeV).  It also measures magnetospheric and solar protons in the energy range of 20-120 MeV to capture most intense events. REPT was designed to measure the directional electron intensities (in the range 10-2&#x2013;106 particles/cm2 s-sr-MeV) and energy spectra (&#x394;E/E &#xFF5E; 25 %) throughout the slot and outer radiation belt region.  Electrons and protons are measured in alternate spin cadence of 5 per minute. </Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Daniel.N.Baker</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>ECT home page</Name>
+        <URL>http://rbsp-ect.sr.unh.edu</URL>
+        <Description>at UNH</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>ECT SOC and data services</Name>
+        <URL>https://rbsp-ect.lanl.gov/</URL>
+        <Description>at LANL</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/ECT/REPT/SCI_L2/PT24S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/ECT/PRE/REPT-SCI-L2/PT.001S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/ECT/REPT-SCI-L2/PT.001S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/ECT/RELPT24S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/ect/rept/sectors/rel03/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/ect/rept/sectors/rel03/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPA_REL03_ECT-REPT-SCI-L2</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/ECT</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-01T11:38:18.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT24S</Cadence>
+    </TemporalDescription>
+  </NumericalData>
+</Spase>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/EMFISIS/WFR/L2/WAVEFORM-CONTINUOUS-BURST/PT6S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A WFR waveform continuous burst data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>WaveForm Receiver (WFR) Three Axis Electric Field (EU, EV, EW) and Three Axis Magnetic field (BU, BV, BW)  continuous burst waveforms @ 35 kS/sec - Craig Kletzing (University of Iowa)</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Craig.A.Kletzing</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EMFISIS/MAG Release Notes</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/mag_release_notes</URL>
+        <Description>Current EMFISIS/MAG Issues, Caveats and Production Release Notes</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Data Index</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/index</URL>
+        <Description>data access (including advanced Autoplot graphics for data files</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Instrument Description</Name>
+        <URL>http://emfisis.physics.uiowa.edu/about/instrument</URL>
+        <Description>instrument and team description</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/EMFISIS/WFR-WAVEFORM-CONTINUOUS-BURST_EMFISIS-L2/PT6S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/EMFISIS/WFR-WAVEFORM-CONTINUOUS-BURST/L2/PT6S</PriorID>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/EMFISIS/WFR-WAVEFORM-CONTINUOUS-BURST/PT6S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/emfisis/wfr/waveform-continuous-burst/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/emfisis/wfr/waveform-continuous-burst/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSP-A_WFR-WAVEFORM-CONTINUOUS-BURST_EMFISIS-L2</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/EMFISIS</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-01T22:14:55.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT6S</Cadence>
+    </TemporalDescription>
+  </NumericalData>
+</Spase>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/RBSPICE/L3/PAP/TOFXPHOHELT/PT0.020S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A RBSPICE TOF x Pulse Height Oxygen Pitch Angles and Pressures High Energy, Low Time Resolution Phase 1, Level 3 Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>RBSP-A Radiation Belt Storm Probes Ion Composition Experiment (RBSPICE) Time of Flight &#xD7; Pulse Height, High-Energy Resolution, Low-Time Resolution Oxygen Intensities and Pressures sorted by Pitch Angles</Description>
+      <Acknowledgement>L. Lanzerotti, The RBSPICE instrument was supported under a NASA Contract with the New Jersey Institute of Technology, with subcontracts to The Johns Hopkins University Applied Physics Laboratory and to Fundamental Technologies LLC.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Louis.J.Lanzerotti</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Lee.Frost.Bargatze</PersonID>
+        <Role>MetadataContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>Current QuickLook &amp; Summary Plots, Instrument Information and All Data</Name>
+        <URL>http://rbspice.ftecs.com/Data.html</URL>
+        <Description>at the RBSPICE Instrument Site</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>Interactive Analysis for RBSPICE Data</Name>
+        <URL>http://sd-www.jhuapl.edu/rbspice/MIDL/</URL>
+        <Description>using RBSPICE MIDL</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/RBSPICE/TOFxPulseHeight/Oxygen/PitchAnglesAndPressures/HighEnergyLowTime/Level3</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l3/rbspice/pap_tofxphohelt/</URL>
+        <Description>In CDF via ftp from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l3/rbspice/pap_tofxphohelt/</URL>
+        <Description>In CDF via http from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.sci.gsfc.nasa.gov/index.html/</URL>
+        <ProductKey>RBSP-A-RBSPICE_LEV-3-PAP_TOFXPHOHELT</ProductKey>
+        <Description>Access to ASCII, CDF, and plots via NASA/GSFC CDAWeb</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Encoding>None</Encoding>
+      <Acknowledgement>L. Lanzerotti, The RBSPICE instrument was supported under a NASA Contract with the New Jersey Institute of Technology, with subcontracts to The Johns Hopkins University Applied Physics Laboratory and to Fundamental Technologies LLC. Please acknowledge the data providers and CDAWeb when using these data.</Acknowledgement>
+    </AccessInformation>
+    <ProcessingLevel>Calibrated</ProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/RBSPICE</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-10-29T00:00:00.000</StartDate>
+        <RelativeStopDate>-P1M</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT0.020S</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Earth.Magnetosphere</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.Main</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.RadiationBelt</ObservedRegion>
+    <ObservedRegion>Earth.NearSurface.EquatorialRegion</ObservedRegion>
+  </NumericalData>
+</Spase>

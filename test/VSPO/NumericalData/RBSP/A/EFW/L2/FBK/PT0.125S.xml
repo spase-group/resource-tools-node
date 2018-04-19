@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/EFW/L2/FBK/PT0.125S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A EFW Filterbank Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains Level 2 filterbank data from the Electric Field and Waves Suite (EFW) onboard Van Allen Probe A.  Average power and peak amplitudes from either 7 (default) or 13 logarithmically spaced band-pass ﬁlters are measured between 0.8 Hz and 6.5 kHz sampled at a cadence of 8 samples/s. Two sources may be input into the ﬁlter banks at any one time.  The possible sources include:.E12DC,E34DC,E56DC,.E12AC,E34AC,E56AC,.SCMU,SCMV,SCMW.(V1DC+V2DC+V3DC+V4DC)/4. In the default mode, V12ac, the AC coupled measurement of the electric ﬁeld from sensors 1 and 2 in the spin plane is input into the first ﬁlter bank and SCMw, the spin axis component of the search coil magnetic ﬁeld, serves as input into the second ﬁlter bank. The broadband ﬁlters provide a continuous stream of survey mode measurements over the entire orbit providing information on rapid time variations and bursty wave activity over a broad frequency spectrum. These measurements are also used as an input to burst trigger algorithms.
+
+All these quantities, the nature of the on board signal processing, their filtering, time resolution and their respective coordinate systems are described in the EFW instrument paper (Wygant et al. 2013). </Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://rbsp.space.umn.edu</URL>
+        <Description>EFW Data Required Reading</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/EFW/L2_FBK/PT0.125S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/EFW/L2/FBK/UTC</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/efw/fbk/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/efw/fbk/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the PI and the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPA_EFW-L2_FBK</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <MeasurementType>Waves</MeasurementType>
+    <MeasurementType>Spectrum</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-05T15:01:53.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+    <Parameter>
+      <Name>fbk13_fcenter </Name>
+      <ParameterKey>fbk13_fcenter</ParameterKey>
+      <Description>fbk13_fcenter </Description>
+      <Caveats>High frequency bound for the FBK 13 bins </Caveats>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>fbk7_fcenter2 </Name>
+      <ParameterKey>fbk7_fcenter</ParameterKey>
+      <Description>fbk7_fcenter2 </Description>
+      <Caveats>Center frequency for the FBK 7 bins </Caveats>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>fbk13_compno </Name>
+      <ParameterKey>fbk13_compno</ParameterKey>
+      <Description>fbk13_compno </Description>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>fbk7_compno </Name>
+      <ParameterKey>fbk7_compno</ParameterKey>
+      <Description>fbk7_compno </Description>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>fbk7_flow </Name>
+      <ParameterKey>fbk7_flow</ParameterKey>
+      <Description>fbk7_flow </Description>
+      <Caveats>Low frequency bound for the FBK 7 bins </Caveats>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>fbk7_fcenter2 </Name>
+      <ParameterKey>fbk7_fhigh</ParameterKey>
+      <Description>fbk7_fcenter2 </Description>
+      <Caveats>High frequency bound for the FBK 7 bins </Caveats>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>fbk13_flow </Name>
+      <ParameterKey>fbk13_flow</ParameterKey>
+      <Description>fbk13_flow </Description>
+      <Caveats>Low frequency bound for the FBK 13 bins </Caveats>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>fbk13_fhigh </Name>
+      <ParameterKey>fbk13_fhigh</ParameterKey>
+      <Description>fbk13_fhigh </Description>
+      <Caveats>High frequency bound for the FBK 13 bins </Caveats>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E12DC peak values </Name>
+      <ParameterKey>fbk13_e12dc_pk</ParameterKey>
+      <Description>Filterbank 13 E12DC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E12AC peak values </Name>
+      <ParameterKey>fbk13_e12ac_pk</ParameterKey>
+      <Description>Filterbank 13 E12AC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E56DC peak values </Name>
+      <ParameterKey>fbk13_e56dc_pk</ParameterKey>
+      <Description>Filterbank 13 E56DC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E34DC peak values </Name>
+      <ParameterKey>fbk13_e34dc_pk</ParameterKey>
+      <Description>Filterbank 13 E34DC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E34AC peak values </Name>
+      <ParameterKey>fbk13_e34ac_pk</ParameterKey>
+      <Description>Filterbank 13 E34AC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E56AC peak values </Name>
+      <ParameterKey>fbk13_e56ac_pk</ParameterKey>
+      <Description>Filterbank 13 E56AC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 SCMu peak values </Name>
+      <ParameterKey>fbk13_scmu_pk</ParameterKey>
+      <Description>Filterbank 13 SCMu peak values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 SCMv peak values </Name>
+      <ParameterKey>fbk13_scmv_pk</ParameterKey>
+      <Description>Filterbank 13 SCMv peak values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 SCMw peak values </Name>
+      <ParameterKey>fbk13_scmw_pk</ParameterKey>
+      <Description>Filterbank 13 SCMw peak values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 (v1+v2+v3+v4)/4 peak values </Name>
+      <ParameterKey>fbk13_v1v2v3v4_avg_pk</ParameterKey>
+      <Description>Filterbank 13 (v1+v2+v3+v4)/4 peak values </Description>
+      <Units>Volts </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E12DC peak values </Name>
+      <ParameterKey>fbk7_e12dc_pk</ParameterKey>
+      <Description>Filterbank 7 E12DC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E12AC peak values </Name>
+      <ParameterKey>fbk7_e12ac_pk</ParameterKey>
+      <Description>Filterbank 7 E12AC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E34DC peak values </Name>
+      <ParameterKey>fbk7_e34dc_pk</ParameterKey>
+      <Description>Filterbank 7 E34DC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E34AC peak values </Name>
+      <ParameterKey>fbk7_e34ac_pk</ParameterKey>
+      <Description>Filterbank 7 E34AC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E56DC peak values </Name>
+      <ParameterKey>fbk7_e56dc_pk</ParameterKey>
+      <Description>Filterbank 7 E56DC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E56AC peak values </Name>
+      <ParameterKey>fbk7_e56ac_pk</ParameterKey>
+      <Description>Filterbank 7 E56AC peak values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 SCMu peak values </Name>
+      <ParameterKey>fbk7_scmu_pk</ParameterKey>
+      <Description>Filterbank 7 SCMu peak values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 SCMv peak values </Name>
+      <ParameterKey>fbk7_scmv_pk</ParameterKey>
+      <Description>Filterbank 7 SCMv peak values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 SCMw peak values </Name>
+      <ParameterKey>fbk7_scmw_pk</ParameterKey>
+      <Description>Filterbank 7 SCMw peak values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 (v1+v2+v3+v4)/4 peak values </Name>
+      <ParameterKey>fbk7_v1v2v3v4_avg_pk</ParameterKey>
+      <Description>Filterbank 7 (v1+v2+v3+v4)/4 peak values </Description>
+      <Units>Volts </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E12DC average values </Name>
+      <ParameterKey>fbk13_e12dc_av</ParameterKey>
+      <Description>Filterbank 13 E12DC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E12AC average values </Name>
+      <ParameterKey>fbk13_e12ac_av</ParameterKey>
+      <Description>Filterbank 13 E12AC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E56DC average values </Name>
+      <ParameterKey>fbk13_e56dc_av</ParameterKey>
+      <Description>Filterbank 13 E56DC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E34DC average values </Name>
+      <ParameterKey>fbk13_e34dc_av</ParameterKey>
+      <Description>Filterbank 13 E34DC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E34AC average values </Name>
+      <ParameterKey>fbk13_e34ac_av</ParameterKey>
+      <Description>Filterbank 13 E34AC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 E56AC average values </Name>
+      <ParameterKey>fbk13_e56ac_av</ParameterKey>
+      <Description>Filterbank 13 E56AC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 SCMu average values </Name>
+      <ParameterKey>fbk13_scmu_av</ParameterKey>
+      <Description>Filterbank 13 SCMu average values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 SCMv average values </Name>
+      <ParameterKey>fbk13_scmv_av</ParameterKey>
+      <Description>Filterbank 13 SCMv average values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 SCMw average values </Name>
+      <ParameterKey>fbk13_scmw_av</ParameterKey>
+      <Description>Filterbank 13 SCMw average values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 13 (v1+v2+v3+v4)/4 average values </Name>
+      <ParameterKey>fbk13_v1v2v3v4_avg_av</ParameterKey>
+      <Description>Filterbank 13 (v1+v2+v3+v4)/4 average values </Description>
+      <Units>Volts </Units>
+      <Structure>
+        <Size>13</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E12DC average values </Name>
+      <ParameterKey>fbk7_e12dc_av</ParameterKey>
+      <Description>Filterbank 7 E12DC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E12AC average values </Name>
+      <ParameterKey>fbk7_e12ac_av</ParameterKey>
+      <Description>Filterbank 7 E12AC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E34DC average values </Name>
+      <ParameterKey>fbk7_e34dc_av</ParameterKey>
+      <Description>Filterbank 7 E34DC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E34AC average values </Name>
+      <ParameterKey>fbk7_e34ac_av</ParameterKey>
+      <Description>Filterbank 7 E34AC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E56DC average values </Name>
+      <ParameterKey>fbk7_e56dc_av</ParameterKey>
+      <Description>Filterbank 7 E56DC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 E56AC average values </Name>
+      <ParameterKey>fbk7_e56ac_av</ParameterKey>
+      <Description>Filterbank 7 E56AC average values </Description>
+      <Units>mV/m </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 SCMu average values </Name>
+      <ParameterKey>fbk7_scmu_av</ParameterKey>
+      <Description>Filterbank 7 SCMu average values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 SCMv average values </Name>
+      <ParameterKey>fbk7_scmv_av</ParameterKey>
+      <Description>Filterbank 7 SCMv average values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 SCMw average values </Name>
+      <ParameterKey>fbk7_scmw_av</ParameterKey>
+      <Description>Filterbank 7 SCMw average values </Description>
+      <Units>nT </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Filterbank 7 (v1+v2+v3+v4)/4 average values </Name>
+      <ParameterKey>fbk7_v1v2v3v4_avg_av</ParameterKey>
+      <Description>Filterbank 7 (v1+v2+v3+v4)/4 average values </Description>
+      <Units>Volts </Units>
+      <Structure>
+        <Size>7</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch</ParameterKey>
+      <Description>Time, UTC </Description>
+      <Caveats>Time tags for the survey quantities </Caveats>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch_qual</ParameterKey>
+      <Description>Timetags for elements of efw_qual </Description>
+      <Caveats>The elements of efw_qual are determined on a fixed cadence regardless of the nominal cadence of the individual L2 data products, and epoch_qual provides storage for those fixed-cadence time tags.. </Caveats>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Data Quality Flags </Name>
+      <ParameterKey>efw_qual</ParameterKey>
+      <Description>An array that indicates a global estimate of EFW data quality, as well as a breakdown of observatory and instrument-level data quality issues that impact the global quality estimate.. </Description>
+      <Caveats>The quality of EFW data products can be affected by a variety of observatory and instrument-level conditions.  efw_qual is a collection of flags that show the estimate of each of these contributors over time.  ..See the EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a detailed description of the determination and meaning of each of the elements of efw_qual...If the value of a particular element of efw_qual is not relevant to the quality of a particular data product, it shall receive the value EFW_QUAL_NR (typ. -2)...If the value of a particular element of efw_qual is relevant to the quality of a particular data product but is not known at the time lf L2 data production, it shall receive the value EFW_QUAL_UNK (typ. -1)...A quality value of EFW_QUAL_GOOD (typ. 0) indicates that there are no known issues with the data product due to that particular element of efw_qual...The quality values are meant to be conservative, and values other than EFW_QUAL_GOOD should lead the user back to a member of the EFW instrument team for discussion and advice on the nature of the data quality as needed. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Quality Flags Components </Name>
+      <ParameterKey>efw_qual_compno</ParameterKey>
+      <Description>Component numbers for EFW data quality flags, efw_qual. </Description>
+      <Caveats>none. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

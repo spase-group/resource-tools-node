@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EMFISIS/WFR/L2/SPECTRAL-MATRIX-DIAGONAL-MERGED/PT6S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B WFR Spectral Matrix diagonal merged data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>WaveForm Receiver (WFR) Spectral Matrix ~5-10,000 HZ (Merged; Diagonal Elements Only) - Craig Kletzing (University of Iowa)</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Craig.A.Kletzing</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EMFISIS/MAG Release Notes</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/mag_release_notes</URL>
+        <Description>Current EMFISIS/MAG Issues, Caveats and Production Release Notes</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Data Index</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/index</URL>
+        <Description>data access (including advanced Autoplot graphics for data files</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Instrument Description</Name>
+        <URL>http://emfisis.physics.uiowa.edu/about/instrument</URL>
+        <Description>instrument and team description</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EMFISIS/WFR-SPECTRAL-MATRIX-DIAGONAL-MERGED_EMFISIS-L2/PT6S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EMFISIS/WFR-SPECTRAL-MATRIX-DIAGONAL-MERGED/L2/PT6S</PriorID>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/EMFISIS/WFR-SPECTRAL-MATRIX-DIAGONAL-MERGED/PT6S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/emfisis/wfr/spectral-matrix-diagonal-merged/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/emfisis/wfr/spectral-matrix-diagonal-merged/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSP-B_WFR-SPECTRAL-MATRIX-DIAGONAL-MERGED_EMFISIS-L2</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EMFISIS</InstrumentID>
+    <MeasurementType>Waves</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-01T00:00:04.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT6S</Cadence>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>Epoch</ParameterKey>
+      <Description>Default time </Description>
+      <Units>ns </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>WFR_frequencies </Name>
+      <ParameterKey>WFR_frequencies_Fixed</ParameterKey>
+      <Description>WFR frequency spectrum </Description>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>BuBu </Name>
+      <ParameterKey>BuBu</ParameterKey>
+      <Description>BuBu amplitude </Description>
+      <Units>nT^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>BvBv </Name>
+      <ParameterKey>BvBv</ParameterKey>
+      <Description>BvBv amplitude </Description>
+      <Units>nT^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>BwBw </Name>
+      <ParameterKey>BwBw</ParameterKey>
+      <Description>BwBw amplitude </Description>
+      <Units>nT^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EuEu </Name>
+      <ParameterKey>EuEu</ParameterKey>
+      <Description>EuEu amplitude </Description>
+      <Units>V^2/m^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EvEv </Name>
+      <ParameterKey>EvEv</ParameterKey>
+      <Description>EvEv amplitude </Description>
+      <Units>V^2/m^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EwEw </Name>
+      <ParameterKey>EwEw</ParameterKey>
+      <Description>EwEw amplitude </Description>
+      <Units>V^2/m^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>TotalPowerB </Name>
+      <ParameterKey>TotalPowerB</ParameterKey>
+      <Description>Total B Power:  Sum of BuBu, BvBv, and BwBw </Description>
+      <Caveats> </Caveats>
+      <Units>nT^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>TotalPowerE </Name>
+      <ParameterKey>TotalPowerE</ParameterKey>
+      <Description>Total E Power: Sum of EuEu, EvEv </Description>
+      <Caveats> </Caveats>
+      <Units>V^2/m^2/Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>WFR_bins </Name>
+      <ParameterKey>WFR_bins</ParameterKey>
+      <Description>WFR number of bins </Description>
+      <Units>constant </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>WFR_bandwidth </Name>
+      <ParameterKey>WFR_bandwidth</ParameterKey>
+      <Description>WFR_bandwidth </Description>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>WFR_frequencies </Name>
+      <ParameterKey>WFR_frequencies</ParameterKey>
+      <Description>WFR frequency spectrum </Description>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>65</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>LWEzGainW </Name>
+      <ParameterKey>LWEzGainW</ParameterKey>
+      <Description>Attenuator select indicator for W axis (0=off) </Description>
+      <Caveats>Attenuator select indicator for W axis.  0 - Off, 1 - On.   Switches in a 19 dB attenuator.   L2 and greater data has the attenuator gains folded into data to provide correct science units.  </Caveats>
+      <Units>(0=off) </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>LWExEyGainUV </Name>
+      <ParameterKey>LWExEyGainUV</ParameterKey>
+      <Description>Attenuator select indicator for U/V axes (0=off) </Description>
+      <Caveats>Attenuator select indicator for U and V axis.  0 - Off, 1 - On.   Switches in a 19 dB attenuator.  L2 and greater data has the attenuator gains folded into data to provide correct science units. </Caveats>
+      <Units>(0=off) </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>SCMGain </Name>
+      <ParameterKey>SCMGain</ParameterKey>
+      <Description>Attenuator select indicator for MSC (0=off) </Description>
+      <Caveats>Attenuator select indicator for MSC.  0 - Off, 1 - On.   Switches in a 19 dB attenuator.  L2 and greater data has the attenuator gains folded into data to provide correct science units.  </Caveats>
+      <Units>(0=off) </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>SPTT</ParameterKey>
+      <Description>Sun Pulse Time Tag </Description>
+      <Units>ns </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>APID </Name>
+      <ParameterKey>APID</ParameterKey>
+      <Description>APID </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

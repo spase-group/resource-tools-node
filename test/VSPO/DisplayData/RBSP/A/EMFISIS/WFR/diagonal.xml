@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <DisplayData>
+    <ResourceID>spase://VSPO/DisplayData/RBSP/A/EMFISIS/WFR/diagonal</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A Electric and Magnetic Field Instrument Suite and Integrated Science (EMFISIS) WFR diagonal components</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>Van Allen Probe A Electric and Magnetic Field Instrument Suite and Integrated Science (EMFISIS) WFR diagonal components</Description>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Craig.A.Kletzing</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EMFISIS Data Index</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/index</URL>
+        <Description>data access (including advanced Autoplot graphics for data files)</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://rbspgway.jhuapl.edu/</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/DisplayData/RBSP/A/EMFISIS/WFR/diagonal</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/UIowa/RadioPlasmaWaveGroup</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>Index of pngwalk for PBSP-A/WFR-diagonal</Name>
+        <URL>http://emfisis.physics.uiowa.edu/pngwalk/RBSP-A/WFR_diagonal/</URL>
+      </AccessURL>
+      <Format>PNG</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/EMFISIS</InstrumentID>
+    <MeasurementType>Waves</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-10-01T00:00:00.000Z</StartDate>
+        <StopDate>2016-03-26T00:00:00.000Z</StopDate>
+      </TimeSpan>
+    </TemporalDescription>
+  </DisplayData>
+</Spase>

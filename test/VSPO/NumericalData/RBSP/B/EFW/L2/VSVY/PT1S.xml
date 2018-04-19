@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EFW/L2/VSVY/PT1S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B DC-coupled EFW 1-second sensor potentials relative to spacecraft in volts</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains DC-coupled sensor potentials and negative of spacecraft potential relative to sensor floating potentials from the Electric Field and Waves Suite (EFW) onboard Van Allen Probe A.  All six EFW sensor potentials are included. Also included are average potentials from opposing booms, i.e., (V1+V2)/2, (V3+V4)/2, and (V5+V6)/2, from autoscale and fixed scale (-15 to 5 V). These quantities are the negative of the spacecraft potential relative to the sensor floating potential, and have the contribution from the external electric field removed.  Four spin-plane components of the electric field are measured at DC-12 Hz with 0.05 mV/m accuracy, and two spin-axis components, with ~3 mV/m accuracy. Spacecraft potentials cover cold plasma densities of 0.1 to ~100 cm-3 at 1-second cadence.  The default sampling rate is 16 samp/s at 16-bit resolution, covering a +/- 225-V range.  Further details on the EFW instrument in general or these data in particular can be found in the EFW Instrument paper, Wygant et al., 2013 (Space Science Reviews; submitted, 02/2013).</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://rbsp.space.umn.edu</URL>
+        <Description>Daily Summary Plots and additional L2 data</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/EFW/VSVY/PT1S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSPB_EFW-L2/</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/efw/vsvy-highres/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/efw/vsvy-highres/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPB_EFW-L2_VSVY-HIRES</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-05T23:21:36.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT1S</Cadence>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch</ParameterKey>
+      <Description>Time, UTC </Description>
+      <Caveats>Time tags for the survey quantities </Caveats>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Sensor Voltages, V1..V6. </Name>
+      <ParameterKey>vsvy</ParameterKey>
+      <Description>EFW Sensor Voltages, V1..V6. </Description>
+      <Caveats>EFW Sensor voltages relative to spacecraft ground. </Caveats>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Average potential from opposing booms </Name>
+      <ParameterKey>vsvy_vavg</ParameterKey>
+      <Description>Average potential from opposing booms (autoscale) </Description>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Average potential from opposing booms </Name>
+      <ParameterKey>vsvy_vavg_fixedscale</ParameterKey>
+      <Description>Average potential from opposing booms (fixed scale -15 to 5 V) </Description>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Configuration (HSK) timetags, UTC </Name>
+      <ParameterKey>epoch_hsk</ParameterKey>
+      <Description>Configuration (HSK) timetags, UTC. </Description>
+      <Caveats>Configuration timetags. Used for BEB and DFB config values.. </Caveats>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW BEB Configuration </Name>
+      <ParameterKey>vsvy_BEB_config</ParameterKey>
+      <Description>EFW Boom Electronics Board (BEB) configuration code (sensor biases) </Description>
+      <Caveats>Indicates the configuration of the EFW Boom Electronics Board (BEB).  Encodes the following information:  for each sensor, sensor current bias, usher and guard voltage bias.  See TBD_URL for details of mapping between code value and instrument configuration (not crucial for L2 data interpretation). </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW DFB Configuration </Name>
+      <ParameterKey>vsvy_DFB_config</ParameterKey>
+      <Description>EFW Digital Fields Board (DFB) configuration code (on-board spectral and waveform processing configuration) </Description>
+      <Caveats>Indicates the configuration of the EFW Digital Filter Board (DFB).  Encodes the following information:  assignment of analog input channels to the various on-board spectral processors (FBK, SPEC, XSPEC); parameters of the on-board B-field-aligned data processing; nominal or contingency multiplexer programming.  See TBD URL for detailed mapping from code value to instrument configuration (not crucial for L2 data interpretation). </Caveats>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch_qual</ParameterKey>
+      <Description>Timetags for elements of efw_qual. </Description>
+      <Caveats>The elements of efw_qual are determined on a fixed cadence regardless of the nominal cadence of the individual L2 data products, and epoch_qual provides storage for those fixed-cadence time tags.. </Caveats>
+      <Units>UTC </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Data Quality Flags </Name>
+      <ParameterKey>efw_qual</ParameterKey>
+      <Description>EFW quality array (global estimate of EFW data quality, plus 13 underlying observatory and instrument-level data quality factors) </Description>
+      <Caveats> </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Quality Flags Components </Name>
+      <ParameterKey>efw_qual_compno</ParameterKey>
+      <Description>Component numbers for EFW data quality flags, efw_qual. </Description>
+      <Caveats>none. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

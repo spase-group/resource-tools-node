@@ -1,0 +1,1092 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EFW/L2/SPEC/PT4S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Spectrogram Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>This data set contains Level 2 wave electric field and search coil wave magnetic fields spectral data from the Electric Field and Waves Suite (EFW) onboard Van Allen Probe B. Spectrograms between ~40 Hz and ~8 kHz are calculated on-board the EFW instrument every 4 seconds. These data include one component of the ac-coupled electric field from the rotating V12 sensors (V12ac). The electric field quantity is labeled EFW/L2. Also included are two components of the wave magnetic field from the University of Iowa EMFISIS sensors. The search coil quantities are labeled EFW/L2 spec64 smu. In the labels smu and smv, the suffixes u and v refer to the u and v sensor coordinates rotating with the spacecraft. All these quantities, the nature of the on board signal processing, their filtering, time resolution and their respective coordinate systems are described in the EFW instrument paper (Wygant et al. 2013). 
+
+When the spectral CDF is opened, many other possible quantities are listed which have no data in them. Possible sources include: E12dc, E34dc, E56dc, E12ac, E34ac, E56ac, E DC parallel, E DC perpendicular 1, E DC perpendicular 1, E AC parallel, E AC perpendicular 1, E AC perpendicular 2, V1+V2+V3+V4/4AC, SCMu, SCMv, SCMw, SCM parallel, SCM perpendicular 1 and SCM perpendicular 2. 
+
+Those without data are place holder quantities which are used by other instrument modes not currently selected. Examples of the spectral data may be found in Principal Investigator's on-line survey data plots.Â  EMFISIS instrument wave data may be found on the University of Iowa website. This includes valuable spectral electric field data up to 400 kHz and magnetic field data up to about ~6 kHz.
+</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://rbsp.space.umn.edu</URL>
+        <Description>EFW Data Required Reading</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/EFW/L2_SPEC/PT4S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EFW/L2/SPEC/UTC</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/efw/spec/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/efw/spec/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the PI and the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSPB_EFW-L2_SPEC</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <MeasurementType>Waves</MeasurementType>
+    <MeasurementType>Spectrum</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-05T23:21:36.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+    <Parameter>
+      <Name>spec64_fcenter </Name>
+      <ParameterKey>spec64_fcenter</ParameterKey>
+      <Description>spec64_fcenter </Description>
+      <Caveats>Center frequency for the SPEC 64 bins </Caveats>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec32_fcenter </Name>
+      <ParameterKey>spec36_fcenter</ParameterKey>
+      <Description>spec32_fcenter </Description>
+      <Caveats>Center frequency for the SPEC 36 bins </Caveats>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_fcenter </Name>
+      <ParameterKey>spec112_fcenter</ParameterKey>
+      <Description>spec112_fcenter </Description>
+      <Caveats>Center frequency for the SPEC 112 bins </Caveats>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_compno </Name>
+      <ParameterKey>spec64_compno</ParameterKey>
+      <Description>spec64_compno </Description>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_compno </Name>
+      <ParameterKey>spec36_compno</ParameterKey>
+      <Description>spec36_compno </Description>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_compno </Name>
+      <ParameterKey>spec112_compno</ParameterKey>
+      <Description>spec112_compno </Description>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch</ParameterKey>
+      <Description>Time, UTC </Description>
+      <Caveats>Time tags for the survey quantities </Caveats>
+      <Units>ps </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_e12dc </Name>
+      <ParameterKey>spec64_e12dc</ParameterKey>
+      <Description>[64 FREQUENCIES] E12 DC </Description>
+      <Caveats>64 bin spectrogram for E12DC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_e12ac </Name>
+      <ParameterKey>spec64_e12ac</ParameterKey>
+      <Description>E12 AC </Description>
+      <Caveats>64 bin spectrogram for E12AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_e34dc </Name>
+      <ParameterKey>spec64_e34dc</ParameterKey>
+      <Description>E34 DC </Description>
+      <Caveats>64 bin spectrogram for E34DC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_e34ac </Name>
+      <ParameterKey>spec64_e34ac</ParameterKey>
+      <Description>E34 AC </Description>
+      <Caveats>64 bin spectrogram for E34AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_e56dc </Name>
+      <ParameterKey>spec64_e56dc</ParameterKey>
+      <Description>E56 DC </Description>
+      <Caveats>64 bin spectrogram for E56DC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_e56ac </Name>
+      <ParameterKey>spec64_e56ac</ParameterKey>
+      <Description>E56 AC </Description>
+      <Caveats>64 bin spectrogram for E56AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_epar_dc </Name>
+      <ParameterKey>spec64_epardc</ParameterKey>
+      <Description>[64 FREQUENCIES] E-parallel DC </Description>
+      <Caveats>64 bin spectrogram for Eparallel DC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_eperp1dc </Name>
+      <ParameterKey>spec64_eperp1dc</ParameterKey>
+      <Description>E-perpendicular-1 DC </Description>
+      <Caveats>64 bin spectrogram for Eperp1 DC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_eparac </Name>
+      <ParameterKey>spec64_eparac</ParameterKey>
+      <Description>E-parallel AC </Description>
+      <Caveats>64 bin spectrogram for Eparallel AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_eperp1ac </Name>
+      <ParameterKey>spec64_eperp1ac</ParameterKey>
+      <Description>E-perpendicular-1 AC </Description>
+      <Caveats>64 bin spectrogram for Eperp1 AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_eperp2dc </Name>
+      <ParameterKey>spec64_eperp2dc</ParameterKey>
+      <Description>E-perpendicular-2 DC </Description>
+      <Caveats>64 bin spectrogram for Eperp2 DC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_eperp2ac </Name>
+      <ParameterKey>spec64_eperp2ac</ParameterKey>
+      <Description>E-perpendicular-2 AC </Description>
+      <Caveats>64 bin spectrogram for Eperp2 AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_v1ac </Name>
+      <ParameterKey>spec64_v1ac</ParameterKey>
+      <Description>[64 FREQUENCIES] V1 AC </Description>
+      <Caveats>64 bin spectrogram for V1AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_v2ac </Name>
+      <ParameterKey>spec64_v2ac</ParameterKey>
+      <Description>V2 AC </Description>
+      <Caveats>64 bin spectrogram for V2AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_v3ac </Name>
+      <ParameterKey>spec64_v3ac</ParameterKey>
+      <Description>V3 AC </Description>
+      <Caveats>64 bin spectrogram for V3AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_v4ac </Name>
+      <ParameterKey>spec64_v4ac</ParameterKey>
+      <Description>V4 AC </Description>
+      <Caveats>64 bin spectrogram for V4AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_v5ac </Name>
+      <ParameterKey>spec64_v5ac</ParameterKey>
+      <Description>V5 AC </Description>
+      <Caveats>64 bin spectrogram for V5AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_v6ac </Name>
+      <ParameterKey>spec64_v6ac</ParameterKey>
+      <Description>V6 AC </Description>
+      <Caveats>64 bin spectrogram for V6AC </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_v1234_avg </Name>
+      <ParameterKey>spec64_v1234_avg</ParameterKey>
+      <Description>(V1+V2+V3+V4)/4 AC </Description>
+      <Caveats>64 bin spectrogram for (v1+v2+v3+v4)/4 </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_scmu </Name>
+      <ParameterKey>spec64_scmu</ParameterKey>
+      <Description>[64 FREQUENCIES] SCM u </Description>
+      <Caveats>64 bin spectrogram for SCMu </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_scmv </Name>
+      <ParameterKey>spec64_scmv</ParameterKey>
+      <Description>SCM v </Description>
+      <Caveats>64 bin spectrogram for SCMv </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_scmw </Name>
+      <ParameterKey>spec64_scmw</ParameterKey>
+      <Description>SCM w </Description>
+      <Caveats>64 bin spectrogram for SCMw </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_scmpar </Name>
+      <ParameterKey>spec64_scmpar</ParameterKey>
+      <Description>--&gt; SCM parallel </Description>
+      <Caveats>64 bin spectrogram for SCMpar </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_scmperp1 </Name>
+      <ParameterKey>spec64_scmperp1</ParameterKey>
+      <Description>SCM perpendicular-1 </Description>
+      <Caveats>64 bin spectrogram for SCMperp1 </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec64_scmperp2 </Name>
+      <ParameterKey>spec64_scmperp2</ParameterKey>
+      <Description>SCM perpendicular-2 </Description>
+      <Caveats>64 bin spectrogram for SCMperp2 </Caveats>
+      <Structure>
+        <Size>64</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_e12dc </Name>
+      <ParameterKey>spec36_e12dc</ParameterKey>
+      <Description>[36 FREQUENCIES] E12 DC </Description>
+      <Caveats>36 bin spectrogram for E12DC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_e12ac </Name>
+      <ParameterKey>spec36_e12ac</ParameterKey>
+      <Description>E12 AC </Description>
+      <Caveats>36 bin spectrogram for E12AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_e34dc </Name>
+      <ParameterKey>spec36_e34dc</ParameterKey>
+      <Description>E34 DC </Description>
+      <Caveats>36 bin spectrogram for E34DC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_e34ac </Name>
+      <ParameterKey>spec36_e34ac</ParameterKey>
+      <Description>E34 AC </Description>
+      <Caveats>36 bin spectrogram for E34AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_e56dc </Name>
+      <ParameterKey>spec36_e56dc</ParameterKey>
+      <Description>E56 DC </Description>
+      <Caveats>36 bin spectrogram for E56DC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_e56ac </Name>
+      <ParameterKey>spec36_e56ac</ParameterKey>
+      <Description>E56 AC </Description>
+      <Caveats>36 bin spectrogram for E56AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_epar_dc </Name>
+      <ParameterKey>spec36_epardc</ParameterKey>
+      <Description>[36 FREQUENCIES] E-parallel DC </Description>
+      <Caveats>36 bin spectrogram for Eparallel DC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_eperp1dc </Name>
+      <ParameterKey>spec36_eperp1dc</ParameterKey>
+      <Description>E-perpendicular-1 DC </Description>
+      <Caveats>36 bin spectrogram for Eperp1 DC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_eparac </Name>
+      <ParameterKey>spec36_eparac</ParameterKey>
+      <Description>E-parallel AC </Description>
+      <Caveats>36 bin spectrogram for Eparallel AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_eperp1ac </Name>
+      <ParameterKey>spec36_eperp1ac</ParameterKey>
+      <Description>E-perpendicular-1 AC </Description>
+      <Caveats>36 bin spectrogram for Eperp1 AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_eperp2dc </Name>
+      <ParameterKey>spec36_eperp2dc</ParameterKey>
+      <Description>E-perpendicular-2 DC </Description>
+      <Caveats>36 bin spectrogram for Eperp2 DC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_eperp2ac </Name>
+      <ParameterKey>spec36_eperp2ac</ParameterKey>
+      <Description>E-perpendicular-2 AC </Description>
+      <Caveats>36 bin spectrogram for Eperp2 AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_v1ac </Name>
+      <ParameterKey>spec36_v1ac</ParameterKey>
+      <Description>[36 FREQUENCIES] V1 AC </Description>
+      <Caveats>36 bin spectrogram for V1AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_v2ac </Name>
+      <ParameterKey>spec36_v2ac</ParameterKey>
+      <Description>V2 AC </Description>
+      <Caveats>36 bin spectrogram for V2AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_v3ac </Name>
+      <ParameterKey>spec36_v3ac</ParameterKey>
+      <Description>V3 AC </Description>
+      <Caveats>36 bin spectrogram for V3AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_v4ac </Name>
+      <ParameterKey>spec36_v4ac</ParameterKey>
+      <Description>V4 AC </Description>
+      <Caveats>36 bin spectrogram for V4AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_v5ac </Name>
+      <ParameterKey>spec36_v5ac</ParameterKey>
+      <Description>V5 AC </Description>
+      <Caveats>36 bin spectrogram for V5AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_v6ac </Name>
+      <ParameterKey>spec36_v6ac</ParameterKey>
+      <Description>V6 AC </Description>
+      <Caveats>36 bin spectrogram for V6AC </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_v1234_avg </Name>
+      <ParameterKey>spec36_v1234_avg</ParameterKey>
+      <Description>(V1+V2+V3+V4)/4 AC </Description>
+      <Caveats>36 bin spectrogram for (v1+v2+v3+v4)/4 </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_scmu </Name>
+      <ParameterKey>spec36_scmu</ParameterKey>
+      <Description>[36 FREQUENCIES] SCM u </Description>
+      <Caveats>36 bin spectrogram for SCMu </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_scmv </Name>
+      <ParameterKey>spec36_scmv</ParameterKey>
+      <Description>SCM v </Description>
+      <Caveats>36 bin spectrogram for SCMv </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_scmw </Name>
+      <ParameterKey>spec36_scmw</ParameterKey>
+      <Description>SCM w </Description>
+      <Caveats>36 bin spectrogram for SCMw </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_scmpar </Name>
+      <ParameterKey>spec36_scmpar</ParameterKey>
+      <Description>--&gt; SCM parallel </Description>
+      <Caveats>36 bin spectrogram for SCMpar </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_scmperp1 </Name>
+      <ParameterKey>spec36_scmperp1</ParameterKey>
+      <Description>SCM perpendicular-1 </Description>
+      <Caveats>36 bin spectrogram for SCMperp1 </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec36_scmperp2 </Name>
+      <ParameterKey>spec36_scmperp2</ParameterKey>
+      <Description>SCM perpendicular-2 </Description>
+      <Caveats>36 bin spectrogram for SCMperp2 </Caveats>
+      <Structure>
+        <Size>36</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_e12dc </Name>
+      <ParameterKey>spec112_e12dc</ParameterKey>
+      <Description>[112 FREQUENCIES] E12 DC </Description>
+      <Caveats>112 bin spectrogram for E12DC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_e12ac </Name>
+      <ParameterKey>spec112_e12ac</ParameterKey>
+      <Description>E12 AC </Description>
+      <Caveats>112 bin spectrogram for E12AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_e34dc </Name>
+      <ParameterKey>spec112_e34dc</ParameterKey>
+      <Description>E34 DC </Description>
+      <Caveats>112 bin spectrogram for E34DC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_e34ac </Name>
+      <ParameterKey>spec112_e34ac</ParameterKey>
+      <Description>E34 AC </Description>
+      <Caveats>112 bin spectrogram for E34AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_e56dc </Name>
+      <ParameterKey>spec112_e56dc</ParameterKey>
+      <Description>E56 DC </Description>
+      <Caveats>112 bin spectrogram for E56DC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_e56ac </Name>
+      <ParameterKey>spec112_e56ac</ParameterKey>
+      <Description>E56 AC </Description>
+      <Caveats>112 bin spectrogram for E56AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_epar_dc </Name>
+      <ParameterKey>spec112_epardc</ParameterKey>
+      <Description>[112 FREQUENCIES] E-parallel DC </Description>
+      <Caveats>112 bin spectrogram for Eparallel DC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_eperp1dc </Name>
+      <ParameterKey>spec112_eperp1dc</ParameterKey>
+      <Description>E-perpendicular-1 DC </Description>
+      <Caveats>112 bin spectrogram for Eperp1 DC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_eparac </Name>
+      <ParameterKey>spec112_eparac</ParameterKey>
+      <Description>E-parallel AC </Description>
+      <Caveats>112 bin spectrogram for Eparallel AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_eperp1ac </Name>
+      <ParameterKey>spec112_eperp1ac</ParameterKey>
+      <Description>E-perpendicular-1 AC </Description>
+      <Caveats>112 bin spectrogram for Eperp1 AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_eperp2dc </Name>
+      <ParameterKey>spec112_eperp2dc</ParameterKey>
+      <Description>E-perpendicular-2 DC </Description>
+      <Caveats>112 bin spectrogram for Eperp2 DC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_eperp2ac </Name>
+      <ParameterKey>spec112_eperp2ac</ParameterKey>
+      <Description>E-perpendicular-2 AC </Description>
+      <Caveats>112 bin spectrogram for Eperp2 AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_v1ac </Name>
+      <ParameterKey>spec112_v1ac</ParameterKey>
+      <Description>[112 FREQUENCIES] V1 AC </Description>
+      <Caveats>112 bin spectrogram for V1AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_v2ac </Name>
+      <ParameterKey>spec112_v2ac</ParameterKey>
+      <Description>V2 AC </Description>
+      <Caveats>112 bin spectrogram for V2AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_v3ac </Name>
+      <ParameterKey>spec112_v3ac</ParameterKey>
+      <Description>V3 AC </Description>
+      <Caveats>112 bin spectrogram for V3AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_v4ac </Name>
+      <ParameterKey>spec112_v4ac</ParameterKey>
+      <Description>V4 AC </Description>
+      <Caveats>112 bin spectrogram for V4AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_v5ac </Name>
+      <ParameterKey>spec112_v5ac</ParameterKey>
+      <Description>V5 AC </Description>
+      <Caveats>112 bin spectrogram for V5AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_v6ac </Name>
+      <ParameterKey>spec112_v6ac</ParameterKey>
+      <Description>V6 AC </Description>
+      <Caveats>112 bin spectrogram for V6AC </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_v1234_avg </Name>
+      <ParameterKey>spec112_v1234_avg</ParameterKey>
+      <Description>(V1+V2+V3+V4)/4 AC </Description>
+      <Caveats>112 bin spectrogram for (v1+v2+v3+v4)/4 </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_scmu </Name>
+      <ParameterKey>spec112_scmu</ParameterKey>
+      <Description>[112 FREQUENCIES] SCM u </Description>
+      <Caveats>112 bin spectrogram for SCMu </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_scmv </Name>
+      <ParameterKey>spec112_scmv</ParameterKey>
+      <Description>SCM v </Description>
+      <Caveats>112 bin spectrogram for SCMv </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_scmw </Name>
+      <ParameterKey>spec112_scmw</ParameterKey>
+      <Description>SCM w </Description>
+      <Caveats>112 bin spectrogram for SCMw </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_scmpar </Name>
+      <ParameterKey>spec112_scmpar</ParameterKey>
+      <Description>--&gt; SCM parallel </Description>
+      <Caveats>112 bin spectrogram for SCMpar </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_scmperp1 </Name>
+      <ParameterKey>spec112_scmperp1</ParameterKey>
+      <Description>SCM perpendicular-1 </Description>
+      <Caveats>112 bin spectrogram for SCMperp1 </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>spec112_scmperp2 </Name>
+      <ParameterKey>spec112_scmperp2</ParameterKey>
+      <Description>SCM perpendicular-2 </Description>
+      <Caveats>112 bin spectrogram for SCMperp2 </Caveats>
+      <Structure>
+        <Size>112</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Time, UTC </Name>
+      <ParameterKey>epoch_qual</ParameterKey>
+      <Description>Timetags for elements of efw_qual </Description>
+      <Caveats>The elements of efw_qual are determined on a fixed cadence regardless of the nominal cadence of the individual L2 data products, and epoch_qual provides storage for those fixed-cadence time tags.. </Caveats>
+      <Units>ps </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Data Quality Flags </Name>
+      <ParameterKey>efw_qual</ParameterKey>
+      <Description>An array that indicates a global estimate of EFW data quality, as well as a breakdown of observatory and instrument-level data quality issues that impact the global quality estimate.. </Description>
+      <Caveats>The quality of EFW data products can be affected by a variety of observatory and instrument-level conditions.  efw_qual is a collection of flags that show the estimate of each of these contributors over time.  ..See the EFW-FAQ (http://rbsp.space.umn.edu/efw_faq.html) for a detailed description of the determination and meaning of each of the elements of efw_qual...If the value of a particular element of efw_qual is not relevant to the quality of a particular data product, it shall receive the value EFW_QUAL_NR (typ. -2)...If the value of a particular element of efw_qual is relevant to the quality of a particular data product but is not known at the time lf L2 data production, it shall receive the value EFW_QUAL_UNK (typ. -1)...A quality value of EFW_QUAL_GOOD (typ. 0) indicates that there are no known issues with the data product due to that particular element of efw_qual...The quality values are meant to be conservative, and values other than EFW_QUAL_GOOD should lead the user back to a member of the EFW instrument team for discussion and advice on the nature of the data quality as needed. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>EFW Quality Flags Components </Name>
+      <ParameterKey>epoch_qual_compno</ParameterKey>
+      <Description>Component numbers for EFW data quality flags, efw_qual. </Description>
+      <Caveats>none. </Caveats>
+      <Structure>
+        <Size>20</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

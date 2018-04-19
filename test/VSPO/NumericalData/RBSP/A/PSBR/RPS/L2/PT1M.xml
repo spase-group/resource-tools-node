@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/PSBR/RPS/L2/PT1M</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A PSBR Relativistic Proton Spectrometer Level 2 1 minute Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>RBSP-A Proton Spectrometer Belt Research - Relativistic Proton Spectrometer (PSBR-RPS) Energies from ~60 MeV to ~2 GeV</Description>
+      <Acknowledgement>J. Mazur, The Aerospace Corporation designed and built the RPS instrument with funding from The National Reconnaissance Office. The RPS Principal Investigator is Dr. Joseph Mazur</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Joseph.Mazur</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Lee.Frost.Bargatze</PersonID>
+        <Role>MetadataContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>at ViRBO</Name>
+        <URL>http://virbo.org/RBSP/RPS</URL>
+        <Description>RPS description and data</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>Science Gateway (including Mission Rules of the Road for Data Usage)</Name>
+        <URL>http://rbspgway.jhuapl.edu/</URL>
+        <Description>Van Allen Probes</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/PSBR/RelativisticProtonSpectrometer/Level2/PT1M</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/psbr/rps-1min/</URL>
+        <Description>In CDF via ftp from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/psbr/rps-1min/</URL>
+        <Description>In CDF via http from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.sci.gsfc.nasa.gov/index.html/</URL>
+        <ProductKey>RBSPA_L2-1MIN_PSBR-RPS</ProductKey>
+        <Description>Access to ASCII, CDF, and plots via NASA/GSFC CDAWeb</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Encoding>None</Encoding>
+      <Acknowledgement>J. Mazur, The Aerospace Corporation designed and built the RPS instrument with funding from The National Reconnaissance Office. The RPS Principal Investigator is Dr. Joseph Mazur. Please acknowledge the data providers and CDAWeb when using these data.</Acknowledgement>
+    </AccessInformation>
+    <ProcessingLevel>Calibrated</ProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/RPS</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>9999-01-01T00:00:00.000</StartDate>
+        <RelativeStopDate>-P1M</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT1M</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Earth.Magnetosphere</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.Main</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.RadiationBelt</ObservedRegion>
+    <ObservedRegion>Earth.NearSurface.EquatorialRegion</ObservedRegion>
+  </NumericalData>
+</Spase>

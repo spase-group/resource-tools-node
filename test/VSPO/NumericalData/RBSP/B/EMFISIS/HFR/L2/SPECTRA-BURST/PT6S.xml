@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EMFISIS/HFR/L2/SPECTRA-BURST/PT6S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Single Axis AC Electric Field Spectra burst data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>Single Axis AC Electric Field Spectra ~5,10,000 Hz - Craig Kletzing (University of Iowa)</Description>
+      <Acknowledgement>NASA Space Physics Data Facility (SPDF) CDAWeb.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Craig.A.Kletzing</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EMFISIS/MAG Release Notes</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/mag_release_notes</URL>
+        <Description>Current EMFISIS/MAG Issues, Caveats and Production Release Notes</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Data Index</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/index</URL>
+        <Description>data access (including advanced Autoplot graphics for data files</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Instrument Description</Name>
+        <URL>http://emfisis.physics.uiowa.edu/about/instrument</URL>
+        <Description>instrument and team description</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EMFISIS/HFR-SPECTRA-BURST/L2/PT6S</PriorID>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/B/EMFISIS/HFR-SPECTRA-BURST_EMFISIS-L2/PT6S</PriorID>
+      <PriorID>spase://VSPO/NumericalData/RBSP/B/EMFISIS/HFR-SPECTRA-BURST/PT6S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/emfisis/hfr/spectra-burst/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspb/l2/emfisis/hfr/spectra-burst/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSP-B_HFR-SPECTRA-BURST_EMFISIS-L2</ProductKey>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EMFISIS</InstrumentID>
+    <MeasurementType>Waves</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-03T02:15:16.000Z</StartDate>
+        <RelativeStopDate>-P30D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT6S</Cadence>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>Epoch</ParameterKey>
+      <Description>Default time </Description>
+      <Units>ns </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HFR Spectra </Name>
+      <ParameterKey>HFR_Spectra</ParameterKey>
+      <Description>HFR Spectra Data </Description>
+      <Units>V^2/m^2/Hz </Units>
+      <Structure>
+        <Size>82</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HFR_frequencies </Name>
+      <ParameterKey>HFR_frequencies</ParameterKey>
+      <Description>HFR center band frequencies </Description>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>82</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HFR_frequencies </Name>
+      <ParameterKey>HFR_frequencies_Fixed</ParameterKey>
+      <Description>HFR center band frequencies </Description>
+      <Units>Hz </Units>
+      <Structure>
+        <Size>82</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HFR_bins </Name>
+      <ParameterKey>HFR_bins</ParameterKey>
+      <Description>HFR bin size - Number of bins summed on board </Description>
+      <Structure>
+        <Size>82</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HBGain </Name>
+      <ParameterKey>HBGain</ParameterKey>
+      <Description>HFR Gain Select (0 - Standard Gain, 1 - Attenuator On) </Description>
+      <Units>(0=stnd,1=Atten) </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>HBSelect </Name>
+      <ParameterKey>HBSelect</ParameterKey>
+      <Description>HFR receiver Antenna Select (0 - U axis,1 - V axis,2 - W axis {spin axis}) </Description>
+      <Units>(0=U,1=V,2=W/Spin) </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>SPTT</ParameterKey>
+      <Description>Sun Pulse Time Tag Epoch </Description>
+      <Units>ns </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>APID </Name>
+      <ParameterKey>APID</ParameterKey>
+      <Description>APID  APID of base L0 data for this product </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

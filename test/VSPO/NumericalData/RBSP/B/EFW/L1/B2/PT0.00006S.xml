@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/B/EFW/L1/B2/PT0.00006S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe B Electric Fields and Waves (EFW) Burst 2 waveform data in UVW coordinates E, MSC and V</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>The EFW burst modes provide targeted measurements over brief time intervals of 3-d electric fields, 3-d wave magnetic fields (from the EMFISIS magnetic search coil sensors), and spacecraft potential. BURST1(B1): Medium-Rate (512 samples/s nominal) BURST2(B2): Higher-rate (16384 samples/s nominal) The burst 1 mode includes three components of the electric field (E12_B1, E34_B1, E56_B1), six components of the spacecraft-sensor potential (V1_B1 through V6_B1), and three components of the AC magnetic field from the EMFISIS search coil magnetometer (SCM_U_B1, SCM_V_B1, SCM_W_B1). The burst 2 mode data returns a similar complement of electric field (E_12ac_B2, E34ac_B2, E56ac_B2), search coil (SCM_B2, SCM_2B2, and SCM_B2) and single ended measurements (V1ac_B1 through V6ac_B2) with the exception that in the default mode the single ended and electric field signals are AC coupled with a higher gain. All quantities are in "uvw" coordinates where "u" and "v" are the sensor coordinates rotating with the spacecraft and "w" points along the spin axis. Burst waveform CDF files are available. The three data types available are the electric field "E" the searchcoil magnetic field "MSC" and antenna potential "V" The suffix on each of these is either "B1" or "B2" B1, or burst 1 is the human-in-the-loop burst, meaning that both collection and playback (for arbitrary lengths of time) are requested on the ground. B2, or burst 2 is automatically telemetered as short bursts based on an onboard triggering algorithm, typically set so trigger on large amplitude signals near 1 kHz. Sample rates for B1 and B2 can and are changed depending on varying science goals.</Description>
+      <Acknowledgement>The work by the EFW team was conducted under JHU/APL contract 922613 (RBSP-EFW).</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/John.R.Wygant</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EFW home page at the University of Minnesota</Name>
+        <URL>http://www.space.umn.edu/rbspefw-data-policy-the-rules-of-the-road/</URL>
+        <Description>EFW Data Required Reading</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VWO/NumericalData/RBSP/B/EFW/L1_B2/PT0.00006S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/UCB/THEMIS</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>HTTP access to files at UCB</Name>
+        <URL>http://themis.ssl.berkeley.edu/data/rbsp/rbspb/l1/</URL>
+        <Description>In CDF via HTTP from UCB</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>The work by the EFW team was conducted under JHU/APL contract 922613 (RBSP-EFW).</Acknowledgement>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/B/EFW</InstrumentID>
+    <MeasurementType>ElectricField</MeasurementType>
+    <MeasurementType>MagneticField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-05T14:36:16.000Z</StartDate>
+        <RelativeStopDate>-P1D</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT0.000061S</Cadence>
+    </TemporalDescription>
+  </NumericalData>
+</Spase>

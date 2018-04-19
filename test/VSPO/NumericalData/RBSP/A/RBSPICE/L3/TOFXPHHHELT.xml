@@ -1,0 +1,691 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/RBSPICE/L3/TOFXPHHHELT</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A RBSPICE TOF x PH High Energy Low Time Resolution Hydrogen Rates converted Level-3 data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description> This data set contains Van Allen Probe A RBSPICE (Radiation Belt Storm Probes Ion Composition Experiment) Level 3 data, with TOF x (Time of Flight) pulse height hydrogen and oxygen fluxes that are measured at high-energy and low-time resolution by 6 telescopes in 28 channels from ~0.01-2.0 MeV.  Data are available in physical units (counts/(s*sr*cm^2*MeV)) by telescope in sector order, with spin accumulations plotted at the end of accumulation.  Also available are percentage error of measurement, quality flag, current sector number where each spin is dividied into 36 sectors, duration of the accumulation, current spin number of the spacecraft, orbit number, dipole L value using the SM reference frame, and position of the spacecraft in SM coordinates.  
+
+Level 3 data include all level 2 data plus spacecraft positions, pitch angles of the six telecopses, and derived magnetic field values. The processing is done in a series of algorithmic steps in which the EMFISIS (Electric and Magnetic Field Instrument Suite and Integrated Science) magnetic field data is loaded, the ECT (Energetic Particle, Composition and Thermal Plasma Suite) magnetic ephemeris data is loaded, the Level 2 intensity data file is copied, and the pitch angles are calculated and placed into the copied Level 2 file, creating a Level 3 file. </Description>
+      <Acknowledgement>Please acknowledge data provider, Lou Lanzerotti at New Jersey Institute of Technology, and NASA Space Physics Data Facility (SPDF) CDAWeb when using these data.</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Louis.J.Lanzerotti</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>Current QuickLook &amp; Summary Plots, Instrument Information and All Data</Name>
+        <URL>http://rbspice.ftecs.com/Data.html</URL>
+        <Description>at the RBSPICE Instrument Site</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>Interactive Analysis for RBSPICE Data</Name>
+        <URL>http://sd-www.jhuapl.edu/rbspice/MIDL/</URL>
+        <Description>using RBSPICE MIDL</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://ViRBO/NumericalData/RBSP/A/RBSPICE/LEV-3/TOFXPHHHELT/sub spin resolution</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l3/rbspice/tofxphhhelt/</URL>
+        <Description>In CDF via ftp from CDAWeb</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l3/rbspice/tofxphhhelt/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Acknowledgement>Please acknowledge the CDAWeb team at GSFC/SPDF.</Acknowledgement>
+    </AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.gsfc.nasa.gov/</URL>
+        <ProductKey>RBSP-A-RBSPICE_LEV-3_TOFXPHHHELT</ProductKey>
+      </AccessURL>
+      <Format>CDF</Format>
+    </AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/RBSPICE</InstrumentID>
+    <MeasurementType>EnergeticParticles</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-10-29T00:01:17.000Z</StartDate>
+        <RelativeStopDate>-P60D</RelativeStopDate>
+      </TimeSpan>
+    </TemporalDescription>
+    <Parameter>
+      <Name>Epoch </Name>
+      <ParameterKey>Epoch</ParameterKey>
+      <Description>Ephemeris Time of the start  of the accumulation for this measurement. </Description>
+      <Caveats>This is the Ephemeris Time saved as a TT2000 CDF Variable.  The difference between the ET value and the TT value is less than a millisecond.  The ET time values have an accuracy of no greater than 3 milliseconds hence it was determined that there was no reason to convert the ET values into TT. </Caveats>
+      <Units>ns </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>UTC </Name>
+      <ParameterKey>UTC</ParameterKey>
+      <Description>The time of the start of the measurement in as a UTC time string (CCYY-DOYTHH:MM:SS.hhh) </Description>
+      <Units>seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>SCLOCK_Full </Name>
+      <ParameterKey>SCLOCK_Full</ParameterKey>
+      <Description>The time at the start of the measurement of the Spacecraft Clock as (#/Ticks:Fine) </Description>
+      <Units>ticks </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>ET </Name>
+      <ParameterKey>ET</ParameterKey>
+      <Description>The ephemeris time at the start of the measurement. </Description>
+      <Units>seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>MidET </Name>
+      <ParameterKey>MidET</ParameterKey>
+      <Description>The ephemeris time at the mid-point of the measurement. For multi-spin measurements the midET is centered so that it properly represents the time to be used to calculate the look direction of the instrument. </Description>
+      <Units>seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>StopET </Name>
+      <ParameterKey>StopET</ParameterKey>
+      <Description>The ephemeris time at the end of the accumulation of the measurement </Description>
+      <Units>seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Telescope </Name>
+      <ParameterKey>Telescope</ParameterKey>
+      <Description>Identifies the telescope used to collect the measurement </Description>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Channel </Name>
+      <ParameterKey>Channel</ParameterKey>
+      <Description>Identifies the Channel used to collect the measurement </Description>
+      <Structure>
+        <Size>32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Energy </Name>
+      <ParameterKey>FPDU_Energy_Fixed</ParameterKey>
+      <Description>Midpoint energy of the measurement channel. A value of -1 indicates that an energy definition for this channel is not applicable </Description>
+      <Caveats>TJK changed this to be a single array vs. 6x64 since all values for the 6 telescopes are the same and this is what the display s/w is expecting.  </Caveats>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU </Name>
+      <ParameterKey>FPDU</ParameterKey>
+      <Description>FPDU: Proton flux spectrograms in energy, by telescope in sector order (multi-spin accums plotted at end of accum) </Description>
+      <Caveats>The Proton component is measured in the last 20 channels of this data product. The frst 11 channels and last channel have values of a default value. </Caveats>
+      <Units>1/(MeV-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU </Name>
+      <ParameterKey>FPDU_I</ParameterKey>
+      <Description>Telescope-energy images </Description>
+      <Units>1/(MeV-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_Error </Name>
+      <ParameterKey>FPDU_Error</ParameterKey>
+      <Description>The percentage error of the measurement. </Description>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_Crosscalib_RMSE </Name>
+      <ParameterKey>FPDU_Crosscalib_RMSE</ParameterKey>
+      <Description>RMS Error of the natural log of the flux for each channel. </Description>
+      <Caveats>This error value includes all errors associated with the measurement including cross calibration errors </Caveats>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_Quality </Name>
+      <ParameterKey>FPDU_Quality</ParameterKey>
+      <Description>Quality flag for the measurement for each telescope/channel/timestep. .see PREBM standards for definition </Description>
+      <Units>(10=OK) </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Sector </Name>
+      <ParameterKey>Sector</ParameterKey>
+      <Description>The current sector number where each spin is divided into 36 sectors. </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Duration </Name>
+      <ParameterKey>Duration</ParameterKey>
+      <Description>Duration of the accumulation. </Description>
+      <Units>Seconds </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Spin </Name>
+      <ParameterKey>Spin</ParameterKey>
+      <Description>The current spin number of the spacecraft </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_Energy </Name>
+      <ParameterKey>FPDU_Energy</ParameterKey>
+      <Description>Midpoint energy of the measurement channel. A value of -1 indicates that an energy definition for this channel is not applicable </Description>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_EnergyRange </Name>
+      <ParameterKey>FPDU_EnergyRange</ParameterKey>
+      <Description>Minimum and Maximum energy of the measurement channel. A value of -1 indicates that either an energy definition for this channel is not applicable or that the upper end of the channel is undefined - i.e. the channel becomes integral. </Description>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>6 2 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Energy </Name>
+      <ParameterKey>FODU_Energy_Fixed</ParameterKey>
+      <Description>Midpoint energy of the measurement channel. A value of -1 indicates that an energy definition for this channel is not applicable </Description>
+      <Caveats>TJK changed this to be a single array vs. 6x32 since all values for the 6 telescopes are the same and this is what the display s/w is expecting.  </Caveats>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU </Name>
+      <ParameterKey>FODU</ParameterKey>
+      <Description>FODU: Oxygen flux spectrograms in energy, by telescope in sector order (multi-spin accums plotted at end of accum) </Description>
+      <Caveats>The Oxygen component is measured in first 11 channels of this data product. The last 22 channels have values of a default value. </Caveats>
+      <Units>1/(MeV-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU </Name>
+      <ParameterKey>FODU_I</ParameterKey>
+      <Description>Telescope-energy images </Description>
+      <Units>1/(MeV-cm^2-s-sr) </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU_Error </Name>
+      <ParameterKey>FODU_Error</ParameterKey>
+      <Description>The percentage error of the measurement. </Description>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU_Crosscalib_RMSE </Name>
+      <ParameterKey>FODU_Crosscalib_RMSE</ParameterKey>
+      <Description>RMS Error of the natural log of the flux for each channel. </Description>
+      <Caveats>This error value includes all errors associated with the measurement including cross calibration errors </Caveats>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU_Quality </Name>
+      <ParameterKey>FODU_Quality</ParameterKey>
+      <Description>Quality flag for the measurement for each telescope/channel/timestep. .see PREBM standards for definition </Description>
+      <Units>(10=OK) </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU_Energy </Name>
+      <ParameterKey>FODU_Energy</ParameterKey>
+      <Description>Midpoint energy of the measurement channel. A value of -1 indicates that an energy definition for this channel is not applicable </Description>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>6 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU_EnergyRange </Name>
+      <ParameterKey>FODU_EnergyRange</ParameterKey>
+      <Description>Minimum and Maximum energy of the measurement channel. A value of -1 indicates that either an energy definition for this channel is not applicable or that the upper end of the channel is undefined - i.e. the channel becomes integral. </Description>
+      <Units>MeV </Units>
+      <Structure>
+        <Size>6 2 32</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_SM </Name>
+      <ParameterKey>Position_SM</ParameterKey>
+      <Description>Position of the spacecraft in SM coordinates </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_GEO </Name>
+      <ParameterKey>Position</ParameterKey>
+      <Description>Position of the SC in the GEO Reference Frame. </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_GSM </Name>
+      <ParameterKey>Position_GSM</ParameterKey>
+      <Description>Position of the SC in the GSM Reference Frame. </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_Quality </Name>
+      <ParameterKey>Position_Quality</ParameterKey>
+      <Description>The position quality flag, 0=good, 1=bad. </Description>
+      <Units>(0=good) </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>OrbitNumber </Name>
+      <ParameterKey>OrbitNumber</ParameterKey>
+      <Description>Orbit Number at the time of the measurement </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L </Name>
+      <ParameterKey>L</ParameterKey>
+      <Description>Dipole L value calculated using the SM Reference Frame </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L_Eq </Name>
+      <ParameterKey>L_Eq</ParameterKey>
+      <Description>McElqain L value calculated at the Equator (derived from ECT MagEphem data). </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L_Star </Name>
+      <ParameterKey>L_Star</ParameterKey>
+      <Description>Roeder's L* value (derived from ECT MagEphem data) for the average pitch angle. </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>I </Name>
+      <ParameterKey>I</ParameterKey>
+      <Description>Integral invariant for the average pitch angle derived from ECT MagEphem data. </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>K </Name>
+      <ParameterKey>K</ParameterKey>
+      <Description>The Second Invariant ( I*sqrt(Bm) ) for the average pitch angle derived from ECT MagEphem data. </Description>
+      <Units>EarthRadii_G </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>MLT </Name>
+      <ParameterKey>MLT</ParameterKey>
+      <Description>Magnetic Local Time of S/C in Centerted Dipole Coordinates derived from ECT MagEphem data. </Description>
+      <Units>Degrees </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_AlphaValue </Name>
+      <ParameterKey>FPDU_Alpha</ParameterKey>
+      <Description>The pitch angle based upon the look direction of each telescope, alpha=cos-1(B*(-look)) </Description>
+      <Caveats>Identical to Alpha </Caveats>
+      <Units>Degrees </Units>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FPDU_AlphaRangeValue </Name>
+      <ParameterKey>FPDU_AlphaRange</ParameterKey>
+      <Description>The range of the pitch angle (min, max) for each of the pitch angles, Alpha. </Description>
+      <Units>Degrees </Units>
+      <Structure>
+        <Size>6 2</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU_AlphaValue </Name>
+      <ParameterKey>FODU_Alpha</ParameterKey>
+      <Description>The pitch angle based upon the look direction of each telescope, alpha=cos-1(B*(-look)) </Description>
+      <Caveats>Identical to Alpha </Caveats>
+      <Units>Degrees </Units>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>FODU_AlphaRangeValue </Name>
+      <ParameterKey>FODU_AlphaRange</ParameterKey>
+      <Description>The range of the pitch angle (min, max) for each of the pitch angles, Alpha. </Description>
+      <Units>Degrees </Units>
+      <Structure>
+        <Size>6 2</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>AlphaValue </Name>
+      <ParameterKey>Alpha</ParameterKey>
+      <Description>The pitch angle based upon the look direction of each telescope, alpha=cos-1(B*(-look)). </Description>
+      <Units>Degrees </Units>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Alpha_Quality </Name>
+      <ParameterKey>Alpha_Quality</ParameterKey>
+      <Description>A flag describing the Quality of the Pitch Angle as calculated, 0=good, 1=bad. </Description>
+      <Units>(0=good) </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>LStarValue </Name>
+      <ParameterKey>L_StarArr</ParameterKey>
+      <Description>Roeder's L* value (derived from ECT MagEphem data) for each of the telescopes based upon the telescope pitch angle. </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>I_InvValue </Name>
+      <ParameterKey>IArr</ParameterKey>
+      <Description>The Integral invariant for the pitch angle of each telescope derived from ECT MagEphem data. </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>K_InvValue </Name>
+      <ParameterKey>KArr</ParameterKey>
+      <Description>Second Invariant ( I*sqrt(Bm) ) for the pitch angle of each telescope derived from ECT MagEphem data. </Description>
+      <Units>EarthRadii_G </Units>
+      <Structure>
+        <Size>6</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>MinMax </Name>
+      <ParameterKey>MinMax</ParameterKey>
+      <Description>Range variable for the minimum/maximum values of the PitchAngle Range </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_SM </Name>
+      <ParameterKey>Position_SM_TT</ParameterKey>
+      <Description>[Labels on plots] Position of the spacecraft in SM coordinates </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_GEO </Name>
+      <ParameterKey>Position_TT</ParameterKey>
+      <Description>[Labels on plots] Position of the SC in the GEO Reference Frame. </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>Position_GSM </Name>
+      <ParameterKey>Position_GSM_TT</ParameterKey>
+      <Description>[Labels on plots] Position of the SC in the GSM Reference Frame. </Description>
+      <Units>EarthRadii </Units>
+      <Structure>
+        <Size>3</Size>
+      </Structure>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>OrbitNumber </Name>
+      <ParameterKey>OrbitNumber_TT</ParameterKey>
+      <Description>[Labels on plots] Orbit Number at the time of the measurement </Description>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L </Name>
+      <ParameterKey>L_TT</ParameterKey>
+      <Description>[Labels on plots] Dipole L value calculated using the SM Reference Frame </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L_Eq </Name>
+      <ParameterKey>L_Eq_TT</ParameterKey>
+      <Description>[Labels on plots] McElqain L value calculated at the Equator (derived from ECT MagEphem data). </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>L_Star </Name>
+      <ParameterKey>L_Star_TT</ParameterKey>
+      <Description>[Labels on plots] Roeder's L* value(derived from ECT MagEphem data) for the average pitch angle. </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>I </Name>
+      <ParameterKey>I_TT</ParameterKey>
+      <Description>[Labels on plots] Integral invariant for the average pitch angle derived from ECT MagEphem data. </Description>
+      <Units>EarthRadii </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>K </Name>
+      <ParameterKey>K_TT</ParameterKey>
+      <Description>[Labels on plots] The Second Invariant ( I*sqrt(Bm) ) for the average pitch angle derived from ECT MagEphem data. </Description>
+      <Units>EarthRadii_G </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+    <Parameter>
+      <Name>MLT </Name>
+      <ParameterKey>MLT_TT</ParameterKey>
+      <Description>[Labels on plots] Magnetic Local Time of S/C in Centerted Dipole Coordinates derived from ECT MagEphem data. </Description>
+      <Units>Degrees </Units>
+      <Mixed>
+        <MixedQuantity>Other</MixedQuantity>
+      </Mixed>
+    </Parameter>
+  </NumericalData>
+</Spase>

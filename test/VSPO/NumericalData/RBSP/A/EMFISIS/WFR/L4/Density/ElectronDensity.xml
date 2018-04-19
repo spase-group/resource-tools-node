@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema">
+  <Version>2.2.9</Version>
+  <NumericalData>
+    <ResourceID>spase://VSPO/NumericalData/RBSP/A/EMFISIS/WFR/L4/Density/ElectronDensity</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Van Allen Probe A EMFISIS Waveform Receiver Electron Density Level 4 Data</ResourceName>
+      <ReleaseDate>2018-03-26T14:24:21Z</ReleaseDate>
+      <Description>RBSP-A Electric and Magnetic Field Instrument Suite and Integrated Science (EMFISIS) Density and other Parameters inferred by digitizing the Trace on the Spectrograms</Description>
+      <Acknowledgement>C. Kletzing</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Craig.A.Kletzing</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Lee.Frost.Bargatze</PersonID>
+        <Role>MetadataContact</Role>
+      </Contact>
+      <InformationURL>
+        <Name>EMFISIS Data Index</Name>
+        <URL>http://emfisis.physics.uiowa.edu/data/index</URL>
+        <Description>data access (including advanced Autoplot graphics for data files</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>EMFISIS Instrument Description</Name>
+        <URL>http://emfisis.physics.uiowa.edu/</URL>
+        <Description>EMFISIS Instrument Description</Description>
+      </InformationURL>
+      <InformationURL>
+        <Name>The Van Allen Probes Home Page</Name>
+        <URL>http://vanallenprobes.jhuapl.edu</URL>
+        <Description>Science Gateway (including Mission Rules of the Road for Data Usage)</Description>
+      </InformationURL>
+      <PriorID>spase://VSPO/NumericalData/RBSP/A/EMFISIS/WaveformReceiver/ElectronDensity/Level4</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l4/emfisis/density/</URL>
+        <Description>In CDF via ftp from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l4/emfisis/density/</URL>
+        <Description>In CDF via http from SPDF.</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.sci.gsfc.nasa.gov/index.html/</URL>
+        <ProductKey>RBSP-A_DENSITY_EMFISIS-L4</ProductKey>
+        <Description>Access to ASCII, CDF, and plots via NASA/GSFC CDAWeb</Description>
+      </AccessURL>
+      <Format>CDF</Format>
+      <Encoding>None</Encoding>
+      <Acknowledgement>C. Kletzing. Please acknowledge the data providers and CDAWeb when using these data.</Acknowledgement>
+    </AccessInformation>
+    <ProcessingLevel>Calibrated</ProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/RBSP/A/EMFISIS</InstrumentID>
+    <MeasurementType>Waves</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>2012-09-15T00:00:00.000</StartDate>
+        <RelativeStopDate>-P1M</RelativeStopDate>
+      </TimeSpan>
+      <Cadence>PT1S</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Earth.Magnetosphere</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.Main</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.RadiationBelt</ObservedRegion>
+    <ObservedRegion>Earth.NearSurface.EquatorialRegion</ObservedRegion>
+  </NumericalData>
+</Spase>
