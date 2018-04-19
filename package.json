@@ -1,6 +1,6 @@
 {
   "name": "spase-resource-tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tools to validate and scan SPASE metadata.",
   "main": "index.js",
   "scripts": {
