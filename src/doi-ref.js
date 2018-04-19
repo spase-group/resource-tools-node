@@ -86,6 +86,12 @@ var authority = function(resourceID) {
 };
 
 function main(args) {
+	// If no files or options show help
+	if (args.length == 0) {
+	  yargs.showHelp();
+	  return;
+	}
+
 	// Perform scan 
 	fileList = walkSync(args[2]);
 
