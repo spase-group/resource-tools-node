@@ -4,7 +4,7 @@ A collection of tools for working with SPASE resource descriptions.
 
 ## Installation
 
-`npm install spase-resource-tools`
+`npm install spase-resource-tools -g`
 
 ## Tools
 
