@@ -13,7 +13,6 @@ const yargs = require('yargs');
 const path = require('path');
 const request = require('request-promise-native');
 const ftp = require('ftp-get');
-//const jsftp = require('jsftp');
 const fastXmlParser = require('fast-xml-parser');
 const walk = require('walk-folder-tree');
 const util = require('util');

@@ -5,8 +5,9 @@
     Author: Todd King
 **/
 const fs = require('fs');
-const xml2js = require('xml2js');
+const fastXmlParser = require('fast-xml-parser');
 const yargs = require('yargs');
+const path = require('path');
 
 var options  = yargs
 	.version('1.0.0')
@@ -20,17 +21,33 @@ var options  = yargs
 	// version
 	.options({
 		// Verbose flag
-		'verbose' : {
-			alias: 'v',
+		'v' : {
+			alias: 'verbose',
 			describe : 'show information while processing files',
 			type: 'boolean',
 			default: false
 		},
-		
+				
 		// help text
-		'help' : {
-			alias : 'h',
+		'h' : {
+			alias : 'help',
 			description: 'show information about the app.'
+		},
+		
+		// Recursively scan for files
+		'r' : {
+			alias: 'recurse',
+			describe : 'Recursively process all files starting at path.',
+			type: 'boolean',
+			default: false
+		},
+
+		// File name extensions
+		'x' : {
+			alias: 'ext',
+			describe : 'File name extension for filtering files when processing folders.',
+			type: 'string',
+			default: '.xml'
 		},
 	})
 	.argv
@@ -38,24 +55,14 @@ var options  = yargs
 
 var args = options._;	// Unprocessed command line arguments
 
-// List all files in a directory in Node.js recursively in a synchronous fashion
-var walkSync = function(dir, filelist) {
-	varfs = fs || require('fs');
-	filelist = filelist || [];
-	if ( fs.statSync(dir).isDirectory() ) {
-		var files = fs.readdirSync(dir);
-		files.forEach(function(file) {
-			if ( fs.statSync(dir + '/' + file).isDirectory() ) {
-				filelist = walkSync(dir + '/' + file, filelist);
-			} else {
-				filelist.push(dir + '/' + file);
-			}
-		});
-	} else {
-		filelist.push(dir);
-	}
-	return filelist;
-};
+var readXML = function(file) {
+	return new Promise(function(resolve, reject) {
+		fs.readFile(file, 'utf8', function(err, data) {
+			if(err) { reject(err); }
+			else { resolve(fastXmlParser.parse(data, { ignoreAttributes : false, parseAttributeValue : true } ) ); }
+		})
+	});
+}
 
 /*
  Build author list from Contact with Role of PrincipalInvestigator.
@@ -76,7 +83,7 @@ var authorList = function(contact) {
 };
 
 /*
-Extract authroity portion of resource ID
+Extract authority portion of resource ID
 */
 var authority = function(resourceID) {
 	var buffer = "";
@@ -87,32 +94,62 @@ var authority = function(resourceID) {
 	return part[0];
 };
 
-function main(args) {
+async function makeDOI(root, file, recurse) {
+	if(file.startsWith(".")) return;	// No hidden items
+	
+	console.log("root: " + root);
+	
+	var pathname = path.join(root, file);
+	if( ! fs.existsSync(pathname)) {
+		console.log("No such file or directory: " + file);
+		return;
+	}
+	if(fs.statSync(pathname).isDirectory()) {
+		if(recurse) {	// Check all files
+			if(options.verbose) console.log("Scanning directory: " + pathname);
+			fs.readdir(pathname, function(err, items) {
+				for (var i  =0; i < items.length; i++) {
+					makeDOI(pathname, items[i], recurse);
+				}
+			});
+		}
+	}
+	// Else - its a file
+	if(pathname.endsWith(options.ext)) {
+		var content = await readXML(pathname).catch(e => {
+			console.log('Error on readXML');
+		 // error caught
+		});
+
+		var root = null;
+		if(content.Spase.NumericalData) { root = content.Spase.NumericalData; }
+		if(content.Spase.DisplayData) { root = content.Spase.DisplayData; }
+		if(root == null) {
+			console.log("Unknown resource type.");
+		} else {
+			console.log( "location: http://spase.info/registry/render?id=" + root.ResourceID );
+			console.log( "creator: " + authorList(root.ResourceHeader.Contact) );
+			console.log( "title: " + root.ResourceHeader.ResourceName );
+			console.log( "publisher: " + authority(root.ResourceID) );
+			console.log( "year: " + root.ResourceHeader.ReleaseDate.substring(0,4) );
+			console.log( "resource.type: " + "Dataset" );
+			console.log( "" );
+		};
+	}
+}
+
+var main = function(args) {
 	// If no files or options show help
 	if (args.length == 0) {
 	  yargs.showHelp();
 	  return;
 	}
 
-	// Perform scan 
-	fileList = walkSync(args[2]);
-
-	// List results
-	fileList.forEach(function(file) {	
-		var parser = new xml2js.Parser();
-
-		fs.readFile(file, function(err, data) {
-			parser.parseString(data, function (err, result) {
-				console.log( JSON.stringify(result, null, 3) );
-				console.log( "location: http://spase.info/registry/render?id=" + result.Spase.NumericalData[0].ResourceID );
-				console.log( "creator: " + authorList(result.Spase.NumericalData[0].ResourceHeader[0].Contact) );
-				console.log( "title: " + result.Spase.NumericalData[0].ResourceHeader[0].ResourceName );
-				console.log( "publisher: " + authority(result.Spase.NumericalData[0].ResourceID[0]) );
-				console.log( "year: " + result.Spase.NumericalData[0].ResourceHeader[0].ReleaseDate[0].substring(0,4) );
-				console.log( "resource.type: " + "Dataset" );
-			});
-		});
-	})
+	// Check each file/folder
+	for(let i = 0; i < args.length; i++) {
+		var file = args[i];
+		makeDOI(path.dirname(file), path.basename(file), options.recurse);
+	};
 }
 
 main(args);

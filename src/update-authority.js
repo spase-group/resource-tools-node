@@ -108,7 +108,7 @@ var getReleaseDate = function() {
 	return stamp.toISOString().substring(0, 23);	// Drop trailing "Z"
 }
 
-function readXML(file) {
+var readXML = function(file) {
 	return new Promise(function(resolve, reject) {
 		fs.readFile(file, 'utf8', function(err, data) {
 			if(err) { reject(err); }
