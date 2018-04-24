@@ -16,13 +16,16 @@ const ftp = require('ftp-get');
 const fastXmlParser = require('fast-xml-parser');
 const walk = require('walk-folder-tree');
 const util = require('util');
+const Entities = require('html-entities').XmlEntities;
+ 
+const entities = new Entities();
 
 const ftpHead = util.promisify(ftp.head);
 const ftpGet = util.promisify(ftp.get);
 
 // Configure the app
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -236,14 +239,14 @@ var main = function(args)
 					var url = list[i];
 					try {
 						if(url.startsWith("http:")) {
-							var response = await request.head(url);
+							var response = await request.head(entities.decode(url));
 						}
 						if(url.startsWith("ftp:")) {
-							console.log('ftpHead: ' + url);
+							// console.log('ftpHead: ' + url);
 							try {
 								var response = await ftpHead(url);
 							} catch(e) {
-								console.log('ftpGet: ' + url);
+								// console.log('ftpGet: ' + url);
 								var response = await ftpget(url);
 							}
 						}
