@@ -25,7 +25,7 @@ const ftpGet = util.promisify(ftp.get);
 
 // Configure the app
 var options  = yargs
-	.version('1.0.1')
+	.version('1.0.2')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -183,11 +183,12 @@ var main = function(args)
 	  return;
 	}
 	// var regex = new RegExp('/' + options.ext + '$/');	// Ends with extension
-	var regex = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	
 	var root = args[0];
 	
-	walk(root, { filterFolders: /^.*$/, filterFiles: regex, recurse: options.recurse }, async function(params, cb) {
+	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
 		// if( ! params.directory ) { validate(params.path); }
 		if( ! params.directory ) {
 			fileCnt++;
@@ -209,8 +210,8 @@ var main = function(args)
 						try {
 							var result = fastXmlParser.parse(response);
 							if( ! result.Response ) {
-								console.log("    FILE: " + pathname);
 								console.log(" INVALID: " + id);
+								console.log("    FILE: " + pathname);
 								idFailureCnt++;
 							} else {
 								if( result.Response.Known ) { if ( ! options.errors) { console.log("      OK: " + id); } }
@@ -254,6 +255,7 @@ var main = function(args)
 						console.log("      OK: " + url); 
 					} catch(e) {
 						console.log(" INVALID: " + url); urlFailureCnt++;
+						console.log("    FILE: " + pathname);
 						console.log("        : " + e.message);
 					}
 				}

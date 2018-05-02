@@ -13,7 +13,7 @@ const fastXmlParser = require('fast-xml-parser');
 const walk = require('walk-folder-tree');
 
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
     .usage('Read a resource description and place it in an appropriately named file and path based on the ResourceID.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'Place "example.xml" in an appropriately named file and path.')
@@ -164,10 +164,11 @@ function main(args) {
 	  return;
 	}
 
-	var regex = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	
 	var root = args[0];
-	walk(root, { filterFolders: /^.*$/, filterFiles: regex, recurse: options.recurse }, async function(params, cb) {
+	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
 		// if( ! params.directory ) { validate(params.path); }
 		if( ! params.directory ) {	// A file - process
 			fileCnt++;

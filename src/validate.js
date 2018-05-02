@@ -18,7 +18,7 @@ const walk = require('walk-folder-tree');
 var libxml = require('libxmljs');
 
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('Validate a SPASE resource description using a specified version of the data dictionary (XML schema).')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')
@@ -95,10 +95,17 @@ function main(args) {
 	  return;
 	}
 
-	var regex = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	// var includeFolders = new RegExp('/^[^.]/'); //  ignore folders starting with . 
+	// var includeFolders = new RegExp('/^.*$/');	// All files
+	// var includeFolders = new RegExp('/(^[.]$|^[^.])/'); //  ignore folders starting with ., except for '.' (current directory)
+	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	
 	var root = args[0];
-	walk(root, { filterFolders: /^.*$/, filterFiles: regex, recurse: options.recurse }, async function(params, cb) {
+	if(root == "." && ! options.recurse) {
+		
+	}
+	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
 		// if( ! params.directory ) { validate(params.path); }
 		if( ! params.directory ) {
 			fileCnt++;

@@ -16,7 +16,7 @@ const walk = require('walk-folder-tree');
  
 // Configure the app
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('List an element value in an XML document.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'list values for all ResourceID tags in "example.xml"')
@@ -108,15 +108,16 @@ var main = function(args)
 	  yargs.showHelp();
 	  return;
 	}
-	// var regex = new RegExp('/' + options.ext + '$/');	// Ends with extension
-	var regex = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+
+	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	var tagRegex = new RegExp('^' + options.id + '$');	// literal dot (.) and ends with extension
 	
 	var root = args[0];
 	
 	console.log('Scanning for: ' + options.id);
 	
-	walk(root, { filterFolders: /^.*$/, filterFiles: regex, recurse: options.recurse }, async function(params, cb) {
+	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
 		// if( ! params.directory ) { validate(params.path); }
 		if( ! params.directory ) {
 			fileCnt++;
