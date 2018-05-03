@@ -25,7 +25,7 @@ const ftpGet = util.promisify(ftp.get);
 
 // Configure the app
 var options  = yargs
-	.version('1.0.2')
+	.version('1.0.3')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -163,7 +163,6 @@ function findAll(dom, pattern, exclude, list) {
 			for(var i = 0; i < item.length; i++) { findAll(item[i], pattern, exclude, fullList); }
 		}
 		if( typeof dom[name] === 'object') {	// An item with children
-			// console.log((typeof dom[name]) + " => " + name + ":" + Object.keys(dom[name]).length);
 			findAll(dom[name], pattern, exclude, fullList);
 		}
 	}
@@ -175,6 +174,78 @@ function checkFtp(url) {
 	
 }
 
+async function refcheckFile(pathname) {
+	fileCnt++;
+
+	var xmlDoc = fs.readFileSync(pathname, 'utf8');
+	var content = fastXmlParser.parse(xmlDoc);	// Check syntax
+	
+	// Check Identifiers
+	if(options.id) {
+		var list = findAll(content, /.*ID$/, /^PriorID$/);
+		for(let i = 0; i < list.length; i++) {
+			idCnt++;
+			var id = list[i];
+
+			try {
+				if(options.verbose) { console.log('Checking with: ' + options.service + "?c=yes&i=" + id); }
+
+				var response = await request(options.service + "?c=yes&i=" + id);
+				try {
+					var result = fastXmlParser.parse(response);
+					if( ! result.Response ) {
+						console.log(" INVALID: " + id);
+						console.log("    FILE: " + pathname);
+						idFailureCnt++;
+					} else {
+						if( result.Response.Known ) { if ( ! options.errors) { console.log("      OK: " + id); } }
+						else { 	console.log(" INVALID: " + id); console.log("    FILE: " + pathname); idFailureCnt++; }
+					}
+				} catch(error) {
+					console.log(" INVALID: " + id);
+					console.log("    FILE: " + pathname);
+					console.log("        : " + error.message);
+					idFailureCnt++;
+				}
+			} catch(e) {
+				console.log(" INVALID: " + id);
+				console.log("    FILE: " + pathname);
+				console.log("        : " + error.message);
+				idFailureCnt++;
+			}
+		}
+	}
+	
+	// Check URL
+	if(options.url) {
+		var list = findAll(content, /^URL$/);
+		for(let i = 0; i < list.length; i++) {
+			urlCnt++;
+			var url = list[i];
+			try {
+				if(url.startsWith("http:")) {
+					var response = await request.head(entities.decode(url));
+				}
+				if(url.startsWith("ftp:")) {
+					// console.log('ftpHead: ' + url);
+					try {
+						var response = await ftpHead(url);
+					} catch(e) {
+						// console.log('ftpGet: ' + url);
+						var response = await ftpget(url);
+					}
+				}
+				
+				console.log("      OK: " + url); 
+			} catch(e) {
+				console.log(" INVALID: " + url); urlFailureCnt++;
+				console.log("    FILE: " + pathname);
+				console.log("        : " + e.message);
+			}
+		}
+	}	
+}
+
 var main = function(args)
 {
 	// If no files or options show help
@@ -182,90 +253,26 @@ var main = function(args)
 	  yargs.showHelp();
 	  return;
 	}
-	// var regex = new RegExp('/' + options.ext + '$/');	// Ends with extension
+
 	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
 	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	
 	var root = args[0];
-	
-	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
-		// if( ! params.directory ) { validate(params.path); }
-		if( ! params.directory ) {
-			fileCnt++;
-			var pathname = path.join(root, params.path);
-			var xmlDoc = fs.readFileSync(pathname, 'utf8');
-			var content = fastXmlParser.parse(xmlDoc);	// Check syntax
-			
-			// Check Identifiers
-			if(options.id) {
-				var list = findAll(content, /.*ID$/, /^PriorID$/);
-				for(let i = 0; i < list.length; i++) {
-					idCnt++;
-					var id = list[i];
 
-					try {
-						// console.log('Checking with: ' + options.service + "?c=yes&i=" + id);
-
-						var response = await request(options.service + "?c=yes&i=" + id);
-						try {
-							var result = fastXmlParser.parse(response);
-							if( ! result.Response ) {
-								console.log(" INVALID: " + id);
-								console.log("    FILE: " + pathname);
-								idFailureCnt++;
-							} else {
-								if( result.Response.Known ) { if ( ! options.errors) { console.log("      OK: " + id); } }
-								else { 	console.log(" INVALID: " + id); console.log("    FILE: " + pathname); idFailureCnt++; }
-							}
-						} catch(error) {
-							console.log(" INVALID: " + id);
-							console.log("    FILE: " + pathname);
-							console.log("        : " + error.message);
-							idFailureCnt++;
-						}
-					} catch(e) {
-						console.log(" INVALID: " + id);
-						console.log("    FILE: " + pathname);
-						console.log("        : " + error.message);
-						idFailureCnt++;
-					}
-				}
+	if(fs.statSync(root).isDirectory()) {	// Walk the tree	
+		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
+			if( ! params.directory ) {
+				var pathname = path.join(root, params.path);
+				await refcheckFile(pathname);
 			}
-			
-			// Check URL
-			if(options.url) {
-				var list = findAll(content, /^URL$/);
-				for(let i = 0; i < list.length; i++) {
-					urlCnt++;
-					var url = list[i];
-					try {
-						if(url.startsWith("http:")) {
-							var response = await request.head(entities.decode(url));
-						}
-						if(url.startsWith("ftp:")) {
-							// console.log('ftpHead: ' + url);
-							try {
-								var response = await ftpHead(url);
-							} catch(e) {
-								// console.log('ftpGet: ' + url);
-								var response = await ftpget(url);
-							}
-						}
-						
-						console.log("      OK: " + url); 
-					} catch(e) {
-						console.log(" INVALID: " + url); urlFailureCnt++;
-						console.log("    FILE: " + pathname);
-						console.log("        : " + e.message);
-					}
-				}
-			}
-		}
-		cb();
-	}).then(function() {
-		console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
-		console.log(" SUMMARY: ID Failures: " + idFailureCnt + "; URL Failures: " + urlFailureCnt);
-	});
+			cb();
+		}).then(function() {
+			console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
+			console.log(" SUMMARY: ID Failures: " + idFailureCnt + "; URL Failures: " + urlFailureCnt);
+		});
+	} else {	// Single file
+		refcheckFile(root);
+	}
 	
 }
 

@@ -16,7 +16,7 @@ const walk = require('walk-folder-tree');
  
 // Configure the app
 var options  = yargs
-	.version('1.0.1')
+	.version('1.0.2')
 	.usage('List an element value in an XML document.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'list values for all ResourceID tags in "example.xml"')
@@ -74,6 +74,7 @@ var args = options._;
 
 // Global variables
 var fileCnt = 0;
+var tagRegex = /^ResourceID$/;
 
 var errHandler = function(err) {
     console.log(err);
@@ -101,6 +102,20 @@ function findAll(dom, pattern, exclude, list) {
 	return fullList;
 }
 
+async function getElement(pathname) {
+	fileCnt++;
+	
+	var xmlDoc = fs.readFileSync(pathname, 'utf8');
+	var content = fastXmlParser.parse(xmlDoc);	// Check syntax
+	
+	// Check Identifiers
+	var list = findAll(content, tagRegex);
+	for(let i = 0; i < list.length; i++) {
+		if(options.list) { console.log(list[i] + "," + pathname); }
+		else { console.log(list[i]); }
+	}	
+}
+
 var main = function(args)
 {
 	// If no files or options show help
@@ -109,33 +124,29 @@ var main = function(args)
 	  return;
 	}
 
+	tagRegex = new RegExp('^' + options.id + '$');	// literal dot (.) and ends with extension
+
 	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
 	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
-	var tagRegex = new RegExp('^' + options.id + '$');	// literal dot (.) and ends with extension
 	
 	var root = args[0];
 	
 	console.log('Scanning for: ' + options.id);
 	
-	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
-		// if( ! params.directory ) { validate(params.path); }
-		if( ! params.directory ) {
-			fileCnt++;
-			var pathname = path.join(root, params.path);
-			var xmlDoc = fs.readFileSync(pathname, 'utf8');
-			var content = fastXmlParser.parse(xmlDoc);	// Check syntax
-			
-			// Check Identifiers
-			var list = findAll(content, tagRegex);
-			for(let i = 0; i < list.length; i++) {
-				if(options.list) { console.log(list[i] + "," + pathname); }
-				else { console.log(list[i]); }
+	if(fs.statSync(root).isDirectory()) {	// Walk the tree	
+		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
+			// if( ! params.directory ) { validate(params.path); }
+			if( ! params.directory ) {
+				var pathname = path.join(root, params.path);
+				await getElement(pathname);
 			}
-		}
-		cb();
-	}).then(function() {
-		console.log(" SUMMARY: scanned: " + fileCnt + " files(s); ");
-	});
+			cb();
+		}).then(function() {
+			console.log(" SUMMARY: scanned: " + fileCnt + " files(s); ");
+		});
+	} else {	// Single file
+		getElement(root);
+	}
 	
 }
 

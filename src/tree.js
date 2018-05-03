@@ -73,14 +73,20 @@ var main = function(args)
 	}
 	
 	var root = args[0];
-	
-	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
-		console.log(path.join(root, params.path));
+
+	if(fs.statSync(root).isDirectory()) {	// Walk the tree		
+		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
+			console.log(path.join(root, params.path));
+			fileCnt++;
+			cb();
+		}).then(function() {
+			console.log(" SUMMARY: " + fileCnt + " files(s); ");
+		});
+	} else {	// Single file
 		fileCnt++;
-		cb();
-	}).then(function() {
+		console.log(root);
 		console.log(" SUMMARY: " + fileCnt + " files(s); ");
-	});
+	}
 	
 }
 

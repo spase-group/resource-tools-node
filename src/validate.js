@@ -18,7 +18,7 @@ const walk = require('walk-folder-tree');
 var libxml = require('libxmljs');
 
 var options  = yargs
-	.version('1.0.1')
+	.version('1.0.2')
 	.usage('Validate a SPASE resource description using a specified version of the data dictionary (XML schema).')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')
@@ -30,16 +30,16 @@ var options  = yargs
 	// version
 	.options({
 		// Verbose flag
-		'verbose' : {
-			alias: 'v',
+		'v' : {
+			alias: 'verbose',
 			describe : 'show information while processing files',
 			type: 'boolean',
 			default: false
 		},
 		
 		// help text
-		'help' : {
-			alias : 'h',
+		'h' : {
+			alias : 'help',
 			description: 'show information about the app.'
 		},
 		
@@ -88,6 +88,32 @@ async function getSchema(version) {
 	}
 }
 
+async function validateFile(pathname) {
+	fileCnt++;
+	var xmlDoc = fs.readFileSync(pathname, 'utf8');
+	var xml = libxml.parseXml(xmlDoc);
+	var result = fastXmlParser.parse(xmlDoc);	// Check syntax
+	
+	// Get Schema
+	var xsdDoc = "";
+	if(options.schema != null) {	// Read from file
+		xsdDoc = fs.readFileSync(options.schema, 'utf8');
+	} else {	// Load from server
+		xsdDoc = await getSchema(result.Spase.Version);
+	}
+	
+	var xsd = libxml.parseXml(xsdDoc);	
+	if(xml.validate(xsd)) {
+		console.log('      OK: ' + pathname);
+	} else {
+		console.log(' INVALID: ' + pathname);
+		failureCnt++;
+		xml.validationErrors.forEach(function(item) {
+			console.log('   Line: ' + item.line + "; " + item.message.trim());
+		});
+	}
+}
+
 function main(args) {
 	// If no files or options show help
 	if (args.length == 0) {
@@ -96,47 +122,24 @@ function main(args) {
 	}
 
 	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
-	// var includeFolders = new RegExp('/^[^.]/'); //  ignore folders starting with . 
-	// var includeFolders = new RegExp('/^.*$/');	// All files
-	// var includeFolders = new RegExp('/(^[.]$|^[^.])/'); //  ignore folders starting with ., except for '.' (current directory)
 	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	
 	var root = args[0];
-	if(root == "." && ! options.recurse) {
-		
+
+	if(fs.statSync(root).isDirectory()) {	// Walk the tree
+		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
+			// if( ! params.directory ) { validate(params.path); }
+			if( ! params.directory ) {
+				var pathname = path.join(root, params.path);
+				await validateFile(pathname);
+			}
+			cb();
+		}).then(function() {
+			console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + failureCnt + " failure(s)");
+		});
+	} else {	// Single file
+		validateFile(root);
 	}
-	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
-		// if( ! params.directory ) { validate(params.path); }
-		if( ! params.directory ) {
-			fileCnt++;
-			var pathname = path.join(root, params.path);
-			var xmlDoc = fs.readFileSync(pathname, 'utf8');
-			var xml = libxml.parseXml(xmlDoc);
-			var result = fastXmlParser.parse(xmlDoc);	// Check syntax
-			
-			// Get Schema
-			var xsdDoc = "";
-			if(options.schema != null) {	// Read from file
-				xsdDoc = fs.readFileSync(options.schema, 'utf8');
-			} else {	// Load from server
-				xsdDoc = await getSchema(result.Spase.Version);
-			}
-			
-			var xsd = libxml.parseXml(xsdDoc);	
-			if(xml.validate(xsd)) {
-				console.log('      OK: ' + pathname);
-			} else {
-				console.log(' INVALID: ' + pathname);
-				failureCnt++;
-				xml.validationErrors.forEach(function(item) {
-					console.log('   Line: ' + item.line + "; " + item.message.trim());
-				});
-			}
-		}
-		cb();
-	}).then(function() {
-		console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + failureCnt + " failure(s)");
-	});
 }
 
 main(options._);

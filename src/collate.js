@@ -13,7 +13,7 @@ const fastXmlParser = require('fast-xml-parser');
 const walk = require('walk-folder-tree');
 
 var options  = yargs
-	.version('1.0.1')
+	.version('1.0.2')
     .usage('Read a resource description and place it in an appropriately named file and path based on the ResourceID.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'Place "example.xml" in an appropriately named file and path.')
@@ -24,16 +24,16 @@ var options  = yargs
 	// version
 	.options({
 		// Verbose flag
-		'verbose' : {
-			alias: 'v',
+		'v' : {
+			alias: 'verbose',
 			describe : 'show information while processing files',
 			type: 'boolean',
 			default: false
 		},
 		
 		// help text
-		'help' : {
-			alias : 'h',
+		'h' : {
+			alias : 'help',
 			description: 'show information about the app.'
 		},
 		
@@ -109,14 +109,14 @@ function makePath(pathname)
 	if(n > 0) path = path.substring(0, n);
 
 	if (!fs.existsSync(path)) {
-            var dirName = "";
-            var pathSplit = path.split('/');
-            for (var index = 0; index < pathSplit.length; index++) {
-                dirName += pathSplit[index]+'/';
-                if (!fs.existsSync(dirName))
-                    fs.mkdirSync(dirName);
-            }
-        }
+		var dirName = "";
+		var pathSplit = path.split('/');
+		for (var index = 0; index < pathSplit.length; index++) {
+			dirName += pathSplit[index]+'/';
+			if (!fs.existsSync(dirName))
+				fs.mkdirSync(dirName);
+		}
+	}
 }
 
 /**
@@ -151,6 +151,33 @@ function findAll(dom, pattern, exclude, list) {
 	return fullList;
 }
 
+async function collateFile(pathname) {
+	fileCnt++;
+
+	pathname = pathname.replace(/\\/g, '/');	// Normalize path
+
+	var xmlDoc = fs.readFileSync(pathname, 'utf8');
+	var xml = fastXmlParser.parse(xmlDoc);	// Check syntax
+
+	var id = findAll(xml, '^ResourceID$');
+	var resourcePath = makeResourcePath(options.base, id[0]);
+	
+	if(options.verbose) console.log( "Checking: " + pathname );
+	
+	if(options.check) {	// Check if file is in correct location
+		if( resourcePath.startsWith('./') ) {	// Make pathname match relative
+			if( ! pathname.startsWith('/') ) { pathname = "./" + pathname; }
+		}
+		if(resourcePath != pathname) {
+			failCnt++;
+			console.log("  ERROR: " + pathname + " should be named  " + resourcePath);
+		}
+	} else {	// Copy/rename path to destination
+		makePath(resourcePath);
+		fs.writeFileSync(resourcePath, fs.readFileSync(pathname));
+	}
+}
+
 /**
  *  @brief Perform task.
  *  
@@ -168,41 +195,20 @@ function main(args) {
 	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	
 	var root = args[0];
-	walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
-		// if( ! params.directory ) { validate(params.path); }
-		if( ! params.directory ) {	// A file - process
-			fileCnt++;
-						
-			var pathname = path.join(root, params.path);
-			pathname = pathname.replace(/\\/g, '/');	// Normalize path
 
-			var xmlDoc = fs.readFileSync(pathname, 'utf8');
-			// var xml = libxml.parseXml(xmlDoc);
-			var xml = fastXmlParser.parse(xmlDoc);	// Check syntax
-
-			var id = findAll(xml, '^ResourceID$');
-			var resourcePath = makeResourcePath(options.base, id[0]);
-			
-			if(options.verbose) console.log( "Checking: " + pathname );
-			
-			if(options.check) {	// Check if file is in correct location
-				if( resourcePath.startsWith('./') ) {	// Make pathname match relative
-					if( ! pathname.startsWith('/') ) { pathname = "./" + pathname; }
-				}
-				if(resourcePath != pathname) {
-					failCnt++;
-					console.log("  ERROR: " + pathname + " should be named  " + resourcePath);
-				}
-			} else {	// Copy/rename path to destination
-				makePath(resourcePath);
-				fs.writeFileSync(resourcePath, fs.readFileSync(pathname));
+	if(fs.statSync(root).isDirectory()) {	// Walk the tree
+		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
+			if( ! params.directory ) {	// A file - process
+				var pathname = path.join(root, params.path);
+				await collateFile(pathname);
 			}
-
-		}
-		cb();
-	}).then(function() {
-		console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + failCnt + " failure(s)");
-	});
+			cb();
+		}).then(function() {
+			console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + failCnt + " failure(s)");
+		});
+	} else {	// Single file
+		collateFile(root);
+	}
 }
 
 main(options._);

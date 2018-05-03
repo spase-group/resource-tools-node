@@ -144,14 +144,38 @@ async function updateXML(file) {
      // error caught
 	});
 
+	var needPrior = true;
 	var root = null;
+	
 	if(content.Spase.NumericalData) { root = content.Spase.NumericalData; }
 	if(content.Spase.DisplayData) { root = content.Spase.DisplayData; }
+	if(content.Spase.Catalog) { root = content.Spase.Catalog; }
+	if(content.Spase.Document) { root = content.Spase.Document; }
+	if(content.Spase.Instrument) { root = content.Spase.Instrument; }
+	if(content.Spase.Observatory) { root = content.Spase.Observatory; }
+	if(content.Spase.Registry) { root = content.Spase.Registry; }
+	if(content.Spase.Service) { root = content.Spase.Service; }
+	if(content.Spase.Repository) { root = content.Spase.Repository; }
+	if(content.Spase.Annotation) { root = content.Spase.Annotation; }
+	
+	if(content.Spase.Person) { root = content.Spase.Person; needPrior = false; }
+	if(content.Spase.Granule) { root = content.Spase.Granule; needPrior = false; }
+
+	// Simulation Extensions
+	if(content.Spase.SimulationRun) { root = content.Spase.SimulationRun; }
+	if(content.Spase.SimulationModel) { root = content.Spase.SimulationModel; }
+	if(content.Spase.DisplayOutput) { root = content.Spase.DisplayOutput; }
+	if(content.Spase.NumericalOutput) { root = content.Spase.NumericalOutput; }
+	
 	if(root == null) {
 		console.log("Unknown resource type.");
 		return;
 	}
-	addPrior(root.ResourceHeader, root.ResourceID);
+	
+	if(needPrior) {
+		addPrior(root.ResourceHeader, root.ResourceID);
+	}
+	
 	// console.log( JSON.stringify(root[0].ResourceHeader[0], null, 3) );
 	// console.log( "new ID: " + updateID(root[0].ResourceID[0], authority) );
 	root.ResourceID = updateID(root.ResourceID, options.authority);

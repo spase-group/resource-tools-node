@@ -18,6 +18,8 @@
     "spase-refcheck": "./src/refcheck.js",
     "spase-collate": "./src/collate.js",
     "spase-tree": "./src/tree.js",
+    "spase-restamp": "./src/restamp.js",
+    "spase-pretty": "./src/pretty.js",
     "spase-list-elem": "./src/list-elem.js",
     "spase-update-authority": "./src/update-authority.js",
     "spase-doi-ref": "./src/doi-ref.js"
