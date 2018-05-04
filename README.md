@@ -1,6 +1,6 @@
 # SPASE resource-tools
 
-A collection of tools for working with SPASE resource descriptions.
+A collection of command line tools for working with SPASE resource descriptions.
 
 ## Installation
 
@@ -21,4 +21,8 @@ A collection of tools for working with SPASE resource descriptions.
 **spase-doi-ref** : Extract reference information for a DOI request from a SPASE resource description.
 
 **spase-list-elem** : List an element value in an XML document.
+
+**spase-restamp** : Update the <ReleaseDate> to the current data and time. 
+
+**spase-pretty** : Make a pretty XML file by formating the XML file with indentation and wrapping. 
 
