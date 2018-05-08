@@ -15,7 +15,7 @@ const walk = require('walk-folder-tree');
  
 // Configure the app
 var options  = yargs
-	.version('1.0.1')
+	.version('1.0.2')
 	.usage('List the file tree. Optionally list only files with a given extension.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -r .', 'list the file tree starting at the current folder.')
@@ -70,14 +70,18 @@ var main = function(args)
 	var includeFiles = /^.*$/;	// Everything
 	if(options.ext.length > 0) {
 		includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+		console.log("ext: " + options.ext);
+		console.log("ext: " + includeFiles.toString());
 	}
 	
 	var root = args[0];
 
 	if(fs.statSync(root).isDirectory()) {	// Walk the tree		
 		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
-			console.log(path.join(root, params.path));
-			fileCnt++;
+			if(params.path.match(includeFiles)) {	// Filter out directories
+				console.log(path.join(root, params.path));
+				fileCnt++;
+			}
 			cb();
 		}).then(function() {
 			console.log(" SUMMARY: " + fileCnt + " files(s); ");

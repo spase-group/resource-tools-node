@@ -5,15 +5,16 @@
     Author: Todd King
 **/
 
-var fs = require('fs');
-var yargs = require('yargs');
-var fastXmlParser  = require('fast-xml-parser');
-var XmlGenerater = require('fast-xml-parser').j2xParser;
-var path = require('path');
+const fs = require('fs');
+const yargs = require('yargs');
+const fastXmlParser  = require('fast-xml-parser');
+const XmlGenerater = require('fast-xml-parser').j2xParser;
+const path = require('path');
+const walk = require('walk-folder-tree');
 
 // Configure the app
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('Change the control authority in the ResourceID, add a PriorID and update ReleaseDate.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -a VSPO example.xml', 'change the authority in the ResourceID to "VSPO"')
@@ -74,6 +75,10 @@ var options  = yargs
 	;
 
 var args = options._;	// None option command line arguments
+
+// Global variables
+var releaseDate = "0000-00-00T00:00:000";
+var fileCnt = 0;
 
 // Functions
 var errHandler = function(err) {
@@ -137,13 +142,15 @@ var writeXML = function(file, content) {
 }
 
 async function updateXML(file) {
-	if(options.verbose) { console.log('Checking file: ' + file); }
+	if(options.verbose) { console.log('Updating file: ' + file); }
 	
 	var content = await readXML(file).catch(e => {
 		console.log('Error on readXML');
      // error caught
 	});
 
+	fileCnt++;
+	
 	var needPrior = true;
 	var root = null;
 	
@@ -179,10 +186,11 @@ async function updateXML(file) {
 	// console.log( JSON.stringify(root[0].ResourceHeader[0], null, 3) );
 	// console.log( "new ID: " + updateID(root[0].ResourceID[0], authority) );
 	root.ResourceID = updateID(root.ResourceID, options.authority);
-	root.ResourceHeader.ReleaseDate = getReleaseDate();
+	root.ResourceHeader.ReleaseDate = releaseDate;
 	writeXML(file, content);
 }
 
+/*
 function migrateFile(root, file, recurse) {
 	if(file.startsWith(".")) return;	// No hidden items
 	
@@ -219,6 +227,37 @@ var main = function(args) {
 		var file = args[i];
 		migrateFile(path.dirname(file), path.basename(file), options.recurse);
 	};
+}
+*/
+
+var main = function(args) {
+	// If no files or options show help
+	if (args.length == 0) {
+	  yargs.showHelp();
+	  return;
+	}
+
+	// Initialize global
+	releaseDate = getReleaseDate();
+
+	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
+	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
+	
+	var root = args[0];
+	if(fs.statSync(root).isDirectory()) {	// Walk the tree
+		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
+			if( ! params.directory ) {
+				var pathname = path.join(root, params.path);
+				
+				updateXML(pathname);		
+			}
+			cb();
+		}).then(function() {
+			console.log(" SUMMARY: processed: " + fileCnt + " files(s); ");
+		});
+	} else {	// Single file
+		updateXML(root);
+	}	
 }
 
 main(args);
