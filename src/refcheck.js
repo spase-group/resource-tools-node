@@ -12,20 +12,21 @@ const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
 const request = require('request-promise-native');
-const ftp = require('ftp-get');
+const ftp = require('basic-ftp');
 const fastXmlParser = require('fast-xml-parser');
 const walk = require('walk-folder-tree');
 const util = require('util');
 const Entities = require('html-entities').XmlEntities;
- 
+const urlUtil = require('url');
+
 const entities = new Entities();
 
-const ftpHead = util.promisify(ftp.head);
-const ftpGet = util.promisify(ftp.get);
+// const ftpHead = util.promisify(ftp.head);
+// const ftpGet = util.promisify(ftp.get);
 
 // Configure the app
 var options  = yargs
-	.version('1.0.3')
+	.version('1.0.4')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -170,10 +171,6 @@ function findAll(dom, pattern, exclude, list) {
 	return fullList;
 }
 
-function checkFtp(url) {
-	
-}
-
 async function refcheckFile(pathname) {
 	fileCnt++;
 
@@ -218,8 +215,10 @@ async function refcheckFile(pathname) {
 	
 	// Check URL
 	if(options.url) {
+		var client = null;
 		var list = findAll(content, /^URL$/);
 		for(let i = 0; i < list.length; i++) {
+			client = null;
 			urlCnt++;
 			var url = list[i];
 			try {
@@ -227,13 +226,19 @@ async function refcheckFile(pathname) {
 					var response = await request.head(entities.decode(url));
 				}
 				if(url.startsWith("ftp:")) {
+					var urlParts = urlUtil.parse(url);
+					// console.log("parsed URL: " + JSON.stringify(urlParts, null, 3));
 					// console.log('ftpHead: ' + url);
-					try {
-						var response = await ftpHead(url);
-					} catch(e) {
-						// console.log('ftpGet: ' + url);
-						var response = await ftpget(url);
-					}
+				   client = new ftp.Client()
+
+				   await client.access({
+						host: urlParts.host,
+						// user: "very",
+						// password: "password",
+						// secure: true
+					})
+					await client.cd(urlParts.path);
+					await client.list();
 				}
 				
 				console.log("      OK: " + url); 
@@ -242,6 +247,7 @@ async function refcheckFile(pathname) {
 				console.log("    FILE: " + pathname);
 				console.log("        : " + e.message);
 			}
+			if(client != null) client.close();
 		}
 	}	
 }

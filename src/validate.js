@@ -15,10 +15,10 @@ const path = require('path');
 const fastXmlParser = require('fast-xml-parser');
 const request = require('request-promise-native');
 const walk = require('walk-folder-tree');
-var libxml = require('libxmljs');
+const libxml = require('libxmljs');
 
 var options  = yargs
-	.version('1.0.2')
+	.version('1.0.3')
 	.usage('Validate a SPASE resource description using a specified version of the data dictionary (XML schema).')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')
