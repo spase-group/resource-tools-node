@@ -22,7 +22,8 @@
     "spase-pretty": "./src/pretty.js",
     "spase-list-elem": "./src/list-elem.js",
     "spase-update-authority": "./src/update-authority.js",
-    "spase-doi-ref": "./src/doi-ref.js"
+    "spase-doi-ref": "./src/doi-ref.js",
+    "spase-doi-request": "./src/doi-request.js"
   },
   "keywords": [
     "SPASE",
@@ -39,15 +40,15 @@
   },
   "homepage": "https://github.com/spase-group/resource-tools-node#readme",
   "dependencies": {
-    "basic-ftp": "^2.12.3",
-    "fast-xml-parser": "^3.3.6",
+    "basic-ftp": "^2.14.3",
+    "fast-xml-parser": "^3.12.5",
     "html-entities": "^1.2.1",
-    "libxmljs": "^0.18.7",
+    "libxmljs": "^0.18.8",
     "path": "^0.12.7",
-    "request": "^2.85.0",
+    "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
-    "util": "^0.10.3",
+    "util": "^0.10.4",
     "walk-folder-tree": "^1.0.1",
-    "yargs": "^11.0.0"
+    "yargs": "^11.1.0"
   }
 }

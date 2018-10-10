@@ -20,6 +20,8 @@ A collection of command line tools for working with SPASE resource descriptions.
 
 **spase-doi-ref** : Extract reference information for a DOI request from a SPASE resource description.
 
+**spase-doi-request** : Extract information from a SPASE resource description and generate a DataCite formated DOI request that can be submitted through EZID web service API.
+
 **spase-list-elem** : List an element value in an XML document.
 
 **spase-restamp** : Update the <ReleaseDate> to the current data and time. 
