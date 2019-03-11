@@ -502,7 +502,9 @@ var writeRequest = function(pathname) {
 	if(keywords.length > 0) {
 		outputWrite(1, '<subjects>');
 		for(var i = 0; i < keywords.length; i++) {
-			outputWrite(2, '<subject xml:lang="en">' + keywords[i] + '</subject>');
+			if( keywords[i] ) {
+				outputWrite(2, '<subject xml:lang="en">' + keywords[i] + '</subject>');
+			}
 		}
 		outputWrite(1, '</subjects>');
 	}
@@ -551,18 +553,18 @@ var main = function(args)
 	  return;
 	}
 	
-	var pathname = args[0];
-
 	// Output
 	if(options.output) {
 		outputFile = fs.createWriteStream(options.output);
 		outputWrite(0, 'datacite:');
 	}
-	
-	
+		
 	outputWrite(0, '<?xml version="1.0"?>');
 	
-	walkSync(pathname, writeRequest);
+	// For all passed arguments
+	for(var i = 0; i < args.length; i++) {
+		walkSync(args[i], writeRequest);
+	}
 
 	outputEnd();
 }

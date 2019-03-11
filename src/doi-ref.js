@@ -432,31 +432,42 @@ var writeRequest = function(pathname) {
 
 	var delim = ',"';
 	var list = getAuthorList(resource, options);
-	for(var i = 0; i < list.length; i++) {
-		record += delim + list[i];
-		delim = ";";
+	if(list.length > 0) {
+		for(var i = 0; i < list.length; i++) {
+			record += delim + list[i];
+			delim = ";";
+		}
+	} else {	//Empty
+		record += delim; 
 	}
 	record += '"';
 	
-	record += "," + getTitle(resource, options)
-	record += "," + getPublisher(resource, options);
+	record += ',"' + getTitle(resource, options) + '"';
+	record += ',"' + getPublisher(resource, options) + '"';
 	record += "," + getPubYear(resource, options);
 	
 	delim = ",";
 	var keywords = getKeywords(resource);
 	if(keywords.length > 0) {
-		record += delim + keywords[i];
+		record += delim;
+		if( keywords[i] ) { record += keywords[i]; }
 		delim = ";";
+	} else { //Empty
+		record += delim;
 	}
 	
-	delim = ",";
+	delim = ',"';
 	var contrib = getContributorList(resource, options);
 	if(contrib.length > 0) {
 		for(var i = 0; i < contrib.length; i++) {
 			record += delim + contrib[i].name + '[' + contrib[i].role + ']';
 			delim = ";";
 		}
+	} else { //Empty
+		record += delim;
 	}
+	record += '"';
+
 	record += "," + getResourceType(content);
 	
 	record += ',"' + getDescription(resource, options) + '"';
@@ -468,6 +479,8 @@ var writeRequest = function(pathname) {
 			record += delim + funding[i].Agency + '[' + funding[i].AwardNumber + ']';
 			delim = ";";
 		}
+	} else { //Empty
+		record += delim;
 	}
 	
 	record += "\n";
@@ -485,8 +498,6 @@ var main = function(args)
 	  return;
 	}
 	
-	var pathname = args[0];
-
 	// Output
 	if(options.output) {
 		outputFile = fs.createWriteStream(options.output);
@@ -495,7 +506,10 @@ var main = function(args)
 	
 	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding');
 	
-	walkSync(pathname, writeRequest);
+	// For all passed arguments
+	for(var i = 0; i < args.length; i++) {
+		walkSync(args[i], writeRequest);
+	}
 	
 	outputEnd();
 }
