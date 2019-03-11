@@ -18,7 +18,7 @@ A collection of command line tools for working with SPASE resource descriptions.
 
 **spase-update-authority** : Change the control authority in the ResourceID, add a PriorID and update ReleaseDate.
 
-**spase-doi-ref** : Extract reference information for a DOI request from a SPASE resource description.
+**spase-doi-ref** : Extract reference information in CSV format from a SPASE resource description.
 
 **spase-doi-request** : Extract information from a SPASE resource description and generate a DataCite formated DOI request that can be submitted through EZID web service API.
 

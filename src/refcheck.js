@@ -179,7 +179,7 @@ async function refcheckFile(pathname) {
 	
 	// Check Identifiers
 	if(options.id) {
-		var list = findAll(content, /.*ID$/, /^PriorID$/);
+		var list = findAll(content, /.*ID$/, /^PriorID$|^ResourceID$/);
 		for(let i = 0; i < list.length; i++) {
 			idCnt++;
 			var id = list[i];
@@ -207,7 +207,7 @@ async function refcheckFile(pathname) {
 			} catch(e) {
 				console.log(" INVALID: " + id);
 				console.log("    FILE: " + pathname);
-				console.log("        : " + error.message);
+				console.log("        : " + e.message);
 				idFailureCnt++;
 			}
 		}
@@ -265,17 +265,21 @@ var main = function(args)
 	
 	var root = args[0];
 
-	if(fs.statSync(root).isDirectory()) {	// Walk the tree	
-		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
-			if( ! params.directory ) {
-				var pathname = path.join(root, params.path);
-				await refcheckFile(pathname);
-			}
-			cb();
-		}).then(function() {
-			console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
-			console.log(" SUMMARY: ID Failures: " + idFailureCnt + "; URL Failures: " + urlFailureCnt);
-		});
+	if(fs.statSync(root).isDirectory()) {	// Walk the tree
+		try {
+			walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
+				if( ! params.directory ) {
+					var pathname = path.join(root, params.path);
+					await refcheckFile(pathname);
+				}
+				cb();
+			}).then(function() {
+				console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
+				console.log(" SUMMARY: ID Failures: " + idFailureCnt + "; URL Failures: " + urlFailureCnt);
+			});
+		} catch(e) {
+			console.log("Reason: " + e.message);
+		}
 	} else {	// Single file
 		refcheckFile(root);
 	}

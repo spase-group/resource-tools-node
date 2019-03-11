@@ -5,15 +5,14 @@
     Author: Todd King
 **/
 const fs = require('fs');
-const fastXmlParser = require('fast-xml-parser');
 const yargs = require('yargs');
-const path = require('path');
+const fastXmlParser = require('fast-xml-parser');
 
 var options  = yargs
 	.version('1.0.0')
-	.usage('Extract reference information for a DOI request from a SPASE resource description.')
+	.usage('Extract reference information in CSV format from a SPASE resource description.')
 	.usage('$0 [args] <files...>')
-	.example('$0 example.xml', 'Extract reference information for a DOI request from "example.xml"')
+	.example('$0 example.xml', 'Extract reference information from "example.xml"')
 	.epilog('copyright 2018')
 	.showHelpOnFail(false, "Specify --help for available options")
 	.help('h')
@@ -49,44 +48,258 @@ var options  = yargs
 			type: 'string',
 			default: '.xml'
 		},
+		
+		// Output
+		'o' : {
+			alias : 'output',
+			description: 'Output file. Write output to a file.',
+			type: 'string',
+			default: null
+
+		},
 	})
 	.argv
 	;
 
-var args = options._;	// Unprocessed command line arguments
+// Globals
+var args = options._;	// Remaining non-hyphenated arguments
+var outputFile = null;	// None defined.
 
-var readXML = function(file) {
-	return new Promise(function(resolve, reject) {
-		fs.readFile(file, 'utf8', function(err, data) {
-			if(err) { reject(err); }
-			else { resolve(fastXmlParser.parse(data, { ignoreAttributes : false, parseAttributeValue : true } ) ); }
-		})
-	});
+/** 
+ * Write to output file if defined, otherwise to console.log()
+ **/
+var outputWrite = function(indent, str) {
+	if(outputFile == null) {
+		var prefix = "";
+		for(var i = 0; i < indent; i++) { prefix += "   "; }
+		console.log(prefix + str);
+	} else {
+		outputFile.write(str);
+	}
 }
 
-/*
- Build author list from Contact with Role of PrincipalInvestigator.
-*/
-var authorList = function(contact) {
-	var list = "";
-	contact.forEach(function(item) {
-		if(item.Role[0] == "PrincipalInvestigator") {
-			var part = item.PersonID[0].split('/');
-			var name = part[part.length - 1].split('.');
-			list += name[name.length - 1];
-			for(var i = 0; i < name.length - 1; i++) {
-				list += ", " + name[i];
+/**
+ * Close an output file if one is assigned.
+ **/
+var outputEnd = function() {
+	if(outputFile) { outputFile.end(); outputFile = null }
+}
+
+/**
+ * List all files in a directory recursively and in a synchronous fashion
+ **/
+var walkSync = function(pathname, action) {
+	var fs = fs || require('fs');
+	if ( fs.statSync(pathname).isDirectory() ) {
+		var files = fs.readdirSync(pathname);
+		files.forEach(function(file) {
+			// console.log('dir: ' + pathname);
+			// console.log('file: ' + file);
+			if ( fs.statSync(pathname + '/' + file).isDirectory() ) {
+				walkSync(pathname + '/' + file, action);
+			} else {
+				action(pathname + '/' + file);
 			}
-		}
-	});
-	return list;
+		});
+	} else {
+		action(pathname);
+	}
+	return 
 };
 
-/*
-Extract authority portion of resource ID
-*/
-var authority = function(resourceID) {
+/**
+ * Split a string on semi-colons.
+ **/
+var parseList = function(delimited) {
+	var list = [];
+	
+	if(delimited) {	
+		list = delimited.split(";");
+		for(var i = 0; i < list.length; i++) {
+			list[i] = list[i].trim();
+		}
+	}
+
+	return list;	
+}
+
+/**
+ * Convert a value to an array is value is singular,
+ * other wise return the array.
+ **/
+var getList = function(value) {
+	var list = [];
+	if( ! value) return list;	// Empty
+	
+	if(Array.isArray(value)) list = value;
+	else list[0] = value;
+	
+	return list;
+}
+
+/**
+ * Convert a camelcase string to multiple space separated words.
+ **/
+var multiWord = function(value) {
+	if( ! value.replace) return value;	// Not a string
+	return value.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+}
+
+/**
+ * Make a name from a PersionID in author format (last, first[, middle])
+ **/
+var makeAuthorName = function(personID) {
+	var part = personID.split('/');
+	var name = part[part.length - 1].split('.');
+	var author = name[name.length - 1];
+	for(var i = 0; i < name.length - 1; i++) {
+		author += ", " + name[i];
+	}
+	return author;
+}
+
+/** 
+ * Convert a SPASE Role to an DataCite Contributor type.
+ *
+ **/
+var convertRole = function(role) {
+	if(role == 'Contributor') return 'Other';
+	if(role == 'DataProducer') return 'Producer';
+	if(role == 'GeneralContact') return 'ContactPerson';
+	if(role == 'MetadataContact') return 'ContactPerson';
+	if(role == 'Scientist') return 'Researcher';
+	if(role == 'TeamLeader') return 'ProjectLeader';
+	if(role == 'TeamMember') return 'ProjectMember';
+	if(role == 'TechnicalContact') return 'ContactPerson';
+	
+	return null;	// Role doesn't map
+}
+
+/**
+ * Get the resource description.
+ **/
+var getResource = function(content) {
+	if( ! content.Spase ) return null;	// Not a SPASE description
+	
+	var resourceType = Object.keys(content.Spase)[1];	// 0 = "Version", 1 = Resource
+	
+	return content.Spase[resourceType];
+}
+
+/**
+ * Get the resource type.
+ **/
+var getResourceType = function(content) {
+	if( ! content.Spase ) return null;	// Not a SPASE description
+	
+	var resourceType = Object.keys(content.Spase)[1];	// 0 = "Version", 1 = Resource
+	
+	return resourceType;
+}
+
+/**
+ * Retrieve the publisher from a resource description 
+ * or return the default value from options.
+ **/
+var getResourceID = function(resource, options) {
+	var id = options.id;
+	
+	if(resource) {
+		id = resource.ResourceID;
+	}
+	
+	return id;
+}
+
+/**
+ * Retrieve the publisher from a resource description 
+ * or return the default value from options.
+ **/
+var getPublisher = function(resource, options) {
+	var pub = getAuthority(getResourceID(resource, options));
+	
+	if(options.publisher) pub = options.publisher;
+		
+	if( resource.ResourceHeader.PublicationInfo) {
+		pub = resource.ResourceHeader.PublicationInfo.PublishedBy;
+	}
+	
+	return pub;
+}
+
+/**
+ * Retrieve the publication year from a resource description 
+ * or return the default value from options.
+ **/
+var getPubYear = function(resource, options) {
+	var year = options.date;	// Should be current year
+	
+	if( resource.ResourceHeader.PublicationInfo) {
+		year = resource.ResourceHeader.PublicationInfo.PublicationDate.substring(0,4);
+	} else {
+		year = resource.ResourceHeader.ReleaseDate.substring(0,4)
+	}
+	
+	return year;
+}
+
+/**
+ * Retrieve the title (ResourceName) from a resource description 
+ * or return the default value from options.
+ **/
+var getTitle = function(resource, options) {
+	var name = options.title;
+	
+	if(resource.ResourceHeader.ResourceName) {
+		name = resource.ResourceHeader.ResourceName;
+	}
+	
+	return name;
+}
+
+/**
+ * Retrieve the funding information from a resource description.
+ **/
+var getFunding = function(resource) {
+	return getList(resource.ResourceHeader.funding);
+}
+
+/**
+ * Retrieve the funding information from a resource description
+ * or return the default value from options.
+ **/
+var getDOI = function(resource, options) {
+	var doi = options.doi;
+	if(resource.ResourceHeader.DOI) { doi = resource.ResourceHeader.DOI; }
+	
+	if( ! doi) doi = "";
+	
+	return doi;
+}
+
+/**
+ * Retrieve the description from a resource description 
+ * or return the default value from options.
+ **/
+var getDescription = function(resource, options) {
+	var desc = options.description;	// Should be current year
+	
+	desc = resource.ResourceHeader.Description;
+	
+	if(options.output) {	// Remove new lines in text
+		desc = desc.replace(/[\r\n]+/g, " ");
+	}
+	
+	return desc;
+}
+
+/**
+ * Parse a ResourceID and extract the naming authority.
+ **/
+var getAuthority = function(resourceID) {
 	var buffer = "";
+	
+	if( ! resourceID) return buffer;
 	
 	buffer = resourceID.replace(/spase:\/\//, "");
 	
@@ -94,62 +307,197 @@ var authority = function(resourceID) {
 	return part[0];
 };
 
-async function makeDOI(root, file, recurse) {
-	if(file.startsWith(".")) return;	// No hidden items
+/**
+ * Build up a list of keywords.
+ *
+ * List is a combinartion of ProcessingLevel, MeasurementType and values in Keyword
+ **/
+var getKeywords = function(resource) {
+	var keywords = getList(resource.Keyword);
 	
-	console.log("root: " + root);
+	if(resource.ProcessingLevel) keywords.push(resource.ProcessingLevel);
+	if(resource.MeasurementType) keywords.push(multiWord(resource.MeasurementType));
 	
-	var pathname = path.join(root, file);
-	if( ! fs.existsSync(pathname)) {
-		console.log("No such file or directory: " + file);
-		return;
-	}
-	if(fs.statSync(pathname).isDirectory()) {
-		if(recurse) {	// Check all files
-			if(options.verbose) console.log("Scanning directory: " + pathname);
-			fs.readdir(pathname, function(err, items) {
-				for (var i  =0; i < items.length; i++) {
-					makeDOI(pathname, items[i], recurse);
-				}
-			});
+	return keywords;
+};
+
+/**
+ * Retrieve the author list from a resource description 
+ * or return the default value from options.
+ * 
+ * If PublicationInfo is present use the declared authorlist,
+ * otherwise build up an author list based on contacts.
+ * Contacts with a Role of PrincipalInvestigator, CoInvestigator
+ * or Contributor are included in the author list.
+ **/
+var getAuthorList = function(resource, options) {
+	var list = parseList(options.author);
+
+	// If publicationInfo - use given author list
+	if(resource.ResourceHeader.PublicationInfo) {
+		if(resource.ResourceHeader.PublicationInfo.Authors) {
+			list = parseList(resource.ResourceHeader.PublicationInfo.Authors)
+
+			return list;
 		}
 	}
-	// Else - its a file
-	if(pathname.endsWith(options.ext)) {
-		var content = await readXML(pathname).catch(e => {
-			console.log('Error on readXML');
-		 // error caught
-		});
 
-		var root = null;
-		if(content.Spase.NumericalData) { root = content.Spase.NumericalData; }
-		if(content.Spase.DisplayData) { root = content.Spase.DisplayData; }
-		if(root == null) {
-			console.log("Unknown resource type.");
-		} else {
-			console.log( "location: http://spase.info/registry/render?id=" + root.ResourceID );
-			console.log( "creator: " + authorList(root.ResourceHeader.Contact) );
-			console.log( "title: " + root.ResourceHeader.ResourceName );
-			console.log( "publisher: " + authority(root.ResourceID) );
-			console.log( "year: " + root.ResourceHeader.ReleaseDate.substring(0,4) );
-			console.log( "resource.type: " + "Dataset" );
-			console.log( "" );
-		};
+	// If contacts - use them
+	if( ! resource.ResourceHeader.Contact) return list;
+	
+	// Start with Principal Investigator
+	var contacts = getList(resource.ResourceHeader.Contact)
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "PrincipalInvestigator") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+	
+	// Add Co-Investigators
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "CoInvestigator") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	return list;
+};
+
+/**
+ * Retrieve the contributor list from a resource description 
+ * or return the default value from options.
+ * 
+ * Contacts with a Role of Contributor are included in the author list.
+ **/
+var getContributorList = function(resource, options) {
+	var list = [];
+	
+	var names = parseList(options.contributor);
+	if(names) {
+		for(var i = 0; i < names.length; i++) {
+			list.push({name: names[i], role: 'ContactPerson'});
+		}
 	}
+
+	// If contacts - use them
+	if( ! resource.ResourceHeader.Contact) return list;
+		
+	// Add Contributors
+	var contacts = getList(resource.ResourceHeader.Contact)
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			var contribType = convertRole(role[n]);
+			if(contribType) {
+				list.push({ name: makeAuthorName(item.PersonID), role: contribType} );
+			}
+		}
+	};
+	
+	return list;
 }
 
-var main = function(args) {
-	// If no files or options show help
-	if (args.length == 0) {
+/**
+  Write DOI request for a SPASE resource description.
+**/  
+var writeRequest = function(pathname) {
+	// XML Document
+	if(options.verbose) { console.log('Parsing: ' + pathname); }
+		
+	var xmlDoc = fs.readFileSync(pathname, 'utf8');
+	var content = fastXmlParser.parse(xmlDoc);	// Check syntax
+	
+	var resource = getResource(content);
+	if( ! resource) {
+		console.log('File is not a SPASE resource description: ' + pathname);
+		return;
+	}
+	
+	var record = "";
+	var delim = "";
+	
+	// SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding
+
+	record += getResourceID(resource, options);
+	record += "," + getDOI(resource, options);
+
+	var delim = ',"';
+	var list = getAuthorList(resource, options);
+	for(var i = 0; i < list.length; i++) {
+		record += delim + list[i];
+		delim = ";";
+	}
+	record += '"';
+	
+	record += "," + getTitle(resource, options)
+	record += "," + getPublisher(resource, options);
+	record += "," + getPubYear(resource, options);
+	
+	delim = ",";
+	var keywords = getKeywords(resource);
+	if(keywords.length > 0) {
+		record += delim + keywords[i];
+		delim = ";";
+	}
+	
+	delim = ",";
+	var contrib = getContributorList(resource, options);
+	if(contrib.length > 0) {
+		for(var i = 0; i < contrib.length; i++) {
+			record += delim + contrib[i].name + '[' + contrib[i].role + ']';
+			delim = ";";
+		}
+	}
+	record += "," + getResourceType(content);
+	
+	record += ',"' + getDescription(resource, options) + '"';
+	
+	delim = ","
+	var funding = getFunding(resource);
+	if(funding.lenght > 0) {
+		for(var i =0; i < funding.length; i++) {
+			record += delim + funding[i].Agency + '[' + funding[i].AwardNumber + ']';
+			delim = ";";
+		}
+	}
+	
+	record += "\n";
+	
+	outputWrite(0, record);
+}
+/**
+ * Application entry point.
+ **/
+var main = function(args)
+{
+
+	if (process.argv.length == 0) {
 	  yargs.showHelp();
 	  return;
 	}
+	
+	var pathname = args[0];
 
-	// Check each file/folder
-	for(let i = 0; i < args.length; i++) {
-		var file = args[i];
-		makeDOI(path.dirname(file), path.basename(file), options.recurse);
-	};
+	// Output
+	if(options.output) {
+		outputFile = fs.createWriteStream(options.output);
+	}
+	
+	
+	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding');
+	
+	walkSync(pathname, writeRequest);
+	
+	outputEnd();
 }
 
 main(args);

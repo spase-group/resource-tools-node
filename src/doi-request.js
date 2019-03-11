@@ -135,26 +135,25 @@ var outputEnd = function() {
 }
 
 /**
- * List all files in a directory in Node.js recursively in a synchronous fashion
+ * List all files in a directory recursively and in a synchronous fashion
  **/
-var walkSync = function(dir, filelist) {
-	varfs = fs || require('fs'),
-			filelist = filelist || [];
-	if ( fs.statSync(dir).isDirectory() ) {
-		var files = fs.readdirSync(dir);
+var walkSync = function(pathname, action) {
+	var fs = fs || require('fs');
+	if ( fs.statSync(pathname).isDirectory() ) {
+		var files = fs.readdirSync(pathname);
 		files.forEach(function(file) {
-			// console.log('dir: ' + dir);
+			// console.log('dir: ' + pathname);
 			// console.log('file: ' + file);
-			if ( fs.statSync(dir + '/' + file).isDirectory() ) {
-				filelist = walkSync(dir + '/' + file, filelist);
+			if ( fs.statSync(pathname + '/' + file).isDirectory() ) {
+				walkSync(pathname + '/' + file, action);
 			} else {
-				filelist.push(dir + '/' + file);
+				action(pathname + '/' + file);
 			}
 		});
 	} else {
-		filelist.push(dir);
+		action(pathname);
 	}
-	return filelist;
+	return 
 };
 
 /**
@@ -208,7 +207,7 @@ var makeAuthorName = function(personID) {
 }
 
 /** 
- * Convert a SPASE Role to an DataCite Contributor type.
+ * Convert a SPASE Role to a DataCite Contributor type.
  *
  **/
 var convertRole = function(role) {
@@ -224,6 +223,17 @@ var convertRole = function(role) {
 	return null;	// Role doesn't map
 }
 
+/** 
+ * Convert a SPASE Resource Type to a DataCite Content type.
+ *
+ **/
+var convertResourceType = function(resourceType) {
+	if(role == 'DisplayData') return 'Collection';
+	if(role == 'NumericalData') return 'Dataset';
+	if(role == 'Catalog') return 'Dataset';
+	
+	return null;	// doesn't map
+}
 /**
  * Get the resource description.
  **/
@@ -233,6 +243,17 @@ var getResource = function(content) {
 	var resourceType = Object.keys(content.Spase)[1];	// 0 = "Version", 1 = Resource
 	
 	return content.Spase[resourceType];
+}
+
+/**
+ * Get the resource type.
+ **/
+var getResourceType = function(content) {
+	if( ! content.Spase ) return null;	// Not a SPASE description
+	
+	var resourceType = Object.keys(content.Spase)[1];	// 0 = "Version", 1 = Resource
+	
+	return resourceType;
 }
 
 /**
@@ -408,7 +429,7 @@ var getAuthorList = function(resource, options) {
 };
 
 /**
- * Retrieve the contirubtor list from a resource description 
+ * Retrieve the contributor list from a resource description 
  * or return the default value from options.
  * 
  * Contacts with a Role of Contributor are included in the author list.
@@ -441,22 +462,11 @@ var getContributorList = function(resource, options) {
 	
 	return list;
 }
-	
-
 
 /**
- * Application entry point.
- **/
-var main = function(args)
-{
-
-	if (process.argv.length == 0) {
-	  yargs.showHelp();
-	  return;
-	}
-	
-	var pathname = args[0];
-
+  Write DOI request for a SPASE resource description.
+**/  
+var writeRequest = function(pathname) {
 	// XML Document
 	if(options.verbose) { console.log('Parsing: ' + pathname); }
 		
@@ -468,14 +478,7 @@ var main = function(args)
 		console.log('File is not a SPASE resource description: ' + pathname);
 		return;
 	}
-	
-	// Output
-	if(options.output) {
-		outputFile = fs.createWriteStream(options.output);
-		outputWrite(0, 'datacite:');
-	}
-	
-	outputWrite(0, '<?xml version="1.0"?>');
+	var resourceType = getResourceType(content);
 	
 	outputWrite(0, '<resource xmlns="http://datacite.org/schema/kernel-4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://datacite.org/schema/kernel-4 http://schema.datacite.org/meta/kernel-4/metadata.xsd">');
 
@@ -514,7 +517,7 @@ var main = function(args)
 		outputWrite(1, '</contributors>');		
 	}
 	outputWrite(1, '<language>en-US</language>');
-	outputWrite(1, '<resourceType resourceTypeGeneral="Dataset">Dataset</resourceType>');
+	outputWrite(1, '<resourceType resourceTypeGeneral="' + convertResourceType(resourceType) + '">' + convertResourceType(resourceType) + '</resourceType>');
 	outputWrite(1, '<alternateIdentifiers>');
 	outputWrite(2, '<alternateIdentifier alternateIdentifierType="SPASE">' + getResourceID(resource, options) + '</alternateIdentifier>');
 	outputWrite(1, '</alternateIdentifiers>');
@@ -536,6 +539,30 @@ var main = function(args)
 	}
 	
 	outputWrite(0, '</resource>');
+}
+/**
+ * Application entry point.
+ **/
+var main = function(args)
+{
+
+	if (process.argv.length == 0) {
+	  yargs.showHelp();
+	  return;
+	}
+	
+	var pathname = args[0];
+
+	// Output
+	if(options.output) {
+		outputFile = fs.createWriteStream(options.output);
+		outputWrite(0, 'datacite:');
+	}
+	
+	
+	outputWrite(0, '<?xml version="1.0"?>');
+	
+	walkSync(pathname, writeRequest);
 
 	outputEnd();
 }
