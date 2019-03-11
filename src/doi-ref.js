@@ -504,7 +504,7 @@ var main = function(args)
 	}
 	
 	
-	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding');
+	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding\n');
 	
 	// For all passed arguments
 	for(var i = 0; i < args.length; i++) {
