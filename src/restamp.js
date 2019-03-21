@@ -14,7 +14,7 @@ const walk = require('walk-folder-tree');
 
 // Configure the app
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('Update the ReleaseDate in a resource description to the current date and time.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'change the ReleaseDate in "example.xml" to the current date and time and write output to display.')
@@ -87,7 +87,7 @@ var readXML = function(file) {
 	return new Promise(function(resolve, reject) {
 		fs.readFile(file, 'utf8', function(err, data) {
 			if(err) { reject(err); }
-			else { resolve(fastXmlParser.parse(data, { ignoreAttributes : false, parseAttributeValue : true } ) ); }
+			else { resolve(fastXmlParser.parse(data, { ignoreAttributes : false, parseAttributeValue : false, parseNodeValue : false } ) ); }
 		})
 	});
 }
