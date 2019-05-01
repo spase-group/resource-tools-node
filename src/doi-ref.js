@@ -91,6 +91,7 @@ var outputEnd = function() {
 var walkSync = function(pathname, action) {
 	var fs = fs || require('fs');
 	if ( fs.statSync(pathname).isDirectory() ) {
+		if(pathname.endsWith('.git')) return;	// Skip
 		var files = fs.readdirSync(pathname);
 		files.forEach(function(file) {
 			// console.log('dir: ' + pathname);
@@ -212,18 +213,82 @@ var getResourceID = function(resource, options) {
 }
 
 /**
+ * Retrieve the repository list from a resource description 
+ * or return the default value from options.
+ * 
+ * If PublicationInfo is present use the declared authorlist,
+ * otherwise build up an author list based on contacts.
+ * Contacts with a Role of PrincipalInvestigator, CoInvestigator
+ * or Contributor are included in the author list.
+ **/
+var getAuthorList = function(resource, options) {
+	var list = parseList(options.author);
+
+	// If publicationInfo - use given author list
+	if(resource.ResourceHeader.PublicationInfo) {
+		if(resource.ResourceHeader.PublicationInfo.Authors) {
+			list = parseList(resource.ResourceHeader.PublicationInfo.Authors)
+
+			return list;
+		}
+	}
+
+	// If contacts - use them
+	if( ! resource.ResourceHeader.Contact) return list;
+	
+	// Start with Principal Investigator
+	var contacts = getList(resource.ResourceHeader.Contact)
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "PrincipalInvestigator") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+	
+	// Add Co-Investigators
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "CoInvestigator") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	return list;
+};
+
+/**
  * Retrieve the publisher from a resource description 
  * or return the default value from options.
  **/
 var getPublisher = function(resource, options) {
-	var pub = getAuthority(getResourceID(resource, options));
+	var pub = "";
 	
-	if(options.publisher) pub = options.publisher;
-		
+	if(options.publisher) {	pub = options.publisher; }
+	
 	if( resource.ResourceHeader.PublicationInfo) {
 		pub = resource.ResourceHeader.PublicationInfo.PublishedBy;
 	}
 	if(pub.length == 0) { pub = " "; }
+	
+	if(pub.length == 0) {	// Build from AccessInformation.RepositoryID
+		var delim = "";
+		var access = getList(resource.AccessInformation)
+		for(var k = 0; k < access.length; k++) {
+			var item = access[k];
+			var repo = item.RepositoryID;
+			if(repo) {
+				repo = repo.replace(/.*\//, "");
+				pub += delim + repo;
+				delim = ",";
+			}
+		};
+	}	
 	
 	return pub;
 }
@@ -472,22 +537,22 @@ var writeRequest = function(pathname) {
 
 	record += ',"' + getResourceType(content) + '"';
 	
-	record += ',"' + getDescription(resource, options) + '"';
+	record += ',"' + getDescription(resource, options).replace(/"/g, '""') + '"';
 	
 	delim = ',"'
 	var funding = getFunding(resource);
-	if(funding.lenght > 0) {
+	if(funding.length > 0) {
+		record += '"';
 		for(var i =0; i < funding.length; i++) {
 			record += delim + funding[i].Agency + '[' + funding[i].AwardNumber + ']';
 			delim = ";";
 		}
+		record += '"';
 	} else { //Empty
-		record += delim + " ";
+		record += delim + '" "';
 	}
 	
-	record += '"';
-
-	record += "\n";
+	// record += "\n";
 	
 	outputWrite(0, record);
 }
@@ -507,8 +572,7 @@ var main = function(args)
 		outputFile = fs.createWriteStream(options.output);
 	}
 	
-	
-	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding\n');
+	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding');
 	
 	// For all passed arguments
 	for(var i = 0; i < args.length; i++) {

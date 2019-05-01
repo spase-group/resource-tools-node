@@ -14,7 +14,7 @@ const walk = require('./walk-tree');  // Formerly walk-folder-tree
 
 // Configure the app
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('Do a pretty formatting of an XML file.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'format the XML in "example.xml" and write output to display.')
@@ -80,7 +80,7 @@ var readXML = function(file) {
 	return new Promise(function(resolve, reject) {
 		fs.readFile(file, 'utf8', function(err, data) {
 			if(err) { reject(err); }
-			else { resolve(fastXmlParser.parse(data, { ignoreAttributes : false, parseAttributeValue : true } ) ); }
+			else { resolve(fastXmlParser.parse(data, { ignoreAttributes : false, parseAttributeValue : false, parseNodeValue : false } ) ); }
 		})
 	});
 }
