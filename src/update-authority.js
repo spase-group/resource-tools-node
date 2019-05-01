@@ -10,7 +10,7 @@ const yargs = require('yargs');
 const fastXmlParser  = require('fast-xml-parser');
 const XmlGenerater = require('fast-xml-parser').j2xParser;
 const path = require('path');
-const walk = require('walk-folder-tree');
+const walk = require('./walk-tree');   // Formerly walk-folder-tree
 
 // Configure the app
 var options  = yargs

@@ -14,7 +14,7 @@ const path = require('path');
 const request = require('request-promise-native');
 const ftp = require('basic-ftp');
 const fastXmlParser = require('fast-xml-parser');
-const walk = require('walk-folder-tree');
+const walk = require('./walk-tree');	// Formerly walk-folder-tree
 const util = require('util');
 const Entities = require('html-entities').XmlEntities;
 const urlUtil = require('url');
@@ -220,10 +220,10 @@ async function refcheckFile(pathname) {
 		for(let i = 0; i < list.length; i++) {
 			client = null;
 			urlCnt++;
-			var url = list[i];
+			var url = entities.decode(list[i]);
 			try {
 				if(url.startsWith("http:")) {
-					var response = await request.head(entities.decode(url));
+					var response = await request.head(url);
 				}
 				if(url.startsWith("ftp:")) {
 					var urlParts = urlUtil.parse(url);
@@ -241,7 +241,7 @@ async function refcheckFile(pathname) {
 					await client.list();
 				}
 				
-				console.log("      OK: " + url); 
+				if ( ! options.errors) { console.log("      OK: " + url); }
 			} catch(e) {
 				console.log(" INVALID: " + url); urlFailureCnt++;
 				console.log("    FILE: " + pathname);

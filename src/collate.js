@@ -10,7 +10,7 @@ const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
 const fastXmlParser = require('fast-xml-parser');
-const walk = require('walk-folder-tree');
+const walk = require('./walk-tree') // Formerly walk-folder-tree
 
 var options  = yargs
 	.version('1.0.2')

@@ -223,6 +223,7 @@ var getPublisher = function(resource, options) {
 	if( resource.ResourceHeader.PublicationInfo) {
 		pub = resource.ResourceHeader.PublicationInfo.PublishedBy;
 	}
+	if(pub.length == 0) { pub = " "; }
 	
 	return pub;
 }
@@ -272,7 +273,7 @@ var getDOI = function(resource, options) {
 	var doi = options.doi;
 	if(resource.ResourceHeader.DOI) { doi = resource.ResourceHeader.DOI; }
 	
-	if( ! doi) doi = "";
+	if( ! doi) doi = " ";
 	
 	return doi;
 }
@@ -428,7 +429,7 @@ var writeRequest = function(pathname) {
 	// SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding
 
 	record += getResourceID(resource, options);
-	record += "," + getDOI(resource, options);
+	record += ',"' + getDOI(resource, options) + '"';
 
 	var delim = ',"';
 	var list = getAuthorList(resource, options);
@@ -444,9 +445,9 @@ var writeRequest = function(pathname) {
 	
 	record += ',"' + getTitle(resource, options) + '"';
 	record += ',"' + getPublisher(resource, options) + '"';
-	record += "," + getPubYear(resource, options);
+	record += ',"' + getPubYear(resource, options) + '"';
 	
-	delim = ",";
+	delim = ',"';
 	var keywords = getKeywords(resource);
 	if(keywords.length > 0) {
 		record += delim;
@@ -455,6 +456,7 @@ var writeRequest = function(pathname) {
 	} else { //Empty
 		record += delim;
 	}
+	record += '"';
 	
 	delim = ',"';
 	var contrib = getContributorList(resource, options);
@@ -468,11 +470,11 @@ var writeRequest = function(pathname) {
 	}
 	record += '"';
 
-	record += "," + getResourceType(content);
+	record += ',"' + getResourceType(content) + '"';
 	
 	record += ',"' + getDescription(resource, options) + '"';
 	
-	delim = ","
+	delim = ',"'
 	var funding = getFunding(resource);
 	if(funding.lenght > 0) {
 		for(var i =0; i < funding.length; i++) {
@@ -480,9 +482,11 @@ var writeRequest = function(pathname) {
 			delim = ";";
 		}
 	} else { //Empty
-		record += delim;
+		record += delim + " ";
 	}
 	
+	record += '"';
+
 	record += "\n";
 	
 	outputWrite(0, record);

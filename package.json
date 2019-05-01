@@ -41,14 +41,14 @@
   "homepage": "https://github.com/spase-group/resource-tools-node#readme",
   "dependencies": {
     "basic-ftp": "^2.14.3",
+    "bluebird": "^3.5.4",
     "fast-xml-parser": "^3.12.5",
     "html-entities": "^1.2.1",
     "libxmljs": "^0.18.8",
     "path": "^0.12.7",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.5",
+    "request-promise-native": "^1.0.7",
     "util": "^0.10.4",
-    "walk-folder-tree": "^1.0.1",
     "yargs": "^11.1.0"
   }
 }

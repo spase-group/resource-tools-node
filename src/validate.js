@@ -14,7 +14,7 @@ const yargs = require('yargs');
 const path = require('path');
 const fastXmlParser = require('fast-xml-parser');
 const request = require('request-promise-native');
-const walk = require('walk-folder-tree');
+const walk = require('./walk-tree');   // Formerly walk-folder-tree
 const libxml = require('libxmljs');
 
 var options  = yargs
@@ -43,6 +43,14 @@ var options  = yargs
 			description: 'show information about the app.'
 		},
 		
+		// Only show errors
+		'e' : {
+			alias: 'errors',
+			describe : 'Display information only if errors are found.',
+			type: 'boolean',
+			default: false
+		},
+
 		// Recursively scan for files
 		'r' : {
 			alias: 'recurse',
@@ -104,7 +112,7 @@ async function validateFile(pathname) {
 	
 	var xsd = libxml.parseXml(xsdDoc);	
 	if(xml.validate(xsd)) {
-		console.log('      OK: ' + pathname);
+		if ( ! options.errors) { console.log('      OK: ' + pathname); }
 	} else {
 		console.log(' INVALID: ' + pathname);
 		failureCnt++;
@@ -131,11 +139,18 @@ function main(args) {
 			// if( ! params.directory ) { validate(params.path); }
 			if( ! params.directory ) {
 				var pathname = path.join(root, params.path);
-				await validateFile(pathname);
+				try {
+					await validateFile(pathname);
+				} catch(e) {
+					console.log(' INVALID: ' + pathname);
+					console.log('  REASON: ' + e.message);
+				}
 			}
 			cb();
 		}).then(function() {
 			console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + failureCnt + " failure(s)");
+		}).catch(function(e) {
+			console.log(e);
 		});
 	} else {	// Single file
 		validateFile(root);

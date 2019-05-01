@@ -11,7 +11,7 @@
 const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
-const walk = require('walk-folder-tree');
+const walk = require('./walk-tree');   // Formerly walk-folder-tree
  
 // Configure the app
 var options  = yargs
