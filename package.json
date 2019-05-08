@@ -44,7 +44,7 @@
     "bluebird": "^3.5.4",
     "fast-xml-parser": "^3.12.5",
     "html-entities": "^1.2.1",
-    "libxmljs": "^0.18.8",
+    "libxmljs": "^0.19.0",
     "path": "^0.12.7",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
