@@ -12,7 +12,7 @@ const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
 const request = require('request-promise-native');
-const ftp = require('basic-ftp');
+const ftp = require('ftp');
 const fastXmlParser = require('fast-xml-parser');
 const walk = require('./walk-tree');	// Formerly walk-folder-tree
 const util = require('util');
@@ -135,6 +135,38 @@ var errHandler = function(err) {
 }
 
 /**
+ * Check an FTP "URL". 
+ * 
+ * The FTP URL is parsed, an FPT connection is established to the host 
+ * and a search is done for the referenced file (path).
+ *
+ * Returns a Promise.
+ *
+**/
+var ftpCheck = function(url) {
+	return new Promise(function(resolve, reject) {
+		var urlParts = urlUtil.parse(url);
+		var c = new ftp();
+		c.on('ready', function() {
+			c.list(path.dirname(urlParts.path), function(err, list) {
+				if (err) throw reject(err);
+				// console.dir(list);
+				c.end();
+				var filename = path.basename(urlParts.path)
+				for(let i = 0; i < list.length; i++) {
+					var item = list[i];
+					if(item.name == filename) { resolve(item); return; }
+				}
+				// Not found if we reach here
+				resolve(null);
+			});
+		});
+		// connect to localhost:21 as anonymous
+		c.connect({host: urlParts.host});
+	});
+}
+
+/**
  *  @brief Find all nodes in a DOM that match a pattern.
  *  
  *  @param [in] dom Description for dom
@@ -150,7 +182,6 @@ function findAll(dom, pattern, exclude, list) {
 	var fullList = (list === undefined ? [] : list);
 	
 	for(var name in dom) {
-		// console.log(name);
 		if( ! (exclude === undefined) && name.match(exclude) ) continue;	// skip
 		if( name.match(pattern) ) { 
 			if( Array.isArray(dom[name]) ) {
@@ -171,6 +202,13 @@ function findAll(dom, pattern, exclude, list) {
 	return fullList;
 }
 
+/** 
+ * Perform a referential check on a file.
+ *
+ * File is parsed as XML and content with tags that end with "ID" are
+ * checked. Tags with the name "PriorID" and "ResourceID" are not checked.
+ *
+**/
 async function refcheckFile(pathname) {
 	fileCnt++;
 
@@ -220,28 +258,30 @@ async function refcheckFile(pathname) {
 		for(let i = 0; i < list.length; i++) {
 			client = null;
 			urlCnt++;
-			var url = entities.decode(list[i]);
+			var scanned = true;
+			var url = entities.decode(list[i].trim());
 			try {
-				if(url.startsWith("http:")) {
-					var response = await request.head(url);
+				if(url.startsWith("http:") || url.startsWith("https:")) {
+					var requestOptions = {
+						url : "",
+						headers: {
+							'User-Agent': 'request'
+						}
+					};
+					requestOptions.url = url;
+					var response = await request.head(requestOptions);
 				}
-				if(url.startsWith("ftp:")) {
-					var urlParts = urlUtil.parse(url);
-					// console.log("parsed URL: " + JSON.stringify(urlParts, null, 3));
-					// console.log('ftpHead: ' + url);
-				   client = new ftp.Client()
-
-				   await client.access({
-						host: urlParts.host,
-						// user: "very",
-						// password: "password",
-						// secure: true
-					})
-					await client.cd(urlParts.path);
-					await client.list();
+				else if(url.startsWith("ftp:")) {				
+					if(await ftpCheck(url) == null) throw("File not found.");
+				}
+				else {	// Unsupported protocol
+					console.log(" INVALID: " + url); urlFailureCnt++;
+					console.log("    FILE: " + pathname);
+					console.log("        : Unsupported protocol");	
+					scanned = false;					
 				}
 				
-				if ( ! options.errors) { console.log("      OK: " + url); }
+				if ( (! options.errors) && scanned) { console.log("      OK: " + url); }
 			} catch(e) {
 				console.log(" INVALID: " + url); urlFailureCnt++;
 				console.log("    FILE: " + pathname);
@@ -252,6 +292,9 @@ async function refcheckFile(pathname) {
 	}	
 }
 
+/**
+ * Program entry point
+**/
 var main = function(args)
 {
 	// If no files or options show help
@@ -274,8 +317,8 @@ var main = function(args)
 				}
 				cb();
 			}).then(function() {
-				console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
-				console.log(" SUMMARY: ID Failures: " + idFailureCnt + "; URL Failures: " + urlFailureCnt);
+				console.log(" SUMMARY: scanned : " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
+				console.log(" SUMMARY: failures:             " + idFailureCnt + " ID(s); " + urlFailureCnt + " URL(s)");
 			});
 		} catch(e) {
 			console.log("Reason: " + e.message);

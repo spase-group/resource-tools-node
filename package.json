@@ -40,9 +40,9 @@
   },
   "homepage": "https://github.com/spase-group/resource-tools-node#readme",
   "dependencies": {
-    "basic-ftp": "^2.14.3",
     "bluebird": "^3.5.4",
     "fast-xml-parser": "^3.12.5",
+    "ftp": "^0.3.10",
     "html-entities": "^1.2.1",
     "libxmljs": "^0.19.0",
     "path": "^0.12.7",
