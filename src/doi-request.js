@@ -11,7 +11,7 @@ const fastXmlParser = require('fast-xml-parser');
 
 // Configure the app
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('Extract information from a SPASE resource description and generate a DataCite formated DOI request that can be submitted through EZID web service API.\n\nUsage:\n\n$0 [args] <files...>')
 	.example('$0 example.xml', 'generate a DOI request')
 	.epilog("Development funded by NASA's HPDE project at UCLA.")
@@ -228,9 +228,9 @@ var convertRole = function(role) {
  *
  **/
 var convertResourceType = function(resourceType) {
-	if(role == 'DisplayData') return 'Collection';
-	if(role == 'NumericalData') return 'Dataset';
-	if(role == 'Catalog') return 'Dataset';
+	if(resourceType == 'DisplayData') return 'Collection';
+	if(resourceType == 'NumericalData') return 'Dataset';
+	if(resourceType == 'Catalog') return 'Dataset';
 	
 	return null;	// doesn't map
 }
