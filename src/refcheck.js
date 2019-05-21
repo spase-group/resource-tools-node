@@ -26,7 +26,7 @@ const entities = new Entities();
 
 // Configure the app
 var options  = yargs
-	.version('1.0.4')
+	.version('1.0.5')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')

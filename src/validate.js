@@ -18,7 +18,7 @@ const walk = require('./walk-tree');   // Formerly walk-folder-tree
 const libxml = require('libxmljs');
 
 var options  = yargs
-	.version('1.0.3')
+	.version('1.0.4')
 	.usage('Validate a SPASE resource description using a specified version of the data dictionary (XML schema).')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')
@@ -105,7 +105,11 @@ async function validateFile(pathname) {
 	// Get Schema
 	var xsdDoc = "";
 	if(options.schema != null) {	// Read from file
-		xsdDoc = fs.readFileSync(options.schema, 'utf8');
+		if(options.schema.startsWith("http")) {
+			xsdDoc = await request(options.schema);
+		} else {	// Local file
+			xsdDoc = fs.readFileSync(options.schema, 'utf8');
+		}
 	} else {	// Load from server
 		xsdDoc = await getSchema(result.Spase.Version);
 	}
