@@ -12,7 +12,7 @@ const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
 const request = require('request-promise-native');
-const ftp = require('ftp');
+const ftp = require('@icetee/ftp');	// 'ftp' does not handle "S" in permissions.
 const fastXmlParser = require('fast-xml-parser');
 const walk = require('./walk-tree');	// Formerly walk-folder-tree
 const util = require('util');
@@ -158,7 +158,7 @@ var ftpCheck = function(url) {
 					if(item.name == filename) { resolve(item); return; }
 				}
 				// Not found if we reach here
-				resolve(null);
+				reject('File not found: ' + filename);
 			});
 		});
 		// connect to localhost:21 as anonymous
