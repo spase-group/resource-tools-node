@@ -1,0 +1,372 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema  http://www.spase-group.org/data/schema/spase-2_3_0.xsd'">
+  <Version>2.3.0</Version>
+  <NumericalData>
+    <ResourceID>spase://JAXA/NumericalData/Geotail/MGF/EDB.PT3S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Geotail Editor-B 3-second Magnetic Field Data</ResourceName>
+      <ReleaseDate>2019-05-05T12:34:56Z</ReleaseDate>
+      <Description>3-second Editor-B magnetic field data from the Geotail spacecraft.
+
+            As of February 1 2008 the Bz component of the magnetic field has been corrected in the data set.
+
+            The Geotail satellite has two editors onboard: The Editor-A data are only acquired with the real-time operation in Usuda Deep Space Center (UDSC) or Uchinoura Space Center (USC), Japan, while the Editor-B data are continuously recorded in the onboard tape recorders for 24 hours and are dumped to the NASA JPL Deep Space Network (DSN) stations.</Description>
+      <Acknowledgement>In any publications, the use of the Geotail data should be acknowledged, for example, as "Geotail magnetic field data were provided by T. Nagai, JAXA in Japan."</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Tsugunobu.Nagai</PersonID>
+        <Role>PrincipalInvestigator</Role>
+</Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Donald.H.Fairfield</PersonID>
+        <Role>Scientist</Role>
+</Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Jan.Merka</PersonID>
+        <Role>MetadataContact</Role>
+</Contact>
+      <InformationURL>
+        <Name>The Geotail Magnetic Field Experiment (MGF)</Name>
+        <URL>http://www.darts.isas.ac.jp/stp/geotail/jgg_mgf.pdf</URL>
+        <Description>Reprint of Kokubun, S., T. Yamamoto, M. H. Acuna, K. Hayashi, K. Shiokawa, and H. Kawano, The Geotail Magnetic Field Experiment, J. Geomag. Geoelectr., 46, 7-21, 1994.</Description>
+</InformationURL>
+      <PriorID>spase://VMO/NumericalData/Geotail/MGF/EDB.PT3S</PriorID>
+      <PriorID>spase://VSPO/NumericalData/Geotail/MGF/PT3.00S</PriorID>
+      <PriorID>spase://VSPO/NumericalData/Geotail/MGF/EDB.PT3S</PriorID>
+</ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF/CDAWeb</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/geotail/mgf/edb3sec_mgf/</URL>
+</AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/geotail/mgf/edb3sec_mgf/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+</AccessURL>
+      <AccessURL>
+        <Name>CDAWeb</Name>
+        <URL>https://cdaweb.sci.gsfc.nasa.gov/cgi-bin/eval2.cgi?dataset=GE_EDB3SEC_MGF&amp;index=sp_phys</URL>
+        <ProductKey>GE_EDB3SEC_MGF</ProductKey>
+</AccessURL>
+      <Format>CDF</Format>
+      <Encoding>None</Encoding>
+      <Acknowledgement>Data provider T. Nagai at STELAB Nagoya University, Japan and CDAWeb.</Acknowledgement>
+</AccessInformation>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/DARTS</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>DARTS/Geotail</Name>
+        <URL>http://www.darts.isas.ac.jp/stp/geotail/</URL>
+        <Description>Data ARchives and Transmission System (DARTS) is a versatile space science data archive for astrophysics, solar physics, and solar-terrestrial physics. DARTS primarily consists of the data acquired by Japanese scientific satellites and spacecrafts. DARTS is developed and maintained by the Center of Science-satellite Operation and Data Archive (C-SODA) at ISAS/JAXA.</Description>
+</AccessURL>
+      <Format>Text</Format>
+      <Encoding>ASCII</Encoding>
+      <Acknowledgement>In any publications, the use of the Geotail data should be acknowledged, for example, as "Geotail magnetic field data were provided by T. Nagai through DARTS at Institute of Space and Astronautical Science, JAXA in Japan."</Acknowledgement>
+</AccessInformation>
+    <InstrumentID>spase://SMWG/Instrument/Geotail/MGF</InstrumentID>
+    <MeasurementType>MagneticField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>1993-09-01T00:00:02</StartDate>
+        <RelativeStopDate>-P2Y</RelativeStopDate>
+</TimeSpan>
+      <Cadence>PT3S</Cadence>
+</TemporalDescription>
+    <ObservedRegion>Heliosphere.NearEarth</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosheath</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.Magnetotail</ObservedRegion>
+    <Parameter>
+      <Name>Time Line</Name>
+      <ParameterKey>Epoch</ParameterKey>
+      <Description>Number of milliseconds since the CDF epoch</Description>
+      <Units>ms</Units>
+      <UnitsConversion>1e-3&gt;s</UnitsConversion>
+      <ValidMin>12-Nov-1994 00:00:00.000</ValidMin>
+      <ValidMax>31-Dec-2020 00:00:00.000</ValidMax>
+      <FillValue>-1.0E31</FillValue>
+      <Support>
+        <SupportQuantity>Temporal</SupportQuantity>
+</Support>
+</Parameter>
+    <Parameter>
+      <Name>B (GSE)</Name>
+      <ParameterKey>BGSE</ParameterKey>
+      <Description>Magnetic field vector in GSE cartesian coordinates</Description>
+      <Units>nT</Units>
+      <UnitsConversion>1e-9&gt;T</UnitsConversion>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>GSE</CoordinateSystemName>
+</CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Element>
+          <Name>Bx (GSE)</Name>
+          <Qualifier>Component.I</Qualifier>
+          <Index>1</Index>
+</Element>
+        <Element>
+          <Name>By (GSE)</Name>
+          <Qualifier>Component.J</Qualifier>
+          <Index>2</Index>
+</Element>
+        <Element>
+          <Name>Bz (GSE)</Name>
+          <Qualifier>Component.K</Qualifier>
+          <Index>3</Index>
+</Element>
+</Structure>
+      <FillValue>-1.0E31</FillValue>
+      <Field>
+        <Qualifier>Vector</Qualifier>
+        <FieldQuantity>Magnetic</FieldQuantity>
+</Field>
+</Parameter>
+    <Parameter>
+      <Name>Geotail position (GSE)</Name>
+      <ParameterKey>XYZGSE</ParameterKey>
+      <Description>Geotail position in GSE cartesian coordinates</Description>
+      <Caveats>1 Re = 6371.2 km</Caveats>
+      <Units>Re</Units>
+      <UnitsConversion>6.3712e6&gt;m</UnitsConversion>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>GSE</CoordinateSystemName>
+</CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Element>
+          <Name>X (GSE)</Name>
+          <Qualifier>Component.I</Qualifier>
+          <Index>1</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>Y (GSE)</Name>
+          <Qualifier>Component.J</Qualifier>
+          <Index>2</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>Z (GSE)</Name>
+          <Qualifier>Component.K</Qualifier>
+          <Index>3</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+</Structure>
+      <Support>
+        <Qualifier>Vector</Qualifier>
+        <SupportQuantity>Positional</SupportQuantity>
+</Support>
+</Parameter>
+    <Parameter>
+      <Name>B (GSM)</Name>
+      <ParameterKey>BGSM</ParameterKey>
+      <Description>Magnetic field vector in GSM coordinates</Description>
+      <Units>nT</Units>
+      <UnitsConversion>1e-9&gt;T</UnitsConversion>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>GSM</CoordinateSystemName>
+</CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Element>
+          <Name>Bx (GSM)</Name>
+          <Qualifier>Component.I</Qualifier>
+          <Index>1</Index>
+</Element>
+        <Element>
+          <Name>By (GSM)</Name>
+          <Qualifier>Component.J</Qualifier>
+          <Index>2</Index>
+</Element>
+        <Element>
+          <Name>Bz (GSM)</Name>
+          <Qualifier>Component.K</Qualifier>
+          <Index>3</Index>
+</Element>
+</Structure>
+      <FillValue>-1.0E31</FillValue>
+      <Field>
+        <Qualifier>Vector</Qualifier>
+        <FieldQuantity>Magnetic</FieldQuantity>
+</Field>
+</Parameter>
+    <Parameter>
+      <Name>Geotail position (GSM)</Name>
+      <ParameterKey>XYZGSM</ParameterKey>
+      <Description>Geotail position in GSM cartesian coordinates</Description>
+      <Caveats>1 Re = 6371.2 km</Caveats>
+      <Units>Re</Units>
+      <UnitsConversion>6.3712e6&gt;m</UnitsConversion>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>GSM</CoordinateSystemName>
+</CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Element>
+          <Name>X (GSM)</Name>
+          <Qualifier>Component.I</Qualifier>
+          <Index>1</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>Y (GSM)</Name>
+          <Qualifier>Component.J</Qualifier>
+          <Index>2</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>Z (GSM)</Name>
+          <Qualifier>Component.K</Qualifier>
+          <Index>3</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+</Structure>
+      <Support>
+        <Qualifier>Vector</Qualifier>
+        <SupportQuantity>Positional</SupportQuantity>
+</Support>
+</Parameter>
+    <Parameter>
+      <Name>B (SM)</Name>
+      <ParameterKey>BSM</ParameterKey>
+      <Description>Magnetic field vector in SM coordinates</Description>
+      <Units>nT</Units>
+      <UnitsConversion>1e-9&gt;T</UnitsConversion>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>GSM</CoordinateSystemName>
+</CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Element>
+          <Name>Bx (SM)</Name>
+          <Qualifier>Component.I</Qualifier>
+          <Index>1</Index>
+</Element>
+        <Element>
+          <Name>By (SM)</Name>
+          <Qualifier>Component.J</Qualifier>
+          <Index>2</Index>
+</Element>
+        <Element>
+          <Name>Bz (SM)</Name>
+          <Qualifier>Component.K</Qualifier>
+          <Index>3</Index>
+</Element>
+</Structure>
+      <FillValue>-1.0E31</FillValue>
+      <Field>
+        <Qualifier>Vector</Qualifier>
+        <FieldQuantity>Magnetic</FieldQuantity>
+</Field>
+</Parameter>
+    <Parameter>
+      <Name>Geotail position (SM)</Name>
+      <ParameterKey>XYZSM</ParameterKey>
+      <Description>Geotail position in SM cartesian coordinates</Description>
+      <Caveats>1 Re = 6371.2 km</Caveats>
+      <Units>Re</Units>
+      <UnitsConversion>6.3712e6&gt;m</UnitsConversion>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>SM</CoordinateSystemName>
+</CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Element>
+          <Name>X (SM)</Name>
+          <Qualifier>Component.I</Qualifier>
+          <Index>1</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>Y (SM)</Name>
+          <Qualifier>Component.J</Qualifier>
+          <Index>2</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>Z (SM)</Name>
+          <Qualifier>Component.K</Qualifier>
+          <Index>3</Index>
+          <ValidMin>-500.0</ValidMin>
+          <ValidMax>500.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+</Structure>
+      <Support>
+        <Qualifier>Vector</Qualifier>
+        <SupportQuantity>Positional</SupportQuantity>
+</Support>
+</Parameter>
+    <Parameter>
+      <Name>sdev_SinFit</Name>
+      <ParameterKey>XYZstdev</ParameterKey>
+      <Description>Standard deviation of sin fitting for magnetic field in sensor coordinates</Description>
+      <Units>nT</Units>
+      <UnitsConversion>1e-9&gt;T</UnitsConversion>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>SC</CoordinateSystemName>
+</CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Element>
+          <Name>sdev_SinFit(x)</Name>
+          <Qualifier>Component.I</Qualifier>
+          <Index>1</Index>
+          <ValidMin>0.0</ValidMin>
+          <ValidMax>20.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>sdev_SinFit(y)</Name>
+          <Qualifier>Component.J</Qualifier>
+          <Index>2</Index>
+          <ValidMin>0.0</ValidMin>
+          <ValidMax>20.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+        <Element>
+          <Name>sdev_SinFit(z)</Name>
+          <Qualifier>Component.K</Qualifier>
+          <Index>3</Index>
+          <ValidMin>0.0</ValidMin>
+          <ValidMax>20.0</ValidMax>
+          <FillValue>-1.0E31</FillValue>
+</Element>
+</Structure>
+      <Field>
+        <Qualifier>StandardDeviation</Qualifier>
+        <Qualifier>Vector</Qualifier>
+        <FieldQuantity>Magnetic</FieldQuantity>
+</Field>
+</Parameter>
+</NumericalData>
+</Spase>

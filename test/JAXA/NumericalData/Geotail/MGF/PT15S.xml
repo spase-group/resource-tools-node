@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema  http://www.spase-group.org/data/schema/spase-2_3_0.xsd">
+  <Version>2.3.0</Version>
+  <NumericalData>
+    <ResourceID>spase://JAXA/NumericalData/Geotail/MGF/PT15S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Geotail 15-sec magnetic field data, solar wind only</ResourceName>
+      <ReleaseDate>2018-06-28T22:02:01Z</ReleaseDate>
+      <Description>Data consist of 15-sec averages of magnetic field 
+magnitude and GSE Cartesian components, from the MGF magnetometer on 
+Geotail.  Data are for only the solar wind phases of the Geotail orbit.  
+The Geotail position vector in GSE coordinates is included.</Description>
+      <Acknowledgement>Dr. T. Nagai</Acknowledgement>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Tsugunobu.Nagai</PersonID>
+        <Role>PrincipalInvestigator</Role>
+      </Contact>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Natalia.E.Papitashvili</PersonID>
+        <Role>DataProducer</Role>
+      </Contact>
+      <InformationURL>
+        <Name>Readme file at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/geotail/mgf/mag_sw_15s_ascii/00readme</URL>
+        <Description>Details on creation of this data set</Description>
+      </InformationURL>
+      <PriorID>spase://VMO/NumericalData/Geotail/MGF/PT15S</PriorID>
+      <PriorID>spase://VSPO/NumericalData/Geotail/MGF/PT15S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/NASA/GSFC/SPDF</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>FTP access to files at SPDF</Name>
+        <URL>ftp://spdf.gsfc.nasa.gov/pub/data/geotail/mgf/mag_sw_15s_ascii/</URL>
+      </AccessURL>
+      <AccessURL>
+        <Name>HTTP access to files at SPDF</Name>
+        <URL>https://spdf.gsfc.nasa.gov/pub/data/geotail/mgf/mag_sw_15s_ascii/</URL>
+        <Description>In CDF via HTTP from SPDF</Description>
+      </AccessURL>
+      <AccessURL>
+        <Name>OMNIWeb-Plus</Name>
+        <URL>https://omniweb.sci.gsfc.nasa.gov/ftpbrowser/geotail_mag15s.html</URL>
+        <Description>FTPBrowser graphical display interface to ASCII data</Description>
+      </AccessURL>
+      <Format>Text</Format>
+      <Acknowledgement>Please acknowledge Principal Investigator T. Nagai, U. Tokyo, 
+and J. King and N. Papitashvili, NASA/GSFC/SPDF, data set producers.</Acknowledgement>
+    </AccessInformation>
+    <ProcessingLevel>Calibrated</ProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/Geotail/MGF</InstrumentID>
+    <MeasurementType>MagneticField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>1995-03-01T00:00:00</StartDate>
+        <StopDate>2000-06-10T00:00:00</StopDate>
+      </TimeSpan>
+      <Cadence>PT0.32S</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Heliosphere.NearEarth</ObservedRegion>
+    <ObservedRegion>Earth.Magnetosphere.Magnetotail</ObservedRegion>
+    <Parameter>
+      <Name>Time</Name>
+      <ParameterKey>Column_1, Column_2, Column_3, Column_4, Column_5</ParameterKey>
+      <Description>Universal time at start of average</Description>
+      <Cadence>PT15S</Cadence>
+      <Structure>
+        <Size>5</Size>
+        <Description>Year, day-of-year, hour, minute, second at start of average</Description>
+      </Structure>
+      <Support>
+        <SupportQuantity>Temporal</SupportQuantity>
+      </Support>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic Field Magnitude</Name>
+      <ParameterKey>Column_7</ParameterKey>
+      <Description>Average magnitude magnitude</Description>
+      <Cadence>PT15S</Cadence>
+      <Units>nT</Units>
+      <Field>
+        <Qualifier>Vector</Qualifier>
+        <FieldQuantity>Magnetic</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>Magnetic Field Vector</Name>
+      <ParameterKey>Column_8, Column_9, Column_10</ParameterKey>
+      <Description>GSE Cartesian components of magnetic field vector</Description>
+      <Cadence>PT15S</Cadence>
+      <Units>nT</Units>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>GSE</CoordinateSystemName>
+      </CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Description>GSE Cartesian components in X,Y,Z sequence</Description>
+      </Structure>
+      <Field>
+        <Qualifier>Vector</Qualifier>
+        <FieldQuantity>Magnetic</FieldQuantity>
+      </Field>
+    </Parameter>
+    <Parameter>
+      <Name>Spacecraft position vector</Name>
+      <ParameterKey>Column_11, Column_12, Column_13</ParameterKey>
+      <Description>GSE Cartesian components of spacecraft position vector</Description>
+      <Cadence>PT15S</Cadence>
+      <Units>Re</Units>
+      <CoordinateSystem>
+        <CoordinateRepresentation>Cartesian</CoordinateRepresentation>
+        <CoordinateSystemName>GSE</CoordinateSystemName>
+      </CoordinateSystem>
+      <Structure>
+        <Size>3</Size>
+        <Description>GSE Cartesian components in X,Y,Z sequence</Description>
+      </Structure>
+      <Support>
+        <Qualifier>Vector</Qualifier>
+        <SupportQuantity>Positional</SupportQuantity>
+      </Support>
+    </Parameter>
+  </NumericalData>
+</Spase>

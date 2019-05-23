@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Spase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.spase-group.org/data/schema" xsi:schemaLocation="http://www.spase-group.org/data/schema http://www.spase-group.org/data/schema/spase-2_3_0.xsd">
+	<Version>2.3.0</Version>
+	<Repository>
+		<ResourceID>spase://SMWG/Repository/NASA/GSFC/PWG</ResourceID>
+		<ResourceHeader>
+			<ResourceName>FTP Site for Distribution of Polar, Wind, and Geotail (PWG) Science Data</ResourceName>
+			<ReleaseDate>2019-05-23T11:12:30.000Z</ReleaseDate>
+			<Description>Polar, Wind and Geotail provides complete and open access to the mission data set. Data users are cautioned that interpretation of space plasma physics data from these missions can be a complex process. It is important for data users to notify the appropriate Principal Investigator and work in close collaboration with an instrument team member to assure correct and complete science reporting. On publication or presentation, please acknowledge, or include as a co-author, the instrument Principal Investigator and/or team member. You should also acknowledge the NASA Polar, Wind and Geotail Projects, and/or the National Space Science Data Center as appropriate.
+			</Description>
+			<Contact>
+				<!-- Robert McGuire -->
+				<PersonID>spase://SMWG/Person/Robert.E.McGuire</PersonID>
+				<Role>ProjectScientist</Role>
+			</Contact>
+			<InformationURL>
+				<Name>PWG Repository</Name>
+				<URL>ftps://pwgdata.gsfc.nasa.gov/pub/00readme.html</URL>
+				<Description>PWG repository</Description>
+			</InformationURL>
+		</ResourceHeader>
+		<AccessURL>
+			<Name>FTPS Access to PWG Data</Name>
+			<URL>ftps://pwgdata.gsfc.nasa.gov/pub/compressed/</URL>
+		</AccessURL>
+	</Repository>
+</Spase>

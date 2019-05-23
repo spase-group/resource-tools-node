@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema   http://www.spase-group.org/data/schema/spase-2_3_0.xsd">
+  <Version>2.3.0</Version>
+  <NumericalData>
+    <ResourceID>spase://JAXA/NumericalData/Geotail/MGF/PT3.00S</ResourceID>
+    <ResourceHeader>
+      <ResourceName>Geotail 3-sec magnetic field data</ResourceName>
+      <ReleaseDate>2018-06-28T22:02:01Z</ReleaseDate>
+      <Description>Geotail 3-sec magnetic field data from ISAS/DARTS</Description>
+      <Contact>
+        <PersonID>spase://SMWG/Person/Susumu.K.Kokubun</PersonID>
+        <Role>GeneralContact</Role>
+      </Contact>
+      <PriorID>spase://VSPO/NumericalData/P_GEOTAIL_HDR_MGF_ISAS</PriorID>
+      <PriorID>spase://VSPO/NumericalData/Geotail/MGF/PT3.00S</PriorID>
+    </ResourceHeader>
+    <AccessInformation>
+      <RepositoryID>spase://SMWG/Repository/ISAS</RepositoryID>
+      <Availability>Online</Availability>
+      <AccessRights>Open</AccessRights>
+      <AccessURL>
+        <Name>3-s data at ISAS/DARTS</Name>
+        <URL>http://www.darts.isas.ac.jp/stp/geotail/</URL>
+      </AccessURL>
+      <Format>Text</Format>
+    </AccessInformation>
+    <ProviderProcessingLevel>CALIBRATED</ProviderProcessingLevel>
+    <InstrumentID>spase://SMWG/Instrument/Geotail/MGF</InstrumentID>
+    <MeasurementType>MagneticField</MeasurementType>
+    <TemporalDescription>
+      <TimeSpan>
+        <StartDate>1992-09-18T00:00:00</StartDate>
+        <RelativeStopDate>-P11M</RelativeStopDate>
+        <Note>Data are presently ~11 months delayed</Note>
+      </TimeSpan>
+      <Cadence>PT3.00S</Cadence>
+    </TemporalDescription>
+    <ObservedRegion>Earth.Magnetosphere</ObservedRegion>
+    <ObservedRegion>Heliosphere.NearEarth</ObservedRegion>
+  </NumericalData>
+</Spase>
