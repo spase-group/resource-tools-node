@@ -89,7 +89,7 @@ var options  = yargs
 			alias: 'service',
 			describe : 'The URL to the registry service to look-up resource identifiers.',
 			type: 'string',
-			default: 'http://www.spase-group.org/registry/resolver'
+			default: 'https://hpde.io/'
 		},
 		
 		// Check URL references
@@ -221,9 +221,15 @@ async function refcheckFile(pathname) {
 		for(let i = 0; i < list.length; i++) {
 			idCnt++;
 			var id = list[i];
+			var path = id.replace("spase://", "");
 
 			try {
-				if(options.verbose) { console.log('Checking with: ' + options.service + "?c=yes&i=" + id); }
+				if(options.verbose) { console.log('Checking with: ' + options.service + path + ".xml"); }
+
+				var response = await request.head(options.service + path + ".xml");
+				if ( ! options.errors) { console.log("      OK: " + id); }
+				
+				/*
 
 				var response = await request(options.service + "?c=yes&i=" + id);
 				try {
@@ -242,6 +248,7 @@ async function refcheckFile(pathname) {
 					console.log("        : " + error.message);
 					idFailureCnt++;
 				}
+				*/
 			} catch(e) {
 				console.log(" INVALID: " + id);
 				console.log("    FILE: " + pathname);

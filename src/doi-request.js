@@ -11,7 +11,7 @@ const fastXmlParser = require('fast-xml-parser');
 
 // Configure the app
 var options  = yargs
-	.version('1.0.1')
+	.version('1.0.2')
 	.usage('Extract information from a SPASE resource description and generate a DataCite formated DOI request that can be submitted through EZID web service API.\n\nUsage:\n\n$0 [args] <files...>')
 	.example('$0 example.xml', 'generate a DOI request')
 	.epilog("Development funded by NASA's HPDE project at UCLA.")
@@ -76,7 +76,7 @@ var options  = yargs
 			alias : 'landing',
 			description: 'The landing page URL.',
 			type: 'string',
-			default: "http://spase.info/registry/render?id=%s"
+			default: "https://hpde.io/%s"
 
 		},
 		
@@ -556,16 +556,39 @@ var main = function(args)
 	// Output
 	if(options.output) {
 		outputFile = fs.createWriteStream(options.output);
-		outputWrite(0, 'datacite:');
+		// outputWrite(0, 'datacite:');
 	}
-		
-	outputWrite(0, '<?xml version="1.0"?>');
+
+	var pathname = args[0];
 	
+		// XML Document
+	if(options.verbose) { console.log('Parsing: ' + pathname); }
+		
+	var xmlDoc = fs.readFileSync(pathname, 'utf8');
+	var content = fastXmlParser.parse(xmlDoc);	// Check syntax
+	
+	var resource = getResource(content);
+	if( ! resource) {
+		console.log('File is not a SPASE resource description: ' + pathname);
+		return;
+	}
+	var resourceID = getResourceID(resource, options);
+	resourceID = resourceID.replace("spase://", "");
+	
+	var target = "_target=" + options.landing;
+	target = target.replace("%s", resourceID + ".html");
+	outputWrite(0, target);
+	outputWrite(0, 'datacite: <?xml version="1.0"?>');
+	
+	writeRequest(pathname);
+	
+	/* No longer process all args, just first
 	// For all passed arguments
 	for(var i = 0; i < args.length; i++) {
 		walkSync(args[i], writeRequest);
 	}
-
+	*/
+	
 	outputEnd();
 }
 

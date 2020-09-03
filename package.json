@@ -4,7 +4,7 @@
   "description": "Tools to validate and scan SPASE metadata.",
   "main": "index.js",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,7 +23,8 @@
     "spase-list-elem": "./src/list-elem.js",
     "spase-update-authority": "./src/update-authority.js",
     "spase-doi-ref": "./src/doi-ref.js",
-    "spase-doi-request": "./src/doi-request.js"
+    "spase-doi-request": "./src/doi-request.js",
+    "spase-transform": "./src/transform.js"
   },
   "keywords": [
     "SPASE",
@@ -31,7 +32,8 @@
     "tools",
     "collate",
     "validate",
-    "refcheck"
+    "refcheck",
+    "transform"
   ],
   "author": "Todd King <tking@igpp.ucla.edu>",
   "license": "Apache-2.0",
@@ -41,14 +43,14 @@
   "homepage": "https://github.com/spase-group/resource-tools-node#readme",
   "dependencies": {
     "@icetee/ftp": "^1.0.3",
-    "bluebird": "^3.5.4",
-    "fast-xml-parser": "^3.12.5",
-    "html-entities": "^1.2.1",
+    "bluebird": "^3.7.2",
+    "fast-xml-parser": "^3.17.4",
+    "html-entities": "^1.3.1",
     "libxmljs": "^0.19.0",
     "path": "^0.12.7",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.9",
     "util": "^0.10.4",
-    "yargs": "^11.1.0"
+    "yargs": "^11.1.1"
   }
 }

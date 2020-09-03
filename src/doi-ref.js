@@ -9,7 +9,7 @@ const yargs = require('yargs');
 const fastXmlParser = require('fast-xml-parser');
 
 var options  = yargs
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('Extract reference information in CSV format from a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'Extract reference information from "example.xml"')
@@ -47,6 +47,14 @@ var options  = yargs
 			describe : 'File name extension for filtering files when processing folders.',
 			type: 'string',
 			default: '.xml'
+		},
+		
+		// Only output records where a DOI is present
+		'd' : {
+			alias: 'doi',
+			describe : 'Only output records where a DOI is present.',
+			type: 'boolean',
+			default: false
 		},
 		
 		// Output
@@ -274,7 +282,6 @@ var getPublisher = function(resource, options) {
 	if( resource.ResourceHeader.PublicationInfo) {
 		pub = resource.ResourceHeader.PublicationInfo.PublishedBy;
 	}
-	if(pub.length == 0) { pub = " "; }
 	
 	if(pub.length == 0) {	// Build from AccessInformation.RepositoryID
 		var delim = "";
@@ -338,7 +345,7 @@ var getDOI = function(resource, options) {
 	var doi = options.doi;
 	if(resource.ResourceHeader.DOI) { doi = resource.ResourceHeader.DOI; }
 	
-	if( ! doi) doi = " ";
+	if( ! doi) doi = "";
 	
 	return doi;
 }
@@ -473,9 +480,9 @@ var getContributorList = function(resource, options) {
 }
 
 /**
-  Write DOI request for a SPASE resource description.
+  Write reference record for a SPASE resource description.
 **/  
-var writeRequest = function(pathname) {
+var writeReference = function(pathname) {
 	// XML Document
 	if(options.verbose) { console.log('Parsing: ' + pathname); }
 		
@@ -488,12 +495,16 @@ var writeRequest = function(pathname) {
 		return;
 	}
 	
+	if( options.doi ) {
+		if(getDOI(resource, options).length == 0) return;
+	}
+	
 	var record = "";
 	var delim = "";
 	
 	// SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding
 
-	record += getResourceID(resource, options);
+	record += '"' + getResourceID(resource, options) + '"';
 	record += ',"' + getDOI(resource, options) + '"';
 
 	var delim = ',"';
@@ -527,7 +538,7 @@ var writeRequest = function(pathname) {
 	var contrib = getContributorList(resource, options);
 	if(contrib.length > 0) {
 		for(var i = 0; i < contrib.length; i++) {
-			record += delim + contrib[i].name + '[' + contrib[i].role + ']';
+			record += delim + contrib[i].name + ' [' + contrib[i].role + ']';
 			delim = ";";
 		}
 	} else { //Empty
@@ -552,7 +563,7 @@ var writeRequest = function(pathname) {
 		record += delim + '" "';
 	}
 	
-	// record += "\n";
+	record += "\n";
 	
 	outputWrite(0, record);
 }
@@ -576,7 +587,7 @@ var main = function(args)
 	
 	// For all passed arguments
 	for(var i = 0; i < args.length; i++) {
-		walkSync(args[i], writeRequest);
+		walkSync(args[i], writeReference);
 	}
 	
 	outputEnd();
