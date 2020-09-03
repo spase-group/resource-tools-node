@@ -28,3 +28,5 @@ A collection of command line tools for working with SPASE resource descriptions.
 
 **spase-pretty** : Make a pretty XML file by formating the XML file with indentation and wrapping. 
 
+**spase-transform** : Transform a SPASE description in XML using an XML Stylesheet. 
+
