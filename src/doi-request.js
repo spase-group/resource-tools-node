@@ -425,6 +425,71 @@ var getAuthorList = function(resource, options) {
 		}
 	};
 
+	// Add InstrumentLead
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "InstrumentLead") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+	
+	// Add Co-Investigators
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "CoInvestigator") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add TeamLeader
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "TeamLeader") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add TeamMember
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "TeamMember") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add DataProducer
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "DataProducer") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add Contributor
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "Contributor") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
 	return list;
 };
 

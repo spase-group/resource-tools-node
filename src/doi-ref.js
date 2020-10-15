@@ -226,8 +226,8 @@ var getResourceID = function(resource, options) {
  * 
  * If PublicationInfo is present use the declared authorlist,
  * otherwise build up an author list based on contacts.
- * Contacts with a Role of PrincipalInvestigator, CoInvestigator
- * or Contributor are included in the author list.
+ * Contacts with a Role of PrincipalInvestigator, CoPI, CoInvestigator,
+ * TeamLeader, TeamMember, DataProducer or Contributor are included in the author list.
  **/
 var getAuthorList = function(resource, options) {
 	var list = parseList(options.author);
@@ -242,15 +242,38 @@ var getAuthorList = function(resource, options) {
 	}
 
 	// If contacts - use them
-	if( ! resource.ResourceHeader.Contact) return list;
+	if( ! resource.ResourceHeader.Contact) { return list; }
 	
 	// Start with Principal Investigator
-	var contacts = getList(resource.ResourceHeader.Contact)
+	var contacts = getList(resource.ResourceHeader.Contact);
+	
 	for(var k = 0; k < contacts.length; k++) {
 		var item = contacts[k];
 		var role = getList(item.Role);
 		for(var n = 0; n < role.length; n++) {
 			if(role[n] == "PrincipalInvestigator") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add CoPI
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "CoPI") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add InstrumentLead
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "InstrumentLead") {
 				list.push(makeAuthorName(item.PersonID));
 			}
 		}
@@ -262,6 +285,50 @@ var getAuthorList = function(resource, options) {
 		var role = getList(item.Role);
 		for(var n = 0; n < role.length; n++) {
 			if(role[n] == "CoInvestigator") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add TeamLeader
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "TeamLeader") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add TeamMember
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "TeamMember") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add DataProducer
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "DataProducer") {
+				list.push(makeAuthorName(item.PersonID));
+			}
+		}
+	};
+
+	// Add Contributor
+	for(var k = 0; k < contacts.length; k++) {
+		var item = contacts[k];
+		var role = getList(item.Role);
+		for(var n = 0; n < role.length; n++) {
+			if(role[n] == "Contributor") {
 				list.push(makeAuthorName(item.PersonID));
 			}
 		}
@@ -345,7 +412,7 @@ var getDOI = function(resource, options) {
 	var doi = options.doi;
 	if(resource.ResourceHeader.DOI) { doi = resource.ResourceHeader.DOI; }
 	
-	if( ! doi) doi = "";
+	if( ! doi) doi = " ";
 	
 	return doi;
 }
@@ -392,56 +459,6 @@ var getKeywords = function(resource) {
 	if(resource.MeasurementType) keywords.push(multiWord(resource.MeasurementType));
 	
 	return keywords;
-};
-
-/**
- * Retrieve the author list from a resource description 
- * or return the default value from options.
- * 
- * If PublicationInfo is present use the declared authorlist,
- * otherwise build up an author list based on contacts.
- * Contacts with a Role of PrincipalInvestigator, CoInvestigator
- * or Contributor are included in the author list.
- **/
-var getAuthorList = function(resource, options) {
-	var list = parseList(options.author);
-
-	// If publicationInfo - use given author list
-	if(resource.ResourceHeader.PublicationInfo) {
-		if(resource.ResourceHeader.PublicationInfo.Authors) {
-			list = parseList(resource.ResourceHeader.PublicationInfo.Authors)
-
-			return list;
-		}
-	}
-
-	// If contacts - use them
-	if( ! resource.ResourceHeader.Contact) return list;
-	
-	// Start with Principal Investigator
-	var contacts = getList(resource.ResourceHeader.Contact)
-	for(var k = 0; k < contacts.length; k++) {
-		var item = contacts[k];
-		var role = getList(item.Role);
-		for(var n = 0; n < role.length; n++) {
-			if(role[n] == "PrincipalInvestigator") {
-				list.push(makeAuthorName(item.PersonID));
-			}
-		}
-	};
-	
-	// Add Co-Investigators
-	for(var k = 0; k < contacts.length; k++) {
-		var item = contacts[k];
-		var role = getList(item.Role);
-		for(var n = 0; n < role.length; n++) {
-			if(role[n] == "CoInvestigator") {
-				list.push(makeAuthorName(item.PersonID));
-			}
-		}
-	};
-
-	return list;
 };
 
 /**
@@ -492,6 +509,11 @@ var writeReference = function(pathname) {
 	var resource = getResource(content);
 	if( ! resource) {
 		console.log('File is not a SPASE resource description: ' + pathname);
+		return;
+	}
+	
+	if( ! resource.ResourceHeader) {
+		console.log('File is not a SPASE data resource description: ' + pathname);
 		return;
 	}
 	
@@ -550,7 +572,7 @@ var writeReference = function(pathname) {
 	
 	record += ',"' + getDescription(resource, options).replace(/"/g, '""') + '"';
 	
-	delim = ',"'
+	delim = ','
 	var funding = getFunding(resource);
 	if(funding.length > 0) {
 		record += '"';
@@ -583,7 +605,7 @@ var main = function(args)
 		outputFile = fs.createWriteStream(options.output);
 	}
 	
-	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding');
+	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding\n');
 	
 	// For all passed arguments
 	for(var i = 0; i < args.length; i++) {
