@@ -23,7 +23,7 @@ var options  = yargs
 	.version('1.0.3')
 	.usage('Transform a SPASE description in XML using an XML Stylesheet.\nRequires an XSLT process to be installed.\n\nSee: http://www.sagehill.net/docbookxsl/InstallingAProcessor.html\n')
 	.usage('$0 [args] <files...>')
-	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')
+	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')git status
 	.example('$0 -s scheam.xsd example.xml', 'validate the contents of "example.xml" using the the schema "schema.xsd".')
 	.epilog('copyright 2018')
 	.showHelpOnFail(false, "Specify --help for available options")
