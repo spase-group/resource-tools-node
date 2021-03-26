@@ -12,16 +12,16 @@
 const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
-const fastXmlParser = require('fast-xml-parser');
 const request = require('request-promise-native');
 const walk = require('walk-folder-tree');
-const XSLT = require('xsltjs');
+const xsltproc = require('xsltproc');
+const replaceExt = require('replace-ext');
 
-static indent = 3;
+var indent = 3;
 
 var options  = yargs
 	.version('1.0.3')
-	.usage('Transform a SPASE description in XML using an XML Stylesheet.')
+	.usage('Transform a SPASE description in XML using an XML Stylesheet.\nRequires an XSLT process to be installed.\n\nSee: http://www.sagehill.net/docbookxsl/InstallingAProcessor.html\n')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')
 	.example('$0 -s scheam.xsd example.xml', 'validate the contents of "example.xml" using the the schema "schema.xsd".')
@@ -53,13 +53,30 @@ var options  = yargs
 			default: false
 		},
 		
-		// Path to XML stylesheets
+		// Output file name
+		'o' : {
+			alias: 'output',
+			describe : 'Output file name.',
+			type: 'string',
+			default: null
+		},
+				
+		// Output path
 		'p' : {
 			alias: 'path',
-			describe : 'Path to the location for XML stylesheets to use for transforming files.',
-			type: 'string'
+			describe : 'Output path for transformed file results. Used when doing a recursive transform.',
+			type: 'string',
+			default: null
 		},
-		
+				
+		// Output file extension
+		'y' : {
+			alias: 'outext',
+			describe : 'Output file name extension to use when doing a recurse transform. Use -o to specifiy the output file name for single file output transforms.',
+			type: 'string',
+			default: '.html'
+		},
+				
 		// XML Stylesheet
 		's' : {
 			alias: 'stylesheet',
@@ -83,37 +100,30 @@ var args = options._;	// Unprocessed command line arguments
 // Global variables
 var fileCnt = 0;
 var failureCnt = 0;
-options.service = 'http://spase-group.org/data/schema';
+options.service = 'https://spase-group.org/data/schema';
 
-// Functions
-async function getSchema(version) {
-	version = version.replace(/\./g, '_');
-	var url = options.service + "/spase-" + version + ".xsd"; 
-	try {
-		return await request(url);
-	} catch(e) {
-		console.log("Unable to retrieve schema from: " + url);
-		return e;
+async function transformFile(stylesheet, pathname, output) {
+	var stream = null;
+	
+	if( output == null) {	// Write to display
+	} else {
+		stream = fs.createWriteStream(output);
 	}
-}
+	
+	var xslt = xsltproc.transform(stylesheet, pathname);
 
-async function transformFile(pathname, stylesheet) {
-  XSLT
-    .process(inputDoc, transformDoc, params, {
-      inputURL: pathname,
-      transformURL: stylesheet,
-      debug: debug
-    })
-    .then(
-      (resultXML) => {
-		console.log('stdout:', stdout);
-        return;
-      },
-      (exception) => {
-	    console.error('stderr:', exception);
-        return;
-      }
-    );
+	xslt.stdout.on('data', function (data) {
+		if(stream == null) { console.log("" + data); }
+		else { stream.write(data, function() { } ); }
+	});
+
+	xslt.stderr.on('data', function (data) {
+	  console.log('Error: ' + data);
+	});
+	
+	xslt.on('exit', function (code) {
+		if(stream != null) { stream.end(); }
+	});
 }
 
 function main(args) {
@@ -123,24 +133,43 @@ function main(args) {
 	  return;
 	}
 
+	// Fix up options
+	if(options.outext != null) {
+		if( ! options.outext.startsWith(".")) { // Add preceeding dot
+			options.outext = "." + options.outext;
+		}
+	}
+
 	var includeFiles = new RegExp(options.ext.replace(/\./g, '\\.') + '$');	// literal dot (.) and ends with extension
 	var includeFolders = /(^[.]$|^[^.])/; //  ignore folders starting with ., except for '.' (current directory)
 	
 	var root = args[0];
-
+	var fileCnt = 0;
+	
 	if(fs.statSync(root).isDirectory()) {	// Walk the tree
 		walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
 			// if( ! params.directory ) { validate(params.path); }
 			if( ! params.directory ) {
+				fileCnt++;
 				var pathname = path.join(root, params.path);
-				await transformFile(pathname, options.stylesheet);
+				if(options.verbose) { console.log('Reading: ' + pathname); }
+				var outname = replaceExt(pathname, ".html");
+				if(options.path != null) { 
+					outname = replaceExt(path.join(options.path, params.path), options.outext); 
+					fs.mkdirSync(path.dirname(outname), { recursive: true });
+				}
+				if(options.verbose) { console.log('Writing: ' + outname); }
+				await transformFile(options.stylesheet, pathname, outname);
 			}
 			cb();
 		}).then(function() {
-			console.log(" SUMMARY: scanned: " + fileCnt + " files(s); " + failureCnt + " failure(s)");
+			console.log(" SUMMARY: processed: " + fileCnt + " files(s); ");
 		});
 	} else {	// Single file
-		validateFile(root);
+		if(options.output != null) {	// Make path if needed
+			fs.mkdirSync(path.dirname(options.output), { recursive: true });			
+		}
+		transformFile(options.stylesheet, root, options.output);
 	}
 }
 
