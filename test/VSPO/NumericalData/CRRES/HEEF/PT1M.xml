@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Spase xmlns="http://www.spase-group.org/data/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.spase-group.org/data/schema  http://www.spase-group.org/data/schema/spase-2_2_9.xsd">
-  <Version>2.2.9</Version>
+  <Version>2.3.2</Version>
   <NumericalData>
     <ResourceID>spase://VSPO/NumericalData/CRRES/HEEF/PT1M</ResourceID>
     <ResourceHeader>
@@ -53,5 +53,8 @@ Phyics Data Facility at NASA/Goddard.</Acknowledgement>
     </TemporalDescription>
     <ObservedRegion>Earth.Magnetosphere.Main</ObservedRegion>
     <ObservedRegion>Earth.Magnetosphere.RadiationBelt</ObservedRegion>
+	<Extension>
+	<NewTag></NewTag>
+	</Extension>
   </NumericalData>
 </Spase>

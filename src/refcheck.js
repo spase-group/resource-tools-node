@@ -320,6 +320,7 @@ var main = function(args)
 			walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
 				if( ! params.directory ) {
 					var pathname = path.join(root, params.path);
+					console.log(pathname);
 					await refcheckFile(pathname);
 				}
 				cb();
@@ -331,6 +332,7 @@ var main = function(args)
 			console.log("Reason: " + e.message);
 		}
 	} else {	// Single file
+		console.log(root);
 		refcheckFile(root);
 	}
 	
