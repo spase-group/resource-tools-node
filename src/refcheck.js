@@ -23,7 +23,7 @@ const entities = new Entities();
 
 // Configure the app
 var options  = yargs
-	.version('1.0.7')
+	.version('1.0.6')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -140,6 +140,31 @@ var errHandler = function(err) {
  * Returns a Promise.
  *
 **/
+/*
+var ftpCheck = function(url) {
+	return new Promise(function(resolve, reject) {
+		var urlParts = urlUtil.parse(url);
+		var c = new ftp();
+		c.on('ready', function() {
+			c.list(path.dirname(urlParts.path), function(err, list) {
+				if (err) throw reject(err);
+				// console.dir(list);
+				c.end();
+				var filename = path.basename(urlParts.path)
+				for(let i = 0; i < list.length; i++) {
+					var item = list[i];
+					if(item.name == filename) { resolve(item); return; }
+				}
+				// Not found if we reach here
+				reject('File not found: ' + filename);
+			});
+		});
+		// connect to localhost:21 as anonymous
+		c.connect({host: urlParts.host});
+	});
+}
+*/
+
 var ftpCheck = function(url) {
 	return new Promise(async function(resolve, reject) {
     const client = new ftp.Client();
@@ -152,10 +177,10 @@ var ftpCheck = function(url) {
         });
 				var filename = path.basename(urlParts.path)
         await client.cd(path.dirname(urlParts.path));
-        var list = await client.list(urlParts.path)
+        var list = await client.list()
 				for(let i = 0; i < list.length; i++) {
 					var item = list[i];
-					if(item.name == filename) { resolve(item); client.close(); return; }
+					if(item.name == filename) { client.close(); resolve(item); return; }
 				}
 				// Not found if we reach here
 				reject('File not found: ' + filename);
@@ -230,6 +255,26 @@ async function refcheckFile(pathname) {
 				var response = await request.head(options.service + path + ".xml");
 				if ( ! options.errors) { console.log("      OK: " + id); }
 				
+				/*
+
+				var response = await request(options.service + "?c=yes&i=" + id);
+				try {
+					var result = fastXmlParser.parse(response);
+					if( ! result.Response ) {
+						console.log(" INVALID: " + id);
+						console.log("    FILE: " + pathname);
+						idFailureCnt++;
+					} else {
+						if( result.Response.Known ) { if ( ! options.errors) { console.log("      OK: " + id); } }
+						else { 	console.log(" INVALID: " + id); console.log("    FILE: " + pathname); idFailureCnt++; }
+					}
+				} catch(error) {
+					console.log(" INVALID: " + id);
+					console.log("    FILE: " + pathname);
+					console.log("        : " + error.message);
+					idFailureCnt++;
+				}
+				*/
 			} catch(e) {
 				console.log(" INVALID: " + id);
 				console.log("    FILE: " + pathname);
