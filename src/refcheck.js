@@ -12,7 +12,7 @@ const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
 const request = require('request-promise-native');
-const ftp = require('@icetee/ftp');	// 'ftp' does not handle "S" in permissions.
+const ftp = require("basic-ftp")
 const fastXmlParser = require('fast-xml-parser');
 const walk = require('./walk-tree');	// Formerly walk-folder-tree
 const util = require('util');
@@ -20,9 +20,6 @@ const Entities = require('html-entities').XmlEntities;
 const urlUtil = require('url');
 
 const entities = new Entities();
-
-// const ftpHead = util.promisify(ftp.head);
-// const ftpGet = util.promisify(ftp.get);
 
 // Configure the app
 var options  = yargs
@@ -144,26 +141,30 @@ var errHandler = function(err) {
  *
 **/
 var ftpCheck = function(url) {
-	return new Promise(function(resolve, reject) {
+	return new Promise(async function(resolve, reject) {
+    const client = new ftp.Client();
+    client.ftp.verbose = false;
 		var urlParts = urlUtil.parse(url);
-		var c = new ftp();
-		c.on('ready', function() {
-			c.list(path.dirname(urlParts.path), function(err, list) {
-				if (err) throw reject(err);
-				// console.dir(list);
-				c.end();
+    try {
+        await client.access({
+            host: urlParts.host,
+            secure: true
+        });
 				var filename = path.basename(urlParts.path)
+        await client.cd(path.dirname(urlParts.path));
+        var list = await client.list(urlParts.path)
 				for(let i = 0; i < list.length; i++) {
 					var item = list[i];
-					if(item.name == filename) { resolve(item); return; }
+					if(item.name == filename) { resolve(item); client.close(); return; }
 				}
 				// Not found if we reach here
 				reject('File not found: ' + filename);
-			});
-		});
-		// connect to localhost:21 as anonymous
-		c.connect({host: urlParts.host});
-	});
+    }
+    catch(err) {
+				reject(err);
+    }
+    client.close();
+  });
 }
 
 /**
@@ -229,26 +230,6 @@ async function refcheckFile(pathname) {
 				var response = await request.head(options.service + path + ".xml");
 				if ( ! options.errors) { console.log("      OK: " + id); }
 				
-				/*
-
-				var response = await request(options.service + "?c=yes&i=" + id);
-				try {
-					var result = fastXmlParser.parse(response);
-					if( ! result.Response ) {
-						console.log(" INVALID: " + id);
-						console.log("    FILE: " + pathname);
-						idFailureCnt++;
-					} else {
-						if( result.Response.Known ) { if ( ! options.errors) { console.log("      OK: " + id); } }
-						else { 	console.log(" INVALID: " + id); console.log("    FILE: " + pathname); idFailureCnt++; }
-					}
-				} catch(error) {
-					console.log(" INVALID: " + id);
-					console.log("    FILE: " + pathname);
-					console.log("        : " + error.message);
-					idFailureCnt++;
-				}
-				*/
 			} catch(e) {
 				console.log(" INVALID: " + id);
 				console.log("    FILE: " + pathname);
