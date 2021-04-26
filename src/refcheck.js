@@ -23,7 +23,7 @@ const entities = new Entities();
 
 // Configure the app
 var options  = yargs
-	.version('1.0.7')
+	.version('1.0.8')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -244,6 +244,9 @@ async function refcheckFile(pathname) {
 	if(options.url) {
 		var client = null;
 		var list = findAll(content, /^URL$/);
+    
+    request.defaults({jar: true});
+    
 		for(let i = 0; i < list.length; i++) {
 			client = null;
 			urlCnt++;
@@ -258,7 +261,17 @@ async function refcheckFile(pathname) {
 						}
 					};
 					requestOptions.url = url;
-					var response = await request.head(requestOptions);
+          // Some sites might be rate limited so
+          // If link fails, we wait a little while then try a second time.
+          try {
+            var response = await request.head(requestOptions);
+          } catch(e) {
+            if(e.statusCode == 403) { // 403: Unauthorized - likely requires cookies, could require login
+              // Treat as a success - otherwise throw original error
+            } else {
+              throw(e);
+            }
+          }
 				}
 				else if(url.startsWith("ftp:") || url.startsWith("ftps:")) {				
 					if(await ftpCheck(url) == null) throw("File not found.");
@@ -275,6 +288,7 @@ async function refcheckFile(pathname) {
 				console.log(" INVALID: " + url); urlFailureCnt++;
 				console.log("    FILE: " + pathname);
 				console.log("        : " + e.message);
+				console.log("RESPONSE: " + JSON.stringify(response, 3, null));
 			}
 			if(client != null) client.close();
 		}
