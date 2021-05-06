@@ -16,9 +16,10 @@ const fastXmlParser = require('fast-xml-parser');
 const request = require('request-promise-native');
 const walk = require('./walk-tree');   // Formerly walk-folder-tree
 const libxml = require('libxmljs');
+const { Schema } = require('node-schematron');
 
 var options  = yargs
-	.version('1.0.4')
+	.version('1.0.5')
 	.usage('Validate a SPASE resource description using a specified version of the data dictionary (XML schema).')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')
@@ -59,10 +60,17 @@ var options  = yargs
 			default: false
 		},
 		
-		// Check Resource ID references
+		// XML Schema file
 		's' : {
 			alias: 'schema',
-			describe : 'URL or Path to the XML schema document (XSD) to use for checking files.',
+			describe : 'URL or Path to the XML schema document (XSD) to use for structural checking of files.',
+			type: 'string'
+		},
+		
+		// XML Schematron file
+		't' : {
+			alias: 'schematron',
+			describe : 'URL or Path to the XML schematron document (SCH) to use for content checking of files.',
 			type: 'string'
 		},
 		
@@ -82,12 +90,38 @@ var args = options._;	// Unprocessed command line arguments
 // Global variables
 var fileCnt = 0;
 var failureCnt = 0;
-options.service = 'http://spase-group.org/data/schema';
+options.service = 'https://spase-group.org/data/schema';
 
 // Functions
+
+// Retrieve xpath to an element
+var xpath = function(element, path) {
+  if( ! element) { return path; } // Done
+  
+  if(element.tagName) {
+    return(xpath(element.parentNode, "/" + element.tagName + path));
+  }
+  
+  return path;
+
+}
+
+// Get an XML schema document corresponding to a information model version.
 async function getSchema(version) {
-	version = version.replace(/\./g, '_');
+	// version = version.replace(/\./g, '_');
 	var url = options.service + "/spase-" + version + ".xsd"; 
+	try {
+		return await request(url);
+	} catch(e) {
+		console.log("Unable to retrieve schema from: " + url);
+		return e;
+	}
+}
+
+// Get an XML schematron document corresponding to a information model version.
+async function getSchematron(version) {
+	// version = version.replace(/\./g, '_');
+	var url = options.service + "/spase-" + version + ".sch"; 
 	try {
 		return await request(url);
 	} catch(e) {
@@ -100,8 +134,10 @@ async function validateFile(pathname) {
 	fileCnt++;
 	var xmlDoc = fs.readFileSync(pathname, 'utf8');
 	var xml = libxml.parseXml(xmlDoc);
+  var rules = null;
 	var result = fastXmlParser.parse(xmlDoc);	// Check syntax
-	
+	var valid = true;
+  
 	// Get Schema
 	var xsdDoc = "";
 	if(options.schema != null) {	// Read from file
@@ -114,16 +150,50 @@ async function validateFile(pathname) {
 		xsdDoc = await getSchema(result.Spase.Version);
 	}
 	
+	// Get Schematron
+	var schDoc = "";
+	if(options.schematron != null) {	// Read from file
+		if(options.schematron.startsWith("http")) {
+			schDoc = await request(options.schematron);
+		} else {	// Local file
+			schDoc = fs.readFileSync(options.schematron, 'utf8');
+		}
+	} else {	// Load from server
+		schDoc = await getSchematron("1.0.0");  // Fixed version number - might chnage in future
+	}
+  rules = Schema.fromString(schDoc);
+	
 	var xsd = libxml.parseXml(xsdDoc);	
-	if(xml.validate(xsd)) {
-		if ( ! options.errors) { console.log('      OK: ' + pathname); }
-	} else {
+	if( ! xml.validate(xsd)) {
+		// if ( ! options.errors) { console.log('      OK: ' + pathname); }
+	  // } else {
 		console.log(' INVALID: ' + pathname);
 		failureCnt++;
+    valid = false;
 		xml.validationErrors.forEach(function(item) {
 			console.log('   Line: ' + item.line + "; " + item.message.trim());
 		});
 	}
+    
+  // Replace <Spase ....> tag with <Spase>.
+  // For some reason if the default namespace attribute ("xmls=") is present then schematron processing does not work.
+  const regex = /<Spase [^>]+>/i;
+  xmlDoc = xmlDoc.replace(regex, "<Spase>")
+  var results = rules.validateString(xmlDoc, { debug: false });
+
+  if(results.length > 0) {
+    console.log(' INVALID: ' + pathname);
+    failureCnt++;
+    valid = false;
+
+    results.forEach(function(element) {
+      console.log("   XPath: " + xpath(element.context, ""));
+      console.log("   ERROR: " + element.message.trim().replace(/\\n/g, "\n          "));
+    });
+  }
+  
+	if ( valid && ! options.errors) { console.log('      OK: ' + pathname); }
+  
 }
 
 function main(args) {
