@@ -215,6 +215,8 @@ function findAll(dom, pattern, exclude, list) {
 async function refcheckFile(pathname) {
 	fileCnt++;
 
+  var needPathname = true;
+
 	var xmlDoc = fs.readFileSync(pathname, 'utf8');
 	var content = fastXmlParser.parse(xmlDoc);	// Check syntax
 	
@@ -230,8 +232,9 @@ async function refcheckFile(pathname) {
 				if(options.verbose) { console.log('Checking with: ' + options.service + path + ".xml"); }
 
 				var response = await request.head(options.service + path + ".xml");
-				if ( ! options.errors) { console.log("      OK: " + id); }
+				if ( ! options.errors) { console.log(pathname); needPathName = false; console.log("      OK: " + id); }
 			} catch(e) {
+        if(needPathname) { console.log(pathname); needPathname = false; }
 				console.log(" INVALID: " + id);
 				console.log("    FILE: " + pathname);
 				console.log("        : " + e.message);
@@ -277,14 +280,19 @@ async function refcheckFile(pathname) {
 					if(await ftpCheck(url) == null) throw("File not found.");
 				}
 				else {	// Unsupported protocol
+          if(needPathname) { console.log(pathname); needPathname = false; }
 					console.log(" INVALID: " + url); urlFailureCnt++;
 					console.log("    FILE: " + pathname);
 					console.log("        : Unsupported protocol");	
 					scanned = false;					
 				}
 				
-				if ( (! options.errors) && scanned) { console.log("      OK: " + url); }
+				if ( (! options.errors) && scanned) {
+          if(needPathname) { console.log(pathname); needPathname = false; }
+          console.log("      OK: " + url); 
+        }
 			} catch(e) {
+        if(needPathname) { console.log(pathname); needPathname = false; }
 				console.log(" INVALID: " + url); urlFailureCnt++;
 				console.log("    FILE: " + pathname);
 				console.log("        : " + e.message);
@@ -316,7 +324,7 @@ var main = function(args)
 			walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
 				if( ! params.directory ) {
 					var pathname = path.join(root, params.path);
-					console.log(pathname);
+					if(options.verbose) console.log(pathname);
 					await refcheckFile(pathname);
 				}
 				cb();
