@@ -23,7 +23,7 @@ const entities = new Entities();
 
 // Configure the app
 var options  = yargs
-	.version('1.0.8')
+	.version('1.0.9')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -112,7 +112,6 @@ var options  = yargs
 			type: 'string',
 			default: '.xml'
 		},
-		
 
 	})
 	.argv
@@ -245,60 +244,70 @@ async function refcheckFile(pathname) {
 	
 	// Check URL
 	if(options.url) {
-		var client = null;
 		var list = findAll(content, /^URL$/);
     
     request.defaults({jar: true});
     
 		for(let i = 0; i < list.length; i++) {
-			client = null;
 			urlCnt++;
-			var scanned = true;
+			var scanOK = true;
 			var url = entities.decode(list[i].trim());
-			try {
-				if(url.startsWith("http:") || url.startsWith("https:")) {
-					var requestOptions = {
-						url : "",
-						headers: {
-							'User-Agent': 'request'
-						}
-					};
-					requestOptions.url = url;
-          // Some sites might be rate limited so
-          // If link fails, we wait a little while then try a second time.
-          try {
-            var response = await request.head(requestOptions);
-          } catch(e) {
-            if(e.statusCode == 403) { // 403: Unauthorized - likely requires cookies, could require login
-              // Treat as a success - otherwise throw original error
-            } else {
-              throw(e);
+			if(url.startsWith("http:") || url.startsWith("https:")) {
+        var response = null;
+        try {
+            var requestOptions = {
+              url : "",
+              headers: {
+                'User-Agent': 'request'
+              }
+            };
+            requestOptions.url = url;
+            // Some sites might be rate limited so
+            // If link fails, we wait a little while then try a second time.
+            try {
+              response = await request.head(requestOptions);
+            } catch(e) {
+              if(e.statusCode == 403) { // 403: Unauthorized - likely requires cookies, could require login
+                // Treat as a success - otherwise throw original error
+              } else {
+                // Check status and set a better message
+                if(e.statusCode == 400) { e.message = "400 - Bad Request."; }
+                if(e.statusCode == 401) { e.message = "401 - Unauthorized (RFC 7235)."; }
+                if(e.statusCode == 402) { e.message = "402 - Payment Required."; }
+                if(e.statusCode == 404) { e.message = "404 - File Not Found."; }
+                if(e.statusCode == 405) { e.message = "405 - Method Not Allowed."; }
+                if(e.statusCode == 408) { e.message = "408 - Request Timeout."; }
+                if(e.statusCode == 429) { e.message = "429 - Too Many Requests (RFC 6585)."; }
+                throw(e);
+              }
             }
+          } catch(e) {
+            if(needPathname) { console.log(pathname); needPathname = false; }
+            console.log("  INVALID: " + url); urlFailureCnt++;
+            console.log("         : " + e.message);
+            if(response) console.log(" RESPONSE: " + JSON.stringify(response, 3, null));
+            scanOK = false;
           }
 				}
 				else if(url.startsWith("ftp:") || url.startsWith("ftps:")) {				
-					if(await ftpCheck(url) == null) throw("File not found.");
+					if(await ftpCheck(url) == null) {
+            if(needPathname) { console.log(pathname); needPathname = false; }
+            console.log("  INVALID: " + url); urlFailureCnt++;
+            console.log("         : File not found.");	
+            scanOK = false;		
+          }            
 				}
 				else {	// Unsupported protocol
           if(needPathname) { console.log(pathname); needPathname = false; }
-					console.log(" INVALID: " + url); urlFailureCnt++;
-					console.log("    FILE: " + pathname);
-					console.log("        : Unsupported protocol");	
-					scanned = false;					
+					console.log("  INVALID: " + url); urlFailureCnt++;
+					console.log("         : Unsupported protocol");	
+					scanOK = false;					
 				}
 				
-				if ( (! options.errors) && scanned) {
+				if ( (! options.errors) && scanOK) {
           if(needPathname) { console.log(pathname); needPathname = false; }
-          console.log("      OK: " + url); 
+          console.log("       OK: " + url); 
         }
-			} catch(e) {
-        if(needPathname) { console.log(pathname); needPathname = false; }
-				console.log(" INVALID: " + url); urlFailureCnt++;
-				console.log("    FILE: " + pathname);
-				console.log("        : " + e.message);
-				console.log("RESPONSE: " + JSON.stringify(response, 3, null));
-			}
-			if(client != null) client.close();
 		}
 	}	
 }
