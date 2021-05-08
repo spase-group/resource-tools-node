@@ -15,7 +15,7 @@ const path = require('path');
 const fastXmlParser = require('fast-xml-parser');
 const request = require('request-promise-native');
 const walk = require('./walk-tree');   // Formerly walk-folder-tree
-const libxml = require('libxmljs');
+const libxml = require('libxmljs2');
 const { Schema } = require('node-schematron');
 
 var options  = yargs
