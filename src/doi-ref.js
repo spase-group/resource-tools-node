@@ -9,7 +9,7 @@ const yargs = require('yargs');
 const fastXmlParser = require('fast-xml-parser');
 
 var options  = yargs
-	.version('1.0.1')
+	.version('1.0.2')
 	.usage('Extract reference information in CSV format from a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 example.xml', 'Extract reference information from "example.xml"')
@@ -82,7 +82,7 @@ var outputWrite = function(indent, str) {
 		for(var i = 0; i < indent; i++) { prefix += "   "; }
 		console.log(prefix + str);
 	} else {
-		outputFile.write(str);
+		outputFile.write(str + "\n"); // Add new-line to mimic console.log()
 	}
 }
 
@@ -100,6 +100,7 @@ var walkSync = function(pathname, action) {
 	var fs = fs || require('fs');
 	if ( fs.statSync(pathname).isDirectory() ) {
 		if(pathname.endsWith('.git')) return;	// Skip
+		if(pathname.endsWith('.github')) return;	// Skip
 		var files = fs.readdirSync(pathname);
 		files.forEach(function(file) {
 			// console.log('dir: ' + pathname);
@@ -500,6 +501,8 @@ var getContributorList = function(resource, options) {
   Write reference record for a SPASE resource description.
 **/  
 var writeReference = function(pathname) {
+	if( options.ext.length > 0 && ! pathname.endsWith(options.ext)) return;	// Skip - only process files with matching extension
+
 	// XML Document
 	if(options.verbose) { console.log('Parsing: ' + pathname); }
 		
@@ -585,8 +588,6 @@ var writeReference = function(pathname) {
 		record += delim + '" "';
 	}
 	
-	record += "\n";
-	
 	outputWrite(0, record);
 }
 /**
@@ -605,7 +606,7 @@ var main = function(args)
 		outputFile = fs.createWriteStream(options.output);
 	}
 	
-	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding\n');
+	outputWrite(0, 'SPASEID, DOI, Creator, Title, Publisher, PubYear, Keywords, Contrib, ResourceType, Abstract, Funding');
 	
 	// For all passed arguments
 	for(var i = 0; i < args.length; i++) {
