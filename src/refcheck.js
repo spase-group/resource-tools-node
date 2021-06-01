@@ -23,7 +23,7 @@ const entities = new Entities();
 
 // Configure the app
 var options  = yargs
-	.version('1.0.9')
+	.version('1.0.10')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -231,7 +231,7 @@ async function refcheckFile(pathname) {
 				if(options.verbose) { console.log('Checking with: ' + options.service + path + ".xml"); }
 
 				var response = await request.head(options.service + path + ".xml");
-				if ( ! options.errors) { console.log(pathname); needPathName = false; console.log("      OK: " + id); }
+				if ( ! options.errors) { console.log(pathname); needPathname = false; console.log("      OK: " + id); }
 			} catch(e) {
         if(needPathname) { console.log(pathname); needPathname = false; }
 				console.log(" INVALID: " + id);
