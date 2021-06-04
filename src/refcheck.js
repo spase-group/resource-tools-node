@@ -23,7 +23,7 @@ const entities = new Entities();
 
 // Configure the app
 var options  = yargs
-	.version('1.0.10')
+	.version('1.0.11')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -244,7 +244,11 @@ async function refcheckFile(pathname) {
 	
 	// Check URL
 	if(options.url) {
-		var list = findAll(content, /^URL$/);
+		var urlList = findAll(content, /^URL$/);
+		var doiList = findAll(content, /^DOI$/);
+    
+    // Merge URL and DOI list.
+    var list = [].concat(urlList, doiList);
     
     request.defaults({jar: true});
     
@@ -289,13 +293,20 @@ async function refcheckFile(pathname) {
             scanOK = false;
           }
 				}
-				else if(url.startsWith("ftp:") || url.startsWith("ftps:")) {				
-					if(await ftpCheck(url) == null) {
+				else if(url.startsWith("ftp:") || url.startsWith("ftps:")) {	
+          try {
+            if(await ftpCheck(url) == null) {
+              if(needPathname) { console.log(pathname); needPathname = false; }
+              console.log("  INVALID: " + url); urlFailureCnt++;
+              console.log("         : File not found.");	
+              scanOK = false;		
+            }            
+          } catch(e) {  // Some cases throw an error (i.e. time out)
             if(needPathname) { console.log(pathname); needPathname = false; }
             console.log("  INVALID: " + url); urlFailureCnt++;
-            console.log("         : File not found.");	
-            scanOK = false;		
-          }            
+            console.log("         : " + e.message);
+            scanOK = false;
+          }
 				}
 				else {	// Unsupported protocol
           if(needPathname) { console.log(pathname); needPathname = false; }
@@ -306,7 +317,7 @@ async function refcheckFile(pathname) {
 				
 				if ( (! options.errors) && scanOK) {
           if(needPathname) { console.log(pathname); needPathname = false; }
-          console.log("       OK: " + url); 
+          console.log("      OK: " + url); 
         }
 		}
 	}	
