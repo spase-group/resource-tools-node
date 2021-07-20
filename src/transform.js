@@ -20,11 +20,11 @@ const replaceExt = require('replace-ext');
 var indent = 3;
 
 var options  = yargs
-	.version('1.0.3')
+	.version('1.0.4')
 	.usage('Transform a SPASE description in XML using an XML Stylesheet.\nRequires an XSLT process to be installed.\n\nSee: http://www.sagehill.net/docbookxsl/InstallingAProcessor.html\n')
 	.usage('$0 [args] <files...>')
-	.example('$0 example.xml', 'validate the contents of "example.xml" using the version declared in the file.')git status
-	.example('$0 -s scheam.xsd example.xml', 'validate the contents of "example.xml" using the the schema "schema.xsd".')
+	.example('$0 example.xml', 'transform the contents of "example.xml" using an XSLT stylesheet.')
+	.example('$0 -s spase.xsl example.xml', 'transform the contents of "example.xml" using the the XSLT stylesheet "space.xsl".')
 	.epilog('copyright 2018')
 	.showHelpOnFail(false, "Specify --help for available options")
 	.help('h')
@@ -81,7 +81,8 @@ var options  = yargs
 		's' : {
 			alias: 'stylesheet',
 			describe : 'URL or Path to the XML stylesheet to use for transforming files.',
-			type: 'string'
+			type: 'string',
+      default: '+/xsl/spase.xsl'
 		},
 		
 		// File name extensions
@@ -109,6 +110,10 @@ async function transformFile(stylesheet, pathname, output) {
 	} else {
 		stream = fs.createWriteStream(output);
 	}
+  
+  if(stylesheet.startsWith("+/")) { // Relative to path to script
+    stylesheet = __dirname + "/.." + stylesheet.substring(1);
+  }
 	
 	var xslt = xsltproc.transform(stylesheet, pathname);
 
