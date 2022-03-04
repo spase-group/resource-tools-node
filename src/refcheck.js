@@ -156,9 +156,7 @@ var errHandler = function(err) {
 
 // Set default timeouts to 1 second.
 request.defaults( {
-    open_timeout: 1000,
-    response_timeout: 1000,
-    read_timeout: 1000
+    response_timeout: 2000
 });
 
 /**
