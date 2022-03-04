@@ -11,7 +11,7 @@
 const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
-const request = require('request-promise-native');
+const request = require('needle');
 const ftp = require("basic-ftp")
 const fastXmlParser = require('fast-xml-parser');
 const walk = require('./walk-tree');	// Formerly walk-folder-tree
@@ -35,6 +35,14 @@ var options  = yargs
 	
 	// version
 	.options({
+		// File name extensions
+		'a' : {
+			alias: 'authority',
+			describe : 'The Naming Authority for the resource description(s).',
+			type: 'string',
+			// default: null
+		},
+    
 		// File name extensions
 		'd' : {
 			alias: 'dir',
@@ -87,6 +95,14 @@ var options  = yargs
 			describe : 'The URL to the registry service to look-up resource identifiers.',
 			type: 'string',
 			default: 'https://hpde.io/'
+		},
+
+		// Output tabular format report.
+		't' : {
+			alias: 'tabular',
+			describe : 'Generate a tabular format report.',
+			type: 'boolean',
+			default: false
 		},
 		
 		// Check URL references
@@ -230,14 +246,24 @@ async function refcheckFile(pathname) {
 			try {
 				if(options.verbose) { console.log('Checking with: ' + options.service + path + ".xml"); }
 
-				var response = await request.head(options.service + path + ".xml");
-				if ( ! options.errors) { console.log(pathname); needPathname = false; console.log("      OK: " + id); }
+				var response = await request('head', options.service + path + ".xml");
+				if ( ! options.errors) { 
+           if(options.tabular) {
+            console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "ID", id, "OK", "");
+           } else {
+            console.log(pathname); needPathname = false; console.log("      OK: " + id); 
+           }
+        }
 			} catch(e) {
-        if(needPathname) { console.log(pathname); needPathname = false; }
-				console.log(" INVALID: " + id);
-				console.log("    FILE: " + pathname);
-				console.log("        : " + e.message);
-				idFailureCnt++;
+        if(options.tabular) {
+          console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "ID", id, "Invalid", e.message);
+        } else {
+          if(needPathname) { console.log(pathname); needPathname = false; }
+          console.log(" INVALID: " + id);
+          console.log("    FILE: " + pathname);
+          console.log("        : " + e.message);
+        }
+        idFailureCnt++;
 			}
 		}
 	}
@@ -250,8 +276,6 @@ async function refcheckFile(pathname) {
     // Merge URL and DOI list.
     var list = [].concat(urlList, doiList);
     
-    request.defaults({jar: true});
-    
 		for(let i = 0; i < list.length; i++) {
 			urlCnt++;
 			var scanOK = true;
@@ -259,18 +283,11 @@ async function refcheckFile(pathname) {
 			if(url.startsWith("http:") || url.startsWith("https:")) {
         var response = null;
         try {
-            var requestOptions = {
-              url : "",
-              headers: {
-                'User-Agent': 'request'
-              }
-            };
-            requestOptions.url = url;
             // Some sites might be rate limited so
             // If link fails, we wait a little while then try a second time.
             try {
-              response = await request.head(requestOptions);
-            } catch(e) {
+              response = await request('head', url);
+            } catch(e) {             
               if(e.statusCode == 403) { // 403: Unauthorized - likely requires cookies, could require login
                 // Treat as a success - otherwise throw original error
               } else {
@@ -282,42 +299,63 @@ async function refcheckFile(pathname) {
                 if(e.statusCode == 405) { e.message = "405 - Method Not Allowed."; }
                 if(e.statusCode == 408) { e.message = "408 - Request Timeout."; }
                 if(e.statusCode == 429) { e.message = "429 - Too Many Requests (RFC 6585)."; }
+                if(e.statusCode == 503) { e.message = "503 - Service Temporarily unavailable"; }
                 throw(e);
               }
             }
           } catch(e) {
-            if(needPathname) { console.log(pathname); needPathname = false; }
-            console.log("  INVALID: " + url); urlFailureCnt++;
-            console.log("         : " + e.message);
-            if(response) console.log(" RESPONSE: " + JSON.stringify(response, 3, null));
+            if(options.tabular) {
+              console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", e.message);
+            } else {
+              if(needPathname) { console.log(pathname); needPathname = false; }
+              console.log("  INVALID: " + url); urlFailureCnt++;
+              console.log("         : " + e.message);
+              if(response) console.log(" RESPONSE: " + JSON.stringify(response, 3, null));
+            }
             scanOK = false;
           }
 				}
 				else if(url.startsWith("ftp:") || url.startsWith("ftps:")) {	
           try {
             if(await ftpCheck(url) == null) {
+              if(options.tabular) {
+                console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", "File Not Found");
+              } else {
+                if(needPathname) { console.log(pathname); needPathname = false; }
+                console.log("  INVALID: " + url); urlFailureCnt++;
+                console.log("         : File not found.");	
+              }
+              scanOK = false;
+            }
+          } catch(e) {  // Some cases throw an error (i.e. time out)
+           if(options.tabular) {
+              console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", e.message);
+            } else {
               if(needPathname) { console.log(pathname); needPathname = false; }
               console.log("  INVALID: " + url); urlFailureCnt++;
-              console.log("         : File not found.");	
-              scanOK = false;		
-            }            
-          } catch(e) {  // Some cases throw an error (i.e. time out)
-            if(needPathname) { console.log(pathname); needPathname = false; }
-            console.log("  INVALID: " + url); urlFailureCnt++;
-            console.log("         : " + e.message);
+              console.log("         : " + e.message);
+            }
             scanOK = false;
           }
 				}
 				else {	// Unsupported protocol
-          if(needPathname) { console.log(pathname); needPathname = false; }
-					console.log("  INVALID: " + url); urlFailureCnt++;
-					console.log("         : Unsupported protocol");	
+         if(options.tabular) {
+            console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", "Unsupported protocol");
+          } else {
+            if(needPathname) { console.log(pathname); needPathname = false; }
+            console.log("  INVALID: " + url); urlFailureCnt++;
+            console.log("         : Unsupported protocol");	
+          }
 					scanOK = false;					
 				}
 				
 				if ( (! options.errors) && scanOK) {
-          if(needPathname) { console.log(pathname); needPathname = false; }
-          console.log("      OK: " + url); 
+         if(options.tabular) {
+            console.log('%s\t%s\t%s\t%s\t%s\t%s', options.authority, pathname, "URL", url, "OK", "");
+          } else {
+            if(needPathname) { console.log(pathname); needPathname = false; }
+            console.log("      OK: " + url); 
+          }
         }
 		}
 	}	
@@ -339,6 +377,16 @@ var main = function(args)
 	
 	var root = args[0];
 
+  // Check options
+  if( ! options.id && ! options.url) {
+    console.log("You must specify what to check, either '-i' (identifier) or '-u' (URL) or both.");
+    return;
+  }
+  
+  // If tabular optput write header
+  if(options.tabular) {
+    console.log("Authority\tPath\tType\tReference\tStatus\tNote");
+  }
 	if(fs.statSync(root).isDirectory()) {	// Walk the tree
 		try {
 			walk(root, { filterFolders: includeFolders, filterFiles: includeFiles, recurse: options.recurse }, async function(params, cb) {
@@ -349,8 +397,10 @@ var main = function(args)
 				}
 				cb();
 			}).then(function() {
-				console.log(" SUMMARY: scanned : " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
-				console.log(" SUMMARY: failures:             " + idFailureCnt + " ID(s); " + urlFailureCnt + " URL(s)");
+        if( ! options.tabular) {
+          console.log(" SUMMARY: scanned : " + fileCnt + " files(s); " + idCnt + " ID(s); " + urlCnt + " URL(s)");
+          console.log(" SUMMARY: failures:             " + idFailureCnt + " ID(s); " + urlFailureCnt + " URL(s)");
+        }
 			});
 		} catch(e) {
 			console.log("Reason: " + e.message);

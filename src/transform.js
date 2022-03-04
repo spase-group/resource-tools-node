@@ -12,7 +12,6 @@
 const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
-const request = require('request-promise-native');
 const walk = require('walk-folder-tree');
 const xsltproc = require('xsltproc');
 const replaceExt = require('replace-ext');

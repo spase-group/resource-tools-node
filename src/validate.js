@@ -13,7 +13,7 @@ const fs = require('fs');
 const yargs = require('yargs');
 const path = require('path');
 const fastXmlParser = require('fast-xml-parser');
-const request = require('request-promise-native');
+const request = require('needle');
 const walk = require('./walk-tree');   // Formerly walk-folder-tree
 const libxml = require('libxmljs2');
 const { Schema } = require('node-schematron');
@@ -111,7 +111,7 @@ async function getSchema(version) {
 	// version = version.replace(/\./g, '_');
 	var url = options.service + "/spase-" + version + ".xsd"; 
 	try {
-		return await request(url);
+		return await request('get', url);
 	} catch(e) {
 		console.log("Unable to retrieve schema from: " + url);
 		return e;
@@ -123,7 +123,7 @@ async function getSchematron(version) {
 	// version = version.replace(/\./g, '_');
 	var url = options.service + "/spase-" + version + ".sch"; 
 	try {
-		return await request(url);
+		return await request('get', url);
 	} catch(e) {
 		console.log("Unable to retrieve schema from: " + url);
 		return e;
@@ -142,7 +142,7 @@ async function validateFile(pathname) {
 	var xsdDoc = "";
 	if(options.schema != null) {	// Read from file
 		if(options.schema.startsWith("http")) {
-			xsdDoc = await request(options.schema);
+			xsdDoc = await request('get', options.schema);
 		} else {	// Local file
 			xsdDoc = fs.readFileSync(options.schema, 'utf8');
 		}
@@ -154,7 +154,7 @@ async function validateFile(pathname) {
 	var schDoc = "";
 	if(options.schematron != null) {	// Read from file
 		if(options.schematron.startsWith("http")) {
-			schDoc = await request(options.schematron);
+			schDoc = await request('get', options.schematron);
 		} else {	// Local file
 			schDoc = fs.readFileSync(options.schematron, 'utf8');
 		}
