@@ -43,6 +43,14 @@ var options  = yargs
 			// default: null
 		},
     
+		// Do not print trim (header) at the beginning of a table listing
+		'b' : {
+			alias: 'bare',
+			describe : 'Do not print trim (header) at the beginning of a table listing.',
+			type: 'boolean',
+			default: false
+		},
+
 		// File name extensions
 		'd' : {
 			alias: 'dir',
@@ -145,6 +153,13 @@ var idFailureCnt = 0;
 var errHandler = function(err) {
     console.log(err);
 }
+
+// Set default timeouts to 1 second.
+request.defaults( {
+    open_timeout: 1000,
+    response_timeout: 1000,
+    read_timeout: 1000
+});
 
 /**
  * Check an FTP "URL". 
@@ -283,39 +298,40 @@ async function refcheckFile(pathname) {
 			if(url.startsWith("http:") || url.startsWith("https:")) {
         var response = null;
         try {
-            // Some sites might be rate limited so
-            // If link fails, we wait a little while then try a second time.
             try {
               response = await request('head', url);
             } catch(e) {             
               if(e.statusCode == 403) { // 403: Unauthorized - likely requires cookies, could require login
-                // Treat as a success - otherwise throw original error
+                // Do nothing
+              } else if( e.code == "HPE_INVALID_HEADER_TOKEN") { 
+                // Do nothing - we got a header by its malformed in some way
               } else {
-                // Check status and set a better message
-                if(e.statusCode == 400) { e.message = "400 - Bad Request."; }
-                if(e.statusCode == 401) { e.message = "401 - Unauthorized (RFC 7235)."; }
-                if(e.statusCode == 402) { e.message = "402 - Payment Required."; }
-                if(e.statusCode == 404) { e.message = "404 - File Not Found."; }
-                if(e.statusCode == 405) { e.message = "405 - Method Not Allowed."; }
-                if(e.statusCode == 408) { e.message = "408 - Request Timeout."; }
-                if(e.statusCode == 429) { e.message = "429 - Too Many Requests (RFC 6585)."; }
-                if(e.statusCode == 503) { e.message = "503 - Service Temporarily unavailable"; }
-                throw(e);
+                // Some sites might not support HEAD request or have other constraints, try with GET
+                response = await request('get', url);           
               }
             }
           } catch(e) {
-            if(options.tabular) {
-              console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", e.message);
-            } else {
-              if(needPathname) { console.log(pathname); needPathname = false; }
-              console.log("  INVALID: " + url); urlFailureCnt++;
-              console.log("         : " + e.message);
-              if(response) console.log(" RESPONSE: " + JSON.stringify(response, 3, null));
-            }
-            scanOK = false;
+              // Check status and set a better message
+              if(e.statusCode == 400) { e.message = "400 - Bad Request."; }
+              if(e.statusCode == 401) { e.message = "401 - Unauthorized (RFC 7235)."; }
+              if(e.statusCode == 402) { e.message = "402 - Payment Required."; }
+              if(e.statusCode == 404) { e.message = "404 - File Not Found."; }
+              if(e.statusCode == 405) { e.message = "405 - Method Not Allowed."; }
+              if(e.statusCode == 408) { e.message = "408 - Request Timeout."; }
+              if(e.statusCode == 429) { e.message = "429 - Too Many Requests (RFC 6585)."; }
+              if(e.statusCode == 503) { e.message = "503 - Service Temporarily unavailable"; }
+ 
+              if(options.tabular) {
+                console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", e.statusCode + " - " + e.message);
+              } else {
+                if(needPathname) { console.log(pathname); needPathname = false; }
+                console.log("  INVALID: " + url); urlFailureCnt++;
+                console.log("         : " + e.statusCode + " - " + e.message);
+                if(response) console.log(" RESPONSE: " + JSON.stringify(response, 3, null));
+              }
+              scanOK = false;
           }
-				}
-				else if(url.startsWith("ftp:") || url.startsWith("ftps:")) {	
+				}	else if(url.startsWith("ftp:") || url.startsWith("ftps:")) {	
           try {
             if(await ftpCheck(url) == null) {
               if(options.tabular) {
@@ -337,8 +353,7 @@ async function refcheckFile(pathname) {
             }
             scanOK = false;
           }
-				}
-				else {	// Unsupported protocol
+				}	else {	// Unsupported protocol
          if(options.tabular) {
             console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", "Unsupported protocol");
           } else {
@@ -384,7 +399,7 @@ var main = function(args)
   }
   
   // If tabular optput write header
-  if(options.tabular) {
+  if(options.tabular && ! options.bare) { // Print header
     console.log("Authority\tPath\tType\tReference\tStatus\tNote");
   }
 	if(fs.statSync(root).isDirectory()) {	// Walk the tree
