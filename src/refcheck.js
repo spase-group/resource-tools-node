@@ -154,11 +154,6 @@ var errHandler = function(err) {
     console.log(err);
 }
 
-// Set default timeouts to 1 second.
-request.defaults( {
-    response_timeout: 2000
-});
-
 /**
  * Check an FTP "URL". 
  * 
