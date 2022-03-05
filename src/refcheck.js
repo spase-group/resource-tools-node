@@ -23,7 +23,7 @@ const entities = new Entities();
 
 // Configure the app
 var options  = yargs
-	.version('1.0.11')
+	.version('1.1.0')
 	.usage('Perform a check of URL or SPASE ID references in a SPASE resource description.')
 	.usage('$0 [args] <files...>')
 	.example('$0 -i example.xml', 'check SPASE ID references in the given file')
@@ -173,6 +173,8 @@ var ftpCheck = function(url) {
     try {
         await client.access({
             host: urlParts.host,
+            user: "anonymous",
+            password: "none@unknown.org",
             secure: doSecure
         });
 				var filename = path.basename(urlParts.path)
@@ -183,10 +185,11 @@ var ftpCheck = function(url) {
 					if(item.name == filename) { client.close(); resolve(item); return; }
 				}
 				// Not found if we reach here
+        client.close();
 				reject('File not found: ' + filename);
     }
     catch(err) {
-				reject(err);
+ 				reject(err);
     }
     client.close();
   });
@@ -288,6 +291,7 @@ async function refcheckFile(pathname) {
 			urlCnt++;
 			var scanOK = true;
 			var url = entities.decode(list[i].trim());
+      var protocol = url.split(":", 2)[0];
 			if(url.startsWith("http:") || url.startsWith("https:")) {
         var response = null;
         try {
@@ -315,11 +319,11 @@ async function refcheckFile(pathname) {
               if(e.statusCode == 503) { e.message = "503 - Service Temporarily unavailable"; }
  
               if(options.tabular) {
-                console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", e.statusCode + " - " + e.message);
+                console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, protocol, url, "INVALID", e.code + " - " + e.message);
               } else {
                 if(needPathname) { console.log(pathname); needPathname = false; }
                 console.log("  INVALID: " + url); urlFailureCnt++;
-                console.log("         : " + e.statusCode + " - " + e.message);
+                console.log("         : " + e.code + " - " + e.message);
                 if(response) console.log(" RESPONSE: " + JSON.stringify(response, 3, null));
               }
               scanOK = false;
@@ -328,7 +332,7 @@ async function refcheckFile(pathname) {
           try {
             if(await ftpCheck(url) == null) {
               if(options.tabular) {
-                console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", "File Not Found");
+                console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, protocol, url, "INVALID", "File Not Found");
               } else {
                 if(needPathname) { console.log(pathname); needPathname = false; }
                 console.log("  INVALID: " + url); urlFailureCnt++;
@@ -338,17 +342,17 @@ async function refcheckFile(pathname) {
             }
           } catch(e) {  // Some cases throw an error (i.e. time out)
            if(options.tabular) {
-              console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", e.message);
+              console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, protocol, url, "INVALID", e.code + ": " + e.name);
             } else {
               if(needPathname) { console.log(pathname); needPathname = false; }
               console.log("  INVALID: " + url); urlFailureCnt++;
-              console.log("         : " + e.message);
+              console.log("         : " + e.name);
             }
             scanOK = false;
           }
 				}	else {	// Unsupported protocol
          if(options.tabular) {
-            console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, "URL", url, "Invalid", "Unsupported protocol");
+            console.log("%s\t%s\t%s\t%s\t%s", options.authority, pathname, protocol, url, "INVALID", "Unsupported protocol");
           } else {
             if(needPathname) { console.log(pathname); needPathname = false; }
             console.log("  INVALID: " + url); urlFailureCnt++;
@@ -359,7 +363,7 @@ async function refcheckFile(pathname) {
 				
 				if ( (! options.errors) && scanOK) {
          if(options.tabular) {
-            console.log('%s\t%s\t%s\t%s\t%s\t%s', options.authority, pathname, "URL", url, "OK", "");
+            console.log('%s\t%s\t%s\t%s\t%s\t%s', options.authority, pathname, protocol, url, "OK", "");
           } else {
             if(needPathname) { console.log(pathname); needPathname = false; }
             console.log("      OK: " + url); 
@@ -393,7 +397,7 @@ var main = function(args)
   
   // If tabular optput write header
   if(options.tabular && ! options.bare) { // Print header
-    console.log("Authority\tPath\tType\tReference\tStatus\tNote");
+    console.log("Authority\tPath\tProtocol\tReference\tStatus\tNote");
   }
 	if(fs.statSync(root).isDirectory()) {	// Walk the tree
 		try {
