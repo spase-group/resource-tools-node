@@ -178,7 +178,7 @@ var ftpCheck = function(url) {
             secure: doSecure
         });
 				var filename = path.basename(urlParts.path)
-        await client.cd(path.dirname(urlParts.path));git status
+        await client.cd(path.dirname(urlParts.path));
         var list = await client.list()
 				for(let i = 0; i < list.length; i++) {
 					var item = list[i];
