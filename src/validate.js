@@ -64,14 +64,16 @@ var options  = yargs
 		's' : {
 			alias: 'schema',
 			describe : 'URL or Path to the XML schema document (XSD) to use for structural checking of files.',
-			type: 'string'
+			type: 'string',
+      default: null
 		},
 		
 		// XML Schematron file
 		't' : {
 			alias: 'schematron',
 			describe : 'URL or Path to the XML schematron document (SCH) to use for content checking of files.',
-			type: 'string'
+			type: 'string',
+      default: null
 		},
 		
 		// File name extensions
@@ -92,6 +94,10 @@ var fileCnt = 0;
 var failureCnt = 0;
 options.service = 'https://spase-group.org/data/schema';
 
+request.defaults( {
+  parse_response: false
+});
+
 // Functions
 
 // Retrieve xpath to an element
@@ -111,7 +117,8 @@ async function getSchema(version) {
 	// version = version.replace(/\./g, '_');
 	var url = options.service + "/spase-" + version + ".xsd"; 
 	try {
-		return await request('get', url);
+		var resp = await request('get', url);
+    return resp.body;
 	} catch(e) {
 		console.log("Unable to retrieve schema from: " + url);
 		return e;
@@ -123,7 +130,8 @@ async function getSchematron(version) {
 	// version = version.replace(/\./g, '_');
 	var url = options.service + "/spase-" + version + ".sch"; 
 	try {
-		return await request('get', url);
+		var resp = await request('get', url);
+    return resp.body;
 	} catch(e) {
 		console.log("Unable to retrieve schema from: " + url);
 		return e;
@@ -132,6 +140,7 @@ async function getSchematron(version) {
 
 async function validateFile(pathname) {
 	fileCnt++;
+
 	var xmlDoc = fs.readFileSync(pathname, 'utf8');
 	var xml = libxml.parseXml(xmlDoc);
   var rules = null;
@@ -142,7 +151,8 @@ async function validateFile(pathname) {
 	var xsdDoc = "";
 	if(options.schema != null) {	// Read from file
 		if(options.schema.startsWith("http")) {
-			xsdDoc = await request('get', options.schema);
+			var resp = await request('get', options.schema);
+      xsdDoc = resp.body;
 		} else {	// Local file
 			xsdDoc = fs.readFileSync(options.schema, 'utf8');
 		}
@@ -154,7 +164,8 @@ async function validateFile(pathname) {
 	var schDoc = "";
 	if(options.schematron != null) {	// Read from file
 		if(options.schematron.startsWith("http")) {
-			schDoc = await request('get', options.schematron);
+			var resp = await request('get', options.schematron);
+      schDoc = resp.body;
 		} else {	// Local file
 			schDoc = fs.readFileSync(options.schematron, 'utf8');
 		}
@@ -162,7 +173,7 @@ async function validateFile(pathname) {
 		schDoc = await getSchematron("1.0.0");  // Fixed version number - might chnage in future
 	}
   rules = Schema.fromString(schDoc);
-	
+  
 	var xsd = libxml.parseXml(xsdDoc);	
 	if( ! xml.validate(xsd)) {
 		// if ( ! options.errors) { console.log('      OK: ' + pathname); }
@@ -177,6 +188,7 @@ async function validateFile(pathname) {
     
   // Replace <Spase ....> tag with <Spase>.
   // For some reason if the default namespace attribute ("xmls=") is present then schematron processing does not work.
+
   const regex = /<Spase [^>]+>/i;
   xmlDoc = xmlDoc.replace(regex, "<Spase>")
   var results = rules.validateString(xmlDoc, { debug: false });
@@ -191,7 +203,7 @@ async function validateFile(pathname) {
       console.log("   ERROR: " + element.message.trim().replace(/\\n/g, "\n          "));
     });
   }
-  
+
 	if ( valid && ! options.errors) { console.log('      OK: ' + pathname); }
   
 }

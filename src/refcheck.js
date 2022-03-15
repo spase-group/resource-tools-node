@@ -324,7 +324,7 @@ async function refcheckFile(pathname) {
                 if(needPathname) { console.log(pathname); needPathname = false; }
                 console.log("  INVALID: " + url); urlFailureCnt++;
                 console.log("         : " + e.code + " - " + e.message);
-                if(response) console.log(" RESPONSE: " + JSON.stringify(response, 3, null));
+                if(response.body) console.log(" RESPONSE: " + JSON.stringify(response.body, 3, null));
               }
               scanOK = false;
           }
