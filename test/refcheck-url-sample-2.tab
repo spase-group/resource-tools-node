@@ -1,0 +1,2 @@
+Authority	Path	Protocol	Reference	Status	Note
+./GBO	NumericalData/Abisko/Magnetometer/PT1H/WDC_FORMAT.xml	ftp	ftp://ftp.nmh.ac.uk/wdc/obsdata/hourval/single_year/	INVALID 530: FTPError

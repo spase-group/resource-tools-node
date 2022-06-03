@@ -1,0 +1,9 @@
+Authority	Path	Protocol	Reference	Status	Note
+./GBO	DisplayData/SECS/Magnetometer/Quicklook/PT60S.xml	http	http://www.terrapub.co.jp/journals/EPS/pdf/5106/51060431.pdf	INVALID ENOTFOUND - getaddrinfo ENOTFOUND www.terrapub.co.jp
+./GBO	NumericalData/Abisko/Magnetometer/PT1H/WDC_FORMAT.xml	ftp	ftp://ftp.nmh.ac.uk/wdc/obsdata/hourval/single_year/	INVALID 530: FTPError
+./JAXA	DisplayData/Akebono/ATV/PT3H.xml	https	https://www.darts.isas.ac.jp/stp/akebono/ATV.html	INVALID ERR_TLS_CERT_ALTNAME_INVALID - Hostname/IP does not match certificate's altnames: Host: www.darts.isas.ac.jp. is not in the cert's altnames: DNS:www.darts.isas.jaxa.jp, DNS:darts.isas.jaxa.jp, DNS:darts.jaxa.jp, DNS:egy.darts.isas.jaxa.jp
+./NASA	NumericalData/RBSP/A/RPS/L2/PT0.058S.xml	ftps	ftps://spdf.gsfc.nasa.gov/pub/data/rbsp/rbspa/l2/psbr/rps/	INVALID 550: FTPError
+./NASA	NumericalData/Vega1/PLASMAG/PT20M.xml	ftps	ftps://spdf.gsfc.nasa.gov/pub/data/zzz_old/vega_data_from_nssdc/plasma/	INVALID undefined: undefined
+./NASA	NumericalData/Weygand/Wind/MFI/Propagated.3DP/GSE/PT60S.xml	https	https://wind.nasa.gov/mfi/	INVALID CERT_HAS_EXPIRED - certificate has expired
+./NOAA	NumericalData/GOES/2/EPM/PT3S.xml	ftp	ftp://satdat.ngdc.noaa.gov/sem/goes/goes_docs/full/readme.txt	INVALID ECONNREFUSED: Error
+./SMWG	Instrument/GOES/6/SEM.xml	ftp	ftp://satdat.ngdc.noaa.gov/sem/goes/goes_docs/full/readme.txt	INVALID ECONNREFUSED: Error
