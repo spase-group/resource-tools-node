@@ -420,7 +420,7 @@ async function refcheckFile(pathname) {
     var list = [].concat(urlList, doiList);
     
 		for(let i = 0; i < list.length; i++) {
-         urlCheck(options.authority, pathname, line);
+         urlCheck(options.authority, pathname, list[i]);
 		}
 	}	
 }
