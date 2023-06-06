@@ -46,7 +46,7 @@
     "basic-ftp": "^4.6.6",
     "bluebird": "^3.7.2",
     "cron": "^1.8.2",
-    "fast-xml-parser": "^3.19.0",
+    "fast-xml-parser": "^4.2.4",
     "html-entities": "^1.4.0",
     "libxmljs2": "^0.27.0",
     "n-readlines": "^1.0.1",
